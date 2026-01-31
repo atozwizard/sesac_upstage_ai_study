@@ -11,64 +11,97 @@ class WeekDetail:
 
 
 def get_detail() -> WeekDetail:
-    """05.5주차_ProductEngineer_PromptEngineering: 학습 기록 모듈 (한국어)
+    """05.5주차_ProductEngineer_PromptEngineering: 상세 학습 기록 (한국어)
     
-    AI 제품 엔지니어링, 프롬프트 엔지니어링, LLM 기반 응용 개발.
+    LLM 활용, 프롬프트 엔지니어링, RAG, 에이전트 아키텍처
     """
 
     w = WeekDetail(week="05.5주차_ProductEngineer_PromptEngineering")
 
     w.files = [
-        "00.강의자료 (프롬프트 엔지니어링, LLM, RAG, Agentic Workflow)",
-        "01.daily_mission (매일 LLM 실습 미션)",
-        "02.advanced_mission (심화 AI 에이전트 미션)",
-        "03.project (LLM 기반 제품 개발 프로젝트)",
+        "00.강의자료/LLM_기초_및_API.pdf",
+        "00.강의자료/프롬프트_엔지니어링_고급.pdf",
+        "01.daily_mission/Day1_LLM_API_기초.ipynb",
+        "01.daily_mission/Day2_프롬프트_구조화.ipynb",
+        "01.daily_mission/Day3_RAG_시스템.ipynb",
+        "02.advanced_mission/Day4_에이전트_아키텍처.ipynb",
+        "02.advanced_mission/Day5_통합_프로젝트.ipynb",
     ]
 
     w.tech_stack = [
-        "LLM: GPT, Claude, 오픈소스 모델 API",
-        "프롬프트 엔지니어링: 지시어, Few-shot, Chain-of-Thought",
-        "RAG (Retrieval-Augmented Generation): 문서 검색 + LLM",
-        "Agentic Workflow: 에이전트, 도구(Tools), 메모리 관리",
-        "임베딩 & 벡터 DB: Vector Search, Semantic Similarity",
-        "평가 지표: Precision, Recall, F1, BLEU 등",
-        "비용/성능 최적화: 토큰 개수, API 호출 최소화",
+        "LLM API: OpenAI GPT-4, Claude, Gemini",
+        "라이브러리: LangChain, LlamaIndex, Anthropic SDK",
+        "벡터 데이터베이스: Pinecone, Weaviate, Chroma",
+        "임베딩 모델: OpenAI Embeddings, Hugging Face",
+        "프롬프트 패턴: Role/Instruction/Example/Chain-of-Thought",
+        "에이전트 패턴: ReAct, Tool Use, Memory Management",
+        "모니터링: LangSmith, Weights & Biases",
     ]
 
     w.learning_paragraphs = [
         (
-            "What I practiced: LLM API(OpenAI, Claude 등)를 직접 호출하고 응답을 받는 기본 흐름을 습득했습니다. "
-            "프롬프트 엔지니어링의 다양한 기법(Zero-shot, Few-shot, Chain-of-Thought)을 실험해보고, "
-            "각 기법이 LLM의 성능에 미치는 영향을 관찰했습니다. "
-            "RAG를 이용해 외부 문서를 검색한 뒤 그 결과를 LLM에 전달하는 파이프라인을 구현했습니다. "
-            "간단한 에이전트(Agent) 구조를 만들어 LLM이 도구(Tools)를 사용하도록 유도하는 경험을 했습니다."
+            "📅 Day 1: LLM API와 기본 구조\n"
+            "- OpenAI API 구조 및 모델 선택 (gpt-4, gpt-3.5-turbo)\n"
+            "- Chat Completion vs Text Completion\n"
+            "- 토큰 계산 및 비용 추정\n"
+            "- API 에러 처리 및 재시도 로직\n"
+            "- 스트리밍 응답 처리"
         ),
 
         (
-            "What I learned: LLM은 완벽한 솔루션이 아니며, 프롬프트와 환경설정에 따라 성능이 크게 달라진다는 것을 배웠습니다. "
-            "프롬프트에서 '역할(Role)', '맥락(Context)', '지시사항(Instruction)', '예제(Example)'를 명확히 제시하면 결과가 향상됨을 체감했습니다. "
-            "RAG의 핵심은 '검색 품질'이며, 잘못된 문서 검색은 오히려 LLM의 답변을 방해한다는 점을 이해했습니다. "
-            "에이전트 기반 아키텍처에서는 LLM 출력의 예측 불가성을 관리하고, 오류 처리(fallback)를 설계해야 함을 배웠습니다."
+            "📅 Day 2: 고급 프롬프트 엔지니어링\n"
+            "- 프롬프트 구조 최적화 (System/User/Assistant roles)\n"
+            "- Few-shot learning 패턴\n"
+            "- Chain-of-Thought 프롬프팅\n"
+            "- Temperature와 Top-P 파라미터 튜닝\n"
+            "- 프롬프트 버전 관리 및 A/B 테스트"
         ),
 
         (
-            "Project/Assignment: LLM 기반 질문-답변 시스템(Q&A Bot), 문서 요약 도구, 또는 멀티턴 대화 에이전트를 구현했습니다. "
-            "RAG를 적용해 회사 내부 문서나 외부 소스에서 정보를 검색하고, 그를 바탕으로 정확한 답변을 생성하도록 했습니다. "
-            "프롬프트 템플릿을 설계하고, 다양한 프롬프트 버전을 A/B 테스트해서 최적의 성능을 찾는 과정을 거쳤습니다. "
-            "LLM 응답의 정확성, 관련성, 안전성을 평가하기 위한 평가 지표를 정의하고 측정했습니다."
+            "📅 Day 3: RAG (Retrieval-Augmented Generation) 시스템\n"
+            "- 벡터 임베딩의 개념\n"
+            "- 문서 청킹 및 전처리\n"
+            "- 유사도 검색 알고리즘\n"
+            "- 검색 결과를 LLM과 결합\n"
+            "- Pinecone/Weaviate 통합"
+        ),
+
+        (
+            "📅 Day 4: 에이전트 아키텍처 설계\n"
+            "- 에이전트의 개념 (목표, 도구, 메모리)\n"
+            "- Tool/Function Calling 구현\n"
+            "- ReAct 패턴: Reasoning + Acting\n"
+            "- 대화 메모리 관리\n"
+            "- 반복 제한 및 에러 복구"
+        ),
+
+        (
+            "📅 Day 5: 통합 프로젝트 및 배포\n"
+            "- 전체 AI 파이프라인 구축\n"
+            "- 다양한 데이터 소스 통합\n"
+            "- 모니터링 및 성능 추적\n"
+            "- 비용 최적화 전략\n"
+            "- 프로덕션 배포 및 스케일링"
         ),
     ]
 
     w.code_examples = {}
 
-    w.code_examples['basic_llm_api.py'] = '''import openai
+    w.code_examples['01_basic_llm_api.py'] = '''# Day 1: OpenAI API 기초
 
-# OpenAI API 호출 (기본)
-def query_llm(prompt: str) -> str:
+import openai
+import os
+from typing import Optional
+
+# API 키 설정
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+def basic_completion(prompt: str, model: str = "gpt-4") -> str:
+    """기본 텍스트 생성"""
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model=model,
         messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "system", "content": "당신은 도움이 되는 AI 어시스턴트입니다."},
             {"role": "user", "content": prompt}
         ],
         temperature=0.7,
@@ -76,127 +109,565 @@ def query_llm(prompt: str) -> str:
     )
     return response['choices'][0]['message']['content']
 
-result = query_llm("파이썬에서 리스트의 중복을 제거하는 방법은?")
-print(result)
-'''
-
-    w.code_examples['prompt_engineering.py'] = '''# 프롬프트 엔지니어링: 역할, 맥락, 지시사항, 예제
-
-def create_optimized_prompt(task: str) -> str:
-    prompt = f"""
-# 역할 (Role)
-당신은 전문적인 기술 문서 작성자입니다.
-
-# 맥락 (Context)
-본사는 Python 기반 데이터 처리 도구를 개발하고 있으며, 사용자를 위한 명확한 설명서를 작성해야 합니다.
-
-# 지시사항 (Instruction)
-다음 기술 개념을 초보자도 이해할 수 있도록 설명하세요:
-- 개념을 3문장 이내로 요약
-- 실제 사용 예제 1가지 포함
-- 주의사항 1가지 포함
-
-# 예제 (Example)
-개념: 리스트 컴프리헨션
-설명: 리스트 컴프리헨션은 간단한 반복문을 한 줄로 표현하는 방법입니다.
-예: [x*2 for x in range(5)]는 [0, 2, 4, 6, 8]을 생성합니다.
-주의: 복잡한 로직은 오히려 가독성을 해칠 수 있으니 일반 반복문을 사용하세요.
-
-이제 다음 개념을 같은 형식으로 설명하세요:
-{task}
-"""
-    return prompt
-
-# Few-shot learning: 여러 예제를 제공
-messages = [
-    {"role": "system", "content": "당신은 한국어-영어 번역기입니다."},
-    {"role": "user", "content": "안녕하세요"},
-    {"role": "assistant", "content": "Hello"},
-    {"role": "user", "content": "오늘 날씨가 좋네요"},
-    {"role": "assistant", "content": "Nice weather today"},
-    {"role": "user", "content": "감사합니다"},
-]
-'''
-
-    w.code_examples['rag_pipeline.py'] = '''from langchain.vectorstores import FAISS
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.document_loaders import TextLoader
-
-# 1. 문서 로드 및 임베딩
-loader = TextLoader("documents.txt")
-documents = loader.load()
-
-embeddings = OpenAIEmbeddings()
-vector_store = FAISS.from_documents(documents, embeddings)
-
-# 2. 검색 (Retrieval)
-def retrieve_relevant_docs(query: str, k: int = 3):
-    docs = vector_store.similarity_search(query, k=k)
-    return docs
-
-# 3. LLM에 맥락 추가 (Augmentation)
-def rag_query(query: str) -> str:
-    relevant_docs = retrieve_relevant_docs(query)
-    context = "\\n".join([doc.page_content for doc in relevant_docs])
-    
-    prompt = f"""다음 문서를 참고하여 질문에 답하세요:
-
-문서:
-{context}
-
-질문: {query}
-
-답변:"""
-    
-    # LLM 호출
+def streaming_completion(prompt: str) -> None:
+    """스트리밍 응답 (실시간 출력)"""
     response = openai.ChatCompletion.create(
         model="gpt-4",
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.7,
+        stream=True
     )
-    return response['choices'][0]['message']['content']
+    
+    for chunk in response:
+        if 'choices' in chunk:
+            delta = chunk['choices'][0]['delta']
+            if 'content' in delta:
+                print(delta['content'], end='', flush=True)
+    print()
 
-answer = rag_query("우리 회사의 핵심 가치는 무엇입니까?")
+def count_tokens(text: str) -> int:
+    """토큰 수 계산 (대략적)"""
+    import tiktoken
+    encoding = tiktoken.get_encoding("cl100k_base")
+    tokens = encoding.encode(text)
+    return len(tokens)
+
+def estimate_cost(prompt_tokens: int, completion_tokens: int) -> float:
+    """API 비용 추정"""
+    # GPT-4 가격 (2024 기준)
+    prompt_price = 0.00003  # $0.03 / 1K tokens
+    completion_price = 0.00006  # $0.06 / 1K tokens
+    
+    cost = (prompt_tokens * prompt_price + completion_tokens * completion_price)
+    return cost
+
+def api_with_retry(prompt: str, max_retries: int = 3) -> Optional[str]:
+    """재시도 로직이 있는 API 호출"""
+    import time
+    
+    for attempt in range(max_retries):
+        try:
+            return basic_completion(prompt)
+        except openai.error.RateLimitError:
+            if attempt == max_retries - 1:
+                raise
+            wait_time = 2 ** attempt
+            print(f"Rate limit. {wait_time}초 대기...")
+            time.sleep(wait_time)
+        except openai.error.APIError as e:
+            if attempt == max_retries - 1:
+                raise
+            print(f"API 오류: {e}. 재시도...")
+
+# 사용 예제
+if __name__ == '__main__':
+    prompt = "파이썬에서 리스트와 튜플의 차이를 설명해주세요"
+    
+    print("=== 기본 완성 ===")
+    result = basic_completion(prompt)
+    print(result)
+    
+    print("\\n=== 스트리밍 ===")
+    streaming_completion(prompt)
+    
+    print("\\n=== 토큰 수 ===")
+    tokens = count_tokens(prompt)
+    print(f"프롬프트 토큰: {tokens}")
 '''
 
-    w.code_examples['agentic_workflow.py'] = '''# 간단한 에이전트 구조 (Agent + Tools + Memory)
+    w.code_examples['02_prompt_engineering.py'] = '''# Day 2: 프롬프트 엔지니어링 고급
 
-class SimpleAgent:
+import openai
+from typing import List, Dict
+
+class PromptEngineer:
+    """프롬프트 엔지니어링 클래스"""
+    
     def __init__(self):
-        self.tools = {
-            "calculator": self.calculate,
-            "web_search": self.search_web,
-            "database_query": self.query_db
-        }
-        self.memory = []
+        self.model = "gpt-4"
+        self.temperature = 0.7
     
-    def calculate(self, expression: str) -> str:
-        return str(eval(expression))
+    def system_prompt(self, role: str) -> Dict:
+        """시스템 프롬프트 정의"""
+        return {"role": "system", "content": role}
     
-    def search_web(self, query: str) -> str:
-        return f"[Web Search Result for: {query}]"
+    def few_shot_example(self, examples: List[Dict]) -> str:
+        """Few-shot 예제 생성"""
+        prompt = "다음은 예제입니다:\\n"
+        for i, example in enumerate(examples, 1):
+            prompt += f"예제 {i}:\\n"
+            prompt += f"입력: {example['input']}\\n"
+            prompt += f"출력: {example['output']}\\n\\n"
+        return prompt
     
-    def query_db(self, sql: str) -> str:
-        return "[Database Result]"
-    
-    def run(self, user_input: str) -> str:
-        # 사용자 입력을 LLM에 전달하여 어떤 도구를 사용할지 결정
-        prompt = f"""
-당신은 AI 어시스턴트입니다.
-사용 가능한 도구: {list(self.tools.keys())}
+    def chain_of_thought(self, problem: str) -> str:
+        """Chain-of-Thought 프롬프팅"""
+        return f"""다음 문제를 단계별로 풀어주세요.
+각 단계를 명확히 설명하고, 최종 답변을 제시해주세요.
 
-사용자: {user_input}
+문제: {problem}
 
-사용할 도구와 입력을 결정하세요. 포맷: [도구명] [입력값]
-"""
-        # LLM 호출 (생략)
-        # 도구 실행
-        # 결과를 메모리에 저장
-        # 최종 답변 생성
+단계:
+1. 문제 이해
+2. 필요한 정보 파악
+3. 단계별 풀이
+4. 최종 답변"""
+    
+    def structured_output(self, task: str, format_type: str = "json") -> str:
+        """구조화된 출력 요청"""
+        if format_type == "json":
+            return f"""{task}
+
+응답은 다음과 같은 JSON 형식으로 제공해주세요:
+{{
+    "answer": "답변",
+    "confidence": 0.0-1.0,
+    "reasoning": "이유"
+}}"""
+        elif format_type == "markdown":
+            return f"""{task}
+
+응답은 마크다운 형식으로 제공해주세요:
+# 제목
+## 부제
+- 항목 1
+- 항목 2"""
+    
+    def multilingual_prompt(self, text: str, target_lang: str) -> str:
+        """다국어 프롬프트"""
+        return f"""다음 텍스트를 {target_lang}로 번역해주세요.
+원문의 의미와 톤을 최대한 보존해주세요.
+
+원문:
+{text}
+
+번역:"""
+    
+    def prompt_variations(self, base_prompt: str, temperatures: List[float]) -> List[str]:
+        """다양한 온도 설정으로 응답 생성"""
+        variations = []
+        for temp in temperatures:
+            self.temperature = temp
+            # API 호출 로직
+            variations.append(f"온도 {temp}: [응답]")
+        return variations
+
+# 사용 예제
+engineer = PromptEngineer()
+
+# Few-shot 학습
+examples = [
+    {"input": "Cat", "output": "동물"},
+    {"input": "Apple", "output": "과일"}
+]
+few_shot_prompt = engineer.few_shot_example(examples)
+
+# Chain-of-Thought
+cot_prompt = engineer.chain_of_thought("12 × 5 + 8 ÷ 2 = ?")
+
+# 구조화된 출력
+structured = engineer.structured_output(
+    "감정 분석: '이 제품은 정말 훌륭합니다!'",
+    format_type="json"
+)
+
+# 번역
+translation = engineer.multilingual_prompt(
+    "The quick brown fox jumps over the lazy dog",
+    "한국어"
+)
+
+print("Few-shot 프롬프트:")
+print(few_shot_prompt)
+print("\\nChain-of-Thought:")
+print(cot_prompt)
+'''
+
+    w.code_examples['03_rag_pipeline.py'] = '''# Day 3: RAG (Retrieval-Augmented Generation) 시스템
+
+from typing import List, Dict, Tuple
+import numpy as np
+from dataclasses import dataclass
+
+@dataclass
+class Document:
+    """문서 객체"""
+    id: str
+    content: str
+    embedding: List[float] = None
+    metadata: Dict = None
+
+class RAGPipeline:
+    """RAG 파이프라인"""
+    
+    def __init__(self, embedding_model="text-embedding-3-small"):
+        self.embedding_model = embedding_model
+        self.documents: List[Document] = []
+        self.embeddings: np.ndarray = None
+    
+    def chunk_document(self, text: str, chunk_size: int = 500) -> List[str]:
+        """문서를 청크로 분할"""
+        chunks = []
+        for i in range(0, len(text), chunk_size):
+            chunks.append(text[i:i + chunk_size])
+        return chunks
+    
+    def embed_text(self, text: str) -> List[float]:
+        """텍스트를 벡터로 변환"""
+        import openai
         
-        return "Agent의 최종 답변"
+        response = openai.Embedding.create(
+            input=text,
+            model=self.embedding_model
+        )
+        return response['data'][0]['embedding']
+    
+    def add_documents(self, documents: List[Dict]):
+        """문서 추가"""
+        for doc in documents:
+            chunks = self.chunk_document(doc['content'])
+            
+            for i, chunk in enumerate(chunks):
+                embedding = self.embed_text(chunk)
+                
+                doc_obj = Document(
+                    id=f"{doc['id']}_chunk_{i}",
+                    content=chunk,
+                    embedding=embedding,
+                    metadata={"source": doc.get('source', '')}
+                )
+                self.documents.append(doc_obj)
+    
+    def cosine_similarity(self, vec1: List[float], vec2: List[float]) -> float:
+        """코사인 유사도 계산"""
+        vec1 = np.array(vec1)
+        vec2 = np.array(vec2)
+        
+        dot_product = np.dot(vec1, vec2)
+        magnitude1 = np.linalg.norm(vec1)
+        magnitude2 = np.linalg.norm(vec2)
+        
+        return dot_product / (magnitude1 * magnitude2)
+    
+    def retrieve(self, query: str, top_k: int = 3) -> List[Document]:
+        """쿼리와 유사한 문서 검색"""
+        query_embedding = self.embed_text(query)
+        
+        similarities = []
+        for doc in self.documents:
+            similarity = self.cosine_similarity(query_embedding, doc.embedding)
+            similarities.append((doc, similarity))
+        
+        # 상위 K개 반환
+        similarities.sort(key=lambda x: x[1], reverse=True)
+        return [doc for doc, _ in similarities[:top_k]]
+    
+    def generate_with_context(self, query: str, llm_model: str = "gpt-4") -> str:
+        """RAG 기반 답변 생성"""
+        import openai
+        
+        # 관련 문서 검색
+        relevant_docs = self.retrieve(query)
+        
+        # 문맥 생성
+        context = "\\n".join([doc.content for doc in relevant_docs])
+        
+        # LLM에 컨텍스트와 함께 질문
+        response = openai.ChatCompletion.create(
+            model=llm_model,
+            messages=[
+                {
+                    "role": "system",
+                    "content": f"""당신은 도움이 되는 어시스턴트입니다.
+다음 컨텍스트를 기반으로 질문에 답변해주세요.
+컨텍스트에 정보가 없으면 '해당 정보를 찾을 수 없습니다'라고 답변하세요.
 
-agent = SimpleAgent()
-result = agent.run("2+3의 결과는 무엇이고, 날씨는 어떻게 되나요?")
+컨텍스트:
+{context}"""
+                },
+                {"role": "user", "content": query}
+            ]
+        )
+        
+        return response['choices'][0]['message']['content']
+
+# 사용 예제
+rag = RAGPipeline()
+
+# 문서 추가
+documents = [
+    {
+        "id": "doc1",
+        "content": "파이썬은 고급 프로그래밍 언어입니다. 배우기 쉽고 강력합니다.",
+        "source": "python_guide"
+    },
+    {
+        "id": "doc2",
+        "content": "머신러닝은 데이터로부터 패턴을 학습합니다.",
+        "source": "ml_guide"
+    }
+]
+
+# rag.add_documents(documents)
+# answer = rag.generate_with_context("파이썬의 특징은?")
+# print(f"답변: {answer}")
+'''
+
+    w.code_examples['04_agent_architecture.py'] = '''# Day 4: 에이전트 아키텍처 (ReAct 패턴)
+
+from typing import List, Dict, Any, Callable
+from dataclasses import dataclass
+import json
+
+@dataclass
+class Tool:
+    """에이전트가 사용할 수 있는 도구"""
+    name: str
+    description: str
+    func: Callable
+    parameters: Dict[str, str]
+
+class ReActAgent:
+    """ReAct (Reasoning + Acting) 패턴의 에이전트"""
+    
+    def __init__(self, model: str = "gpt-4"):
+        self.model = model
+        self.tools: Dict[str, Tool] = {}
+        self.memory: List[Dict] = []
+        self.max_iterations = 10
+    
+    def register_tool(self, tool: Tool):
+        """도구 등록"""
+        self.tools[tool.name] = tool
+    
+    def get_tools_prompt(self) -> str:
+        """도구 설명 프롬프트 생성"""
+        tools_text = "사용 가능한 도구:\\n"
+        for name, tool in self.tools.items():
+            tools_text += f"- {name}: {tool.description}\\n"
+        return tools_text
+    
+    def think(self, observation: str) -> str:
+        """사고 단계: 다음 행동 결정"""
+        import openai
+        
+        history = json.dumps(self.memory[-3:], ensure_ascii=False)
+        
+        response = openai.ChatCompletion.create(
+            model=self.model,
+            messages=[
+                {
+                    "role": "system",
+                    "content": f"""당신은 ReAct 에이전트입니다.
+매 턴마다 다음을 수행합니다:
+1. Thought: 현재 상황을 분석하고 다음 액션 결정
+2. Action: 도구를 사용하거나 최종 답변 제시
+3. Observation: 액션 결과 관찰
+
+{self.get_tools_prompt()}"""
+                },
+                {
+                    "role": "user",
+                    "content": f"""현재 관찰:
+{observation}
+
+과거 메모리:
+{history}
+
+다음은 Thought, Action, Observation 형식으로 응답해주세요."""
+                }
+            ],
+            temperature=0
+        )
+        
+        return response['choices'][0]['message']['content']
+    
+    def act(self, action: str) -> str:
+        """액션 실행"""
+        try:
+            # 액션 파싱 (예: "calculator(12 + 5)")
+            if "(" in action and ")" in action:
+                tool_name = action.split("(")[0].strip()
+                params_str = action.split("(")[1].split(")")[0]
+                
+                if tool_name in self.tools:
+                    tool = self.tools[tool_name]
+                    result = tool.func(params_str)
+                    return f"Action Result: {result}"
+            
+            return f"도구를 찾을 수 없습니다: {action}"
+        
+        except Exception as e:
+            return f"액션 실행 오류: {str(e)}"
+    
+    def run(self, query: str) -> str:
+        """에이전트 실행"""
+        self.memory = []
+        observation = f"질문: {query}"
+        
+        for i in range(self.max_iterations):
+            # 사고 + 액션
+            response = self.think(observation)
+            self.memory.append({"step": i, "response": response})
+            
+            # 최종 답변 확인
+            if "Final Answer:" in response:
+                answer = response.split("Final Answer:")[1].strip()
+                return answer
+            
+            # 다음 액션 실행
+            if "Action:" in response:
+                action = response.split("Action:")[1].split("\\n")[0].strip()
+                observation = self.act(action)
+        
+        return "최대 반복 횟수 도달"
+
+# 도구 정의
+def calculator(expression: str) -> str:
+    """계산기 도구"""
+    try:
+        result = eval(expression)
+        return str(result)
+    except:
+        return "계산 오류"
+
+def search_knowledge(query: str) -> str:
+    """지식 검색 도구"""
+    knowledge = {
+        "파이썬": "고급 프로그래밍 언어",
+        "머신러닝": "데이터로부터 패턴 학습"
+    }
+    return knowledge.get(query, "정보 없음")
+
+# 에이전트 설정
+agent = ReActAgent()
+agent.register_tool(Tool(
+    name="calculator",
+    description="수학 계산 수행",
+    func=calculator,
+    parameters={"expression": "수식"}
+))
+agent.register_tool(Tool(
+    name="search_knowledge",
+    description="지식 기반 검색",
+    func=search_knowledge,
+    parameters={"query": "검색어"}
+))
+
+# 실행 예제
+# result = agent.run("10 + 20은 얼마입니까?")
+# print(result)
+'''
+
+    w.code_examples['05_end_to_end_project.py'] = '''# Day 5: 통합 AI 프로젝트
+
+from typing import List, Optional, Dict
+import openai
+import os
+
+class AIAssistant:
+    """통합 AI 어시스턴트"""
+    
+    def __init__(self, name: str = "AI Assistant"):
+        self.name = name
+        self.conversation_history: List[Dict] = []
+        self.max_memory = 10
+        self.model = "gpt-4"
+    
+    def add_message(self, role: str, content: str):
+        """대화 기록에 메시지 추가"""
+        self.conversation_history.append({
+            "role": role,
+            "content": content
+        })
+        
+        # 메모리 제한
+        if len(self.conversation_history) > self.max_memory:
+            self.conversation_history.pop(0)
+    
+    def generate_response(self, user_input: str) -> str:
+        """사용자 입력에 대한 응답 생성"""
+        self.add_message("user", user_input)
+        
+        try:
+            response = openai.ChatCompletion.create(
+                model=self.model,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "당신은 친절하고 도움이 되는 AI 어시스턴트입니다."
+                    }
+                ] + self.conversation_history,
+                temperature=0.7,
+                max_tokens=1000
+            )
+            
+            assistant_message = response['choices'][0]['message']['content']
+            self.add_message("assistant", assistant_message)
+            
+            return assistant_message
+        
+        except Exception as e:
+            return f"오류 발생: {str(e)}"
+    
+    def get_summary(self) -> str:
+        """대화 요약"""
+        if not self.conversation_history:
+            return "대화 기록이 없습니다."
+        
+        summary_prompt = "다음 대화를 간단히 요약해주세요:\\n"
+        summary_prompt += "\\n".join([
+            f"{msg['role']}: {msg['content']}"
+            for msg in self.conversation_history
+        ])
+        
+        response = openai.ChatCompletion.create(
+            model=self.model,
+            messages=[{"role": "user", "content": summary_prompt}],
+            max_tokens=500
+        )
+        
+        return response['choices'][0]['message']['content']
+    
+    def clear_history(self):
+        """대화 기록 초기화"""
+        self.conversation_history = []
+    
+    def interactive_chat(self):
+        """대화형 인터페이스"""
+        print(f"\\n=== {self.name} ===")
+        print("'exit'를 입력하면 종료합니다.\\n")
+        
+        while True:
+            user_input = input("당신: ").strip()
+            
+            if user_input.lower() == 'exit':
+                print(f"{self.name}: 안녕히 가세요!")
+                break
+            
+            if not user_input:
+                continue
+            
+            response = self.generate_response(user_input)
+            print(f"\\n{self.name}: {response}\\n")
+
+# 사용 예제
+if __name__ == '__main__':
+    assistant = AIAssistant(name="Python Tutor")
+    
+    # API 키 설정
+    openai.api_key = os.getenv("OPENAI_API_KEY")
+    
+    # 대화형 채팅
+    # assistant.interactive_chat()
+    
+    # 또는 단일 질문
+    # response = assistant.generate_response("파이썬 리스트와 튜플의 차이는?")
+    # print(f"응답: {response}")
+    
+    # 대화 요약
+    # summary = assistant.get_summary()
+    # print(f"\\n요약:\\n{summary}")
 '''
 
     return w
@@ -204,7 +675,8 @@ result = agent.run("2+3의 결과는 무엇이고, 날씨는 어떻게 되나요
 
 def print_detail():
     d = get_detail()
-    print("Week:", d.week)
-    print("Tech Stack:", len(d.tech_stack), "technologies")
-    print("Learning Sections:", len(d.learning_paragraphs))
-    print("Code Examples:", list(d.code_examples.keys()))
+    print(f"Week: {d.week}")
+    print(f"Files: {len(d.files)} files")
+    print(f"Tech Stack: {len(d.tech_stack)} technologies")
+    print(f"Learning Content: {len(d.learning_paragraphs)} days")
+    print(f"Code Examples: {len(d.code_examples)} examples")
