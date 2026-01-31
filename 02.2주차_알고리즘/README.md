@@ -92,3 +92,14 @@
 - extracted_content\lecture01.txt
 - extracted_content\Untitled-checkpoint.ipynb.txt
 - extracted_content\강의마무리_코랩 세션_Wrap Up 리포트.txt
+
+## Learning summary
+
+- - 테스트 결과를 실행해 스크린샷 촬영 (제출 시 포함)
+- - [ ] (과제용) 실행 결과를 캡처해 별도 제출 또는 첨부 준비를 했다.
+- ### ✅ 테스트 코드 (수정하지 말고, 위 함수를 구현한 뒤 실행해 보세요)
+- ### ✅ 테스트 코드 (수정하지 말고, 위 함수를 완성한 뒤 실행해 보세요)
+- 아래 셀을 실행해 예제 입력과 몇 가지 추가 케이스에 대해 결과를 확인해 보세요.
+- ###테스트코드
+- ## 🎯 학습 목표
+- ### ✅ 테스트 코드

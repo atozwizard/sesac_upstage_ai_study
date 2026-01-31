@@ -463,3 +463,14 @@
 - extracted_content\[SeSAC] [개발환경 구성] basic mission_day03_answer의 사본.txt
 - extracted_content\[SeSAC] [개발환경 구성] basic mission_day04_answer의 사본.txt
 - extracted_content\[SeSAC] [개발환경 구성] basic mission_day05_answer의 사본.txt
+
+## Learning summary
+
+- 1. 예제프로젝트github.com/inspire12/fake-llm-agent fork
+- 8. clone 으로올린프로젝트 코드받아보기12(실습) Github 계정생성하고저장소에내코드올리기Github
+- •docker 이미지→ docker run → 컨테이너생성및실행11(실습) Docker desktop 설치Docker
+- ● 제공된 데이터의 일부 혹은전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위위3오늘의목표: 작업되돌아가기Git
+- ● 제공된 데이터의 일부 혹은전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위위3목표: Docker는편리하다Docker
+- ● 제공된 데이터의 일부 혹은전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위위3오늘의목표: 프로젝트를관리이해Github
+- ● 제공된 데이터의 일부 혹은전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위3오늘의목표: git 으로작업단위관리하기Git
+- ● 제공된 데이터의 일부 혹은전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위위3오늘의목표: Git 에서Github 확장Git

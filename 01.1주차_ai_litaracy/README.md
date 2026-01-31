@@ -37,3 +37,14 @@
 - extracted_content\advanced_missions_extracted.txt
 - extracted_content\basic_missions_extracted.txt
 - extracted_content\lectures_extracted.txt
+
+## Learning summary
+
+- 학습
+- 평가
+- 결과
+- 실행
+- 목표
+- 코드
+- 과제
+- 실습

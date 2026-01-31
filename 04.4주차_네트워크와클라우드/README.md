@@ -467,3 +467,14 @@
 - extracted_content\[SeSAC] [네트워크와 클라우드] basic mission_day02_answer의 사본.txt
 - extracted_content\[SeSAC] [네트워크와 클라우드] basic mission_day03_answer의 사본.txt
 - extracted_content\[SeSAC] [네트워크와 클라우드] basic mission_day04_answer의 사본.txt
+
+## Learning summary
+
+- 코드 수정 → 로컬 개발/ 테스트 → ssh 로 EC2 접속 → 프로젝트위치 → git pull → 설치 → 서비스 재시작
+- git 기반 실습 코드 기록
+- 37 (실습) aws 스크립트 설치 배포:자동화
+- 테스트 실행 git switch deploy/ci
+- 테스트 실행 git switch deploy/cicd
+- 39 (실습) pycharm FastAPI 실행 Network
+- 36 (실습) SQLAlchemy 연동된 코드 확인 fastapi
+- 21 github action 에서 유닛 테스트 실행 배포:자동화

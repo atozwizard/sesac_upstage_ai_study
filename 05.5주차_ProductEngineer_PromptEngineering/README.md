@@ -463,3 +463,14 @@
 - extracted_content\[Daily_Mission]_(Day5_심화)_Tool_selector_만들기(문제).ipynb.txt
 - extracted_content\[Daily_Mission]_(Day5_심화)_Tool_selector_만들기(정답)_ipynb의_사본.ipynb.txt
 - extracted_content\[SeSAC] Lv3 Product Engineering 타운홀 미팅.txt
+
+## Learning summary
+
+- 본 실습은 다음 두 가지 상황을 코드로 직접 관찰하는 것을 목표로 합니다.
+- ● 최종 프로젝트는 이후 과정에서 학습한 내용을 바탕으로 FE/BE 를 추가한 완성된 Agent
+- 3. Agentic AI (자율 진화형): 스스로 목표를 설정하고 학습하는 완전 자율 시스템 (여러 Agent의 동적 결합)
+- Agentic AI란, 주어진 목표를 달성하기 위해 스스로 행동을 선택하고, 그 결과를 환경으로부터 관찰하며, 이를 바탕으로 반복적으로
+- ![image.png](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA/AAAADwCAIAAAAo1RjEAAAMTmlDQ1BJQ0MgUHJvZmlsZQAASImVVwdYU1cbPndkQggQiICMsJcgICOAjBBWANlDEJWQBAgjxoSg4kaLCtYtIjgqWgWxuAEpLtSqlaKgotZRHKgotViLW/lPCKCl/3j+73nOve99z3fe833fPXccAOhdfKk0F9UEIE+SL4sNCWBNTk5hkZ4BBGBAEzgDwBfIpZzo6AgAbfj8d3vdCb2hXX...
+- 학습목표
+- 학습 목표
+- # 결과 평가
