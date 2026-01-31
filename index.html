@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SESAC Upstage AI 학습 기록</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .week-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .week-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .day-section {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+        }
+        
+        .day-title {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .content-box {
+            margin: 15px 0;
+        }
+        
+        .content-subtitle {
+            font-size: 1.1em;
+            color: #555;
+            margin: 10px 0 8px 0;
+            font-weight: 500;
+        }
+        
+        .content-text {
+            color: #666;
+            line-height: 1.6;
+            margin-left: 15px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .concepts-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .concept-item {
+            background: white;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-left: 3px solid #764ba2;
+            font-size: 0.95em;
+            color: #555;
+        }
+        
+        .examples-list {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        
+        .example-item {
+            padding: 8px 0;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .example-item:last-child {
+            border-bottom: none;
+        }
+        
+        .takeaway-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin: 8px 0;
+            color: #1976D2;
+        }
+        
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .collapsible {
+            cursor: pointer;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 6px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: all 0.3s;
+        }
+        
+        .collapsible:hover {
+            background: #e0e0e0;
+        }
+        
+        .collapsible.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .collapse-icon {
+            transition: transform 0.3s;
+            font-size: 1.2em;
+        }
+        
+        .collapsible.active .collapse-icon {
+            transform: rotate(180deg);
+        }
+        
+        .collapse-content {
+            display: none;
+            padding: 15px;
+            background: #fafafa;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        
+        .collapse-content.active {
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 20px;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: left;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .concepts-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 SESAC Upstage AI 학습 기록</h1>
+            <p>AI/ML 종합 학습 프로그램 - 5주차 완전 학습 자료</p>
+        </header>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">주차</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">25</div>
+                <div class="stat-label">일자 (5일 × 5주)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">개념 학습</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">코드 예제</div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('week1')">📖 1주차: AI Literacy</button>
+            <button class="tab-btn" onclick="showTab('week2')">🔍 2주차: 알고리즘</button>
+            <button class="tab-btn" onclick="showTab('week3')">🛠️ 3주차: 개발환경</button>
+            <button class="tab-btn" onclick="showTab('week4')">🌐 4주차: 네트워크</button>
+            <button class="tab-btn" onclick="showTab('week5')">🤖 5주차: LLM/RAG</button>
+        </div>
+        
+        <!-- Week 1 Content -->
+        <div id="week1" class="tab-content active">
+            <div class="week-card">
+                <h2 class="week-title">📖 1주차: AI Literacy & LLM 기초</h2>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">일차 강의</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">25</div>
+                        <div class="stat-label">학습 개념</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">코드 예제</div>
+                    </div>
+                </div>
+                
+                <!-- Day 1 -->
+                <div class="day-section">
+                    <div class="day-title">📅 Day 1: AI와 LLM 기초 이해</div>
+                    
+                    <div class="collapsible" onclick="toggleCollapse(this)">
+                        <span>🎯 1.1 AI vs Machine Learning vs Deep Learning</span>
+                        <span class="collapse-icon">▼</span>
+                    </div>
+                    <div class="collapse-content">
+                        <div class="content-box">
+                            <div class="content-subtitle">📝 학습 내용:</div>
+                            <div class="content-text">
+• AI (인공지능): 인간의 지능을 모방하는 프로그램
+  - 광의: 규칙 기반 전문가 시스템도 AI
+  - 협의: 데이터로부터 학습하는 시스템
+
+• Machine Learning: 명시적 프로그래밍 없이 데이터로부터 학습
+  - Supervised Learning (지도학습): 레이블된 데이터
+  - Unsupervised Learning (비지도학습): 패턴 발견
+  - Reinforcement Learning (강화학습): 보상 기반
+
+• Deep Learning: 다층 신경망을 이용한 기계학습
+  - 특징 추출을 자동으로 수행
+  - 이미지, 텍스트, 음성 처리에 강함
+                            </div>
+                        </div>
+                        <div class="concepts-list">
+                            <div class="concept-item">🔹 AI의 정의와 역사</div>
+                            <div class="concept-item">🔹 ML의 3가지 학습 방식</div>
+                            <div class="concept-item">🔹 신경망 기초</div>
+                            <div class="concept-item">🔹 DL 등장 배경</div>
+                            <div class="concept-item">🔹 LLM 개념</div>
+                        </div>
+                        <div class="content-box">
+                            <div class="content-subtitle">💡 핵심 정리:</div>
+                            <div class="takeaway-box">AI는 광의의 개념, ML은 AI의 부분집합</div>
+                            <div class="takeaway-box">DL은 ML의 특수한 형태</div>
+                            <div class="takeaway-box">LLM은 Transformer 아키텍처 기반의 DL 모델</div>
+                        </div>
+                    </div>
+                    
+                    <div class="collapsible" onclick="toggleCollapse(this)">
+                        <span>🎯 1.2 LLM의 동작 원리</span>
+                        <span class="collapse-icon">▼</span>
+                    </div>
+                    <div class="collapse-content">
+                        <div class="content-box">
+                            <div class="content-subtitle">📝 학습 내용:</div>
+                            <div class="content-text">
+LLM (Large Language Model): 대규모 텍스트 데이터로 학습된 신경망
+
+1. Pre-training (사전학습):
+   - 대규모 텍스트 코퍼스로 미리 학습
+   - 다음 토큰 예측 (Causal Language Modeling)
+
+2. Fine-tuning (미세조정):
+   - 특정 작업에 맞게 추가 학습
+   - RLHF (Reinforcement Learning from Human Feedback)
+
+3. In-context Learning:
+   - 프롬프트를 통한 적응
+   - Few-shot examples 활용
+
+Transformer 아키텍처의 핵심:
+- Attention 메커니즘: 입력 간의 상관관계 학습
+- Self-Attention: 입력 시퀀스 내부의 관계 파악
+- Multi-head Attention: 여러 관점에서 동시 학습
+                            </div>
+                        </div>
+                        <div class="concepts-list">
+                            <div class="concept-item">🔹 Transformer 아키텍처</div>
+                            <div class="concept-item">🔹 Attention 메커니즘</div>
+                            <div class="concept-item">🔹 Self-Attention</div>
+                            <div class="concept-item">🔹 Positional Encoding</div>
+                            <div class="concept-item">🔹 Feed-forward Networks</div>
+                        </div>
+                        <div class="content-box">
+                            <div class="content-subtitle">💡 핵심 정리:</div>
+                            <div class="takeaway-box">LLM의 핵심은 Attention 메커니즘</div>
+                            <div class="takeaway-box">프롬프트가 모델의 성능을 좌우</div>
+                            <div class="takeaway-box">더 큰 모델, 더 많은 데이터 = 더 나은 성능</div>
+                        </div>
+                    </div>
+                    
+                    <div class="collapsible" onclick="toggleCollapse(this)">
+                        <span>🎯 1.3 토큰과 컨텍스트 윈도우</span>
+                        <span class="collapse-icon">▼</span>
+                    </div>
+                    <div class="collapse-content">
+                        <div class="content-box">
+                            <div class="content-subtitle">📝 학습 내용:</div>
+                            <div class="content-text">
+토큰 (Token): LLM이 이해하는 최소 단위
+- 단어, 부분 단어, 심볼 등으로 분할
+- 각 토큰은 고유한 정수 ID로 매핑
+- 1 토큰 ≈ 0.75 단어 (평균)
+
+토큰화 방식:
+1. Word Tokenization: 전체 단어 단위
+2. Subword Tokenization: BPE, WordPiece (효율적)
+3. Character Tokenization: 문자 단위
+
+컨텍스트 윈도우:
+- 모델이 한 번에 처리할 수 있는 최대 토큰 수
+- GPT-4: 8K, 32K, 128K 버전
+- Claude: 100K, 200K 토큰
+
+API 비용 계산:
+총 비용 = (input_tokens × input_price) + (output_tokens × output_price)
+                            </div>
+                        </div>
+                        <div class="concepts-list">
+                            <div class="concept-item">🔹 토큰화 알고리즘</div>
+                            <div class="concept-item">🔹 토큰과 단어의 관계</div>
+                            <div class="concept-item">🔹 컨텍스트 제한</div>
+                            <div class="concept-item">🔹 롱 컨텍스트 처리</div>
+                            <div class="concept-item">🔹 토큰 효율성 최적화</div>
+                        </div>
+                        <div class="content-box">
+                            <div class="content-subtitle">💡 핵심 정리:</div>
+                            <div class="takeaway-box">프롬프트 최적화는 토큰 효율성 고려 필수</div>
+                            <div class="takeaway-box">컨텍스트 윈도우는 장문 처리의 핵심 제약</div>
+                            <div class="takeaway-box">토큰 수를 정확히 계산하면 비용 예측 가능</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 2 -->
+                <div class="day-section">
+                    <div class="day-title">📅 Day 2: 프롬프트 엔지니어링 기초</div>
+                    
+                    <div class="collapsible" onclick="toggleCollapse(this)">
+                        <span>🎯 2.1 프롬프트의 3가지 핵심 요소</span>
+                        <span class="collapse-icon">▼</span>
+                    </div>
+                    <div class="collapse-content">
+                        <div class="content-box">
+                            <div class="content-subtitle">📝 학습 내용:</div>
+                            <div class="content-text">
+효과적인 프롬프트 = Role + Instruction + Example
+
+1️⃣ Role (역할):
+   "당신은 Python 전문가입니다"
+   - 모델의 입장 결정
+   - 일관된 톤과 스타일 유지
+
+2️⃣ Instruction (지시사항):
+   "코드를 리뷰하고 개선점을 제시하세요"
+   - 구체적이고 명확해야 함
+   - 긍정형 사용 ("할 것" 중심)
+   - 단계별 지시 명확히
+
+3️⃣ Example (예제):
+   나쁜 코드 → 좋은 코드 변환
+   - Few-shot learning의 기초
+   - 기대하는 형식 제시
+                            </div>
+                        </div>
+                        <div class="concepts-list">
+                            <div class="concept-item">🔹 Role의 중요성</div>
+                            <div class="concept-item">🔹 Instruction의 명확성</div>
+                            <div class="concept-item">🔹 Example의 다양성</div>
+                            <div class="concept-item">🔹 구조의 순서</div>
+                            <div class="concept-item">🔹 요소 간 상호작용</div>
+                        </div>
+                        <div class="content-box">
+                            <div class="content-subtitle">💡 핵심 정리:</div>
+                            <div class="takeaway-box">Role은 모델의 응답 스타일을 결정</div>
+                            <div class="takeaway-box">구체적인 Instruction이 품질을 좌우</div>
+                            <div class="takeaway-box">3가지 요소의 균형이 중요</div>
+                        </div>
+                    </div>
+                    
+                    <div class="collapsible" onclick="toggleCollapse(this)">
+                        <span>🎯 2.2 효과적인 프롬프트 작성 원칙</span>
+                        <span class="collapse-icon">▼</span>
+                    </div>
+                    <div class="collapse-content">
+                        <div class="content-box">
+                            <div class="content-subtitle">📝 학습 내용:</div>
+                            <div class="content-text">
+5가지 핵심 원칙:
+
+1. 구체성 (Specificity):
+   ❌ "요약하세요"
+   ✅ "3줄 이내로 핵심을 요약"
+
+2. 명확성 (Clarity):
+   - 단순하고 직관적 표현
+   - 모호한 표현 피하기
+
+3. 컨텍스트 (Context):
+   - 배경 정보 제공
+   - 대상 수준 명시
+
+4. 제약조건 (Constraints):
+   - 단어 수 제한
+   - 포함/제외 정보
+
+5. 출력 형식 (Output Format):
+   - JSON, Markdown, 테이블 등 명시
+                            </div>
+                        </div>
+                        <div class="concepts-list">
+                            <div class="concept-item">🔹 최적화 기법</div>
+                            <div class="concept-item">🔹 일반적인 실수</div>
+                            <div class="concept-item">🔹 A/B 테스트</div>
+                            <div class="concept-item">🔹 버전 관리</div>
+                            <div class="concept-item">🔹 템플릿 설계</div>
+                        </div>
+                        <div class="content-box">
+                            <div class="content-subtitle">💡 핵심 정리:</div>
+                            <div class="takeaway-box">구체적일수록 응답 품질 향상</div>
+                            <div class="takeaway-box">형식 지정이 매우 중요</div>
+                        </div>
+                    </div>
+                    
+                    <div class="collapsible" onclick="toggleCollapse(this)">
+                        <span>🎯 2.3 Temperature 파라미터 튜닝</span>
+                        <span class="collapse-icon">▼</span>
+                    </div>
+                    <div class="collapse-content">
+                        <div class="content-box">
+                            <div class="content-subtitle">📝 학습 내용:</div>
+                            <div class="content-text">
+Temperature (0.0 ~ 2.0):
+  0.0   → 결정적, 항상 같은 답변 (사실 기반)
+  0.7   → 기본값, 창의성과 일관성의 균형 ⭐
+  2.0   → 매우 창의적, 무작위성 높음
+
+다른 파라미터들:
+
+Top P (0.0 ~ 1.0):
+  - 누적 확률이 P에 도달할 때까지의 토큰
+  - Temperature와 유사하게 다양성 조절
+
+Max Tokens:
+  - 생성할 최대 토큰 수
+  - 비용 관리에 중요
+
+Frequency Penalty (-2.0 ~ 2.0):
+  - 양수: 반복 표현 감소
+  - 음수: 반복 표현 장려
+                            </div>
+                        </div>
+                        <div class="concepts-list">
+                            <div class="concept-item">🔹 Temperature 직관</div>
+                            <div class="concept-item">🔹 확률 분포 샘플링</div>
+                            <div class="concept-item">🔹 파라미터 상호작용</div>
+                            <div class="concept-item">🔹 작업별 최적값</div>
+                            <div class="concept-item">🔹 튜닝 전략</div>
+                        </div>
+                        <div class="content-box">
+                            <div class="content-subtitle">💡 핵심 정리:</div>
+                            <div class="takeaway-box">팩트 확인 → 낮은 온도 (0 ~ 0.3)</div>
+                            <div class="takeaway-box">창의적 작업 → 높은 온도 (0.8 ~ 1.2)</div>
+                            <div class="takeaway-box">파라미터 조합 실험 필요</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 3, 4, 5 요약 -->
+                <div class="day-section">
+                    <div class="day-title">📅 Day 3: 고급 프롬프트 기법</div>
+                    <div class="content-text" style="margin-left: 15px;">
+• Few-shot Learning: 예제를 통한 학습
+• Chain-of-Thought: 단계별 추론 유도
+• 다국어 지원: 언어별 최적화
+• 구조화된 출력: JSON, CSV 형식 지정
+• 에러 처리: 응답 검증 및 복구
+                    </div>
+                </div>
+                
+                <div class="day-section">
+                    <div class="day-title">📅 Day 4: 심화 프로젝트 - 멀티턴 대화</div>
+                    <div class="content-text" style="margin-left: 15px;">
+• 대화 메모리 관리: 슬라이딩 윈도우
+• 컨텍스트 유지: 일관된 이해 유지
+• 동적 프롬프트: 상황별 적응
+• 응답 검증: 자동 재시도
+• 비용 최적화: API 사용량 추적
+                    </div>
+                </div>
+                
+                <div class="day-section">
+                    <div class="day-title">📅 Day 5: 최적화 및 배포</div>
+                    <div class="content-text" style="margin-left: 15px;">
+• 성능 측정: 객관적 평가 지표
+• A/B 테스트: 프롬프트 비교
+• 에러 분석: 실패 사례 개선
+• 점진적 개선: 단계별 최적화
+• 프로덕션 배포: 버전 관리 및 모니터링
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Week 2-5 Content (축약) -->
+        <div id="week2" class="tab-content">
+            <div class="week-card">
+                <h2 class="week-title">🔍 2주차: 알고리즘 기초</h2>
+                <div class="content-text" style="margin: 20px;">
+                    <strong>학습 내용:</strong><br>
+                    • Day 1: 시간복잡도와 공간복잡도 (Big-O 표기법)<br>
+                    • Day 2: 배열과 탐색 알고리즘 (선형, 이진 탐색)<br>
+                    • Day 3: 연결 리스트와 투 포인터 기법<br>
+                    • Day 4: 정렬 알고리즘 (버블, 선택, 병합, 퀵)<br>
+                    • Day 5: 그래프 탐색 (BFS, DFS, 다익스트라)<br><br>
+                    <strong>핵심 기술:</strong><br>
+                    • 자료구조: 배열, 연결리스트, 스택, 큐, 해시맵, 힙<br>
+                    • 알고리즘: O(1) ~ O(n²) 복잡도 분석<br>
+                    • 실제 구현: 5개 알고리즘 완전 코드<br>
+                </div>
+            </div>
+        </div>
+        
+        <div id="week3" class="tab-content">
+            <div class="week-card">
+                <h2 class="week-title">🛠️ 3주차: 웹 개발환경 구성</h2>
+                <div class="content-text" style="margin: 20px;">
+                    <strong>학습 내용:</strong><br>
+                    • Day 1: 가상환경 및 Git 기초<br>
+                    • Day 2: Flask 웹 프레임워크<br>
+                    • Day 3: 데이터베이스 연동 (SQLAlchemy ORM)<br>
+                    • Day 4: ORM 심화 및 마이그레이션<br>
+                    • Day 5: Docker 컨테이너화<br><br>
+                    <strong>핵심 기술:</strong><br>
+                    • 웹 프레임워크: Flask, FastAPI<br>
+                    • 데이터베이스: SQLite, MySQL, PostgreSQL<br>
+                    • ORM: SQLAlchemy CRUD<br>
+                    • 컨테이너: Docker, Docker Compose<br>
+                </div>
+            </div>
+        </div>
+        
+        <div id="week4" class="tab-content">
+            <div class="week-card">
+                <h2 class="week-title">🌐 4주차: 네트워크와 클라우드</h2>
+                <div class="content-text" style="margin: 20px;">
+                    <strong>학습 내용:</strong><br>
+                    • Day 1: HTTP 프로토콜과 웹 통신<br>
+                    • Day 2: REST API 설계<br>
+                    • Day 3: API 클라이언트 개발<br>
+                    • Day 4: 배포 및 보안<br>
+                    • Day 5: 모니터링 및 로깅<br><br>
+                    <strong>핵심 기술:</strong><br>
+                    • HTTP/HTTPS, 상태 코드<br>
+                    • REST API 설계 원칙<br>
+                    • Nginx 리버스 프록시<br>
+                    • CI/CD, 모니터링 (Prometheus, ELK)<br>
+                </div>
+            </div>
+        </div>
+        
+        <div id="week5" class="tab-content">
+            <div class="week-card">
+                <h2 class="week-title">🤖 5주차: ProductEngineer & LLM</h2>
+                <div class="content-text" style="margin: 20px;">
+                    <strong>학습 내용:</strong><br>
+                    • Day 1: LLM API와 기본 구조<br>
+                    • Day 2: 고급 프롬프트 엔지니어링<br>
+                    • Day 3: RAG (Retrieval-Augmented Generation)<br>
+                    • Day 4: 에이전트 아키텍처 (ReAct 패턴)<br>
+                    • Day 5: 통합 프로젝트 및 배포<br><br>
+                    <strong>핵심 기술:</strong><br>
+                    • OpenAI, Claude, Gemini API<br>
+                    • 벡터 임베딩 및 유사도 검색<br>
+                    • RAG 파이프라인<br>
+                    • 에이전트 설계 패턴<br>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>SESAC Upstage AI 과정 | 2024-2025</p>
+            <p>이 자료는 <a href="https://github.com/atozwizard/sesac_upstage_ai_study" style="color: inherit; text-decoration: underline;">GitHub</a>에서 관리됩니다</p>
+        </footer>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // 모든 탭 숨기기
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // 모든 버튼 비활성화
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // 선택한 탭만 표시
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function toggleCollapse(element) {
+            element.classList.toggle('active');
+            const content = element.nextElementSibling;
+            content.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
