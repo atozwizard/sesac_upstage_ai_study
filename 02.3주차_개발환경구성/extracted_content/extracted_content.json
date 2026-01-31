@@ -1,0 +1,113 @@
+{
+  "lectures": {
+    "00 Development Environment Course Introduction": {
+      "filename": "00 Development Environment Course Introduction.pdf",
+      "char_count": 2177,
+      "preview": "SPEAKER\n서영학© 2025 Upstage Co., Ltd.2저작권안내\n(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은\n운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.\n콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. \n유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. \n유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. \n● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위\n● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위\n● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위\n● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위\n● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위\n● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위\n● 제공된 데이터의 일부 혹은..."
+    },
+    "01 Creating a Developer Friendly Computer Environment": {
+      "filename": "01 Creating a Developer Friendly Computer Environment.pdf",
+      "char_count": 4428,
+      "preview": "SPEAKER\n서영학© 2025 Upstage Co., Ltd.2저작권안내\n(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은\n운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.\n콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. \n유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. \n유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. \n● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위\n● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위\n● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위\n● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위\n● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위\n● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위\n● 제공된 데이터의 일부 혹은..."
+    },
+    "03 Git Basics": {
+      "filename": "03 Git Basics.pdf",
+      "char_count": 7331,
+      "preview": "SPEAKER\n서영학© 2025 Upstage Co., Ltd.2저작권안내\n(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은\n운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.\n콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. \n유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. \n유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. \n● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위\n● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위\n● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위\n● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위\n● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위\n● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위\n● 제공된 데이터의 일부 혹은..."
+    },
+    "04 Git Advanced": {
+      "filename": "04 Git Advanced.pdf",
+      "char_count": 5822,
+      "preview": "SPEAKER\n서영학© 2025 Upstage Co., Ltd.2저작권안내\n(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은\n운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.\n콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. \n유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. \n유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. \n● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위\n● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위\n● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위\n● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위\n● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위\n● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위\n● 제공된 데이터의 일부 혹은..."
+    },
+    "05 GitHub for Collaboration": {
+      "filename": "05 GitHub for Collaboration.pdf",
+      "char_count": 5526,
+      "preview": "SPEAKER\n서영학© 2025 Upstage Co., Ltd.2저작권안내\n(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은\n운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.\n콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. \n유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. \n유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. \n● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위\n● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위\n● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위\n● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위\n● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위\n● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위\n● 제공된 데이터의 일부 혹은..."
+    },
+    "06 Project Management and GitHub": {
+      "filename": "06 Project Management and GitHub.pdf",
+      "char_count": 3556,
+      "preview": "SPEAKER\n서영학© 2025 Upstage Co., Ltd.2저작권안내\n(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은\n운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.\n콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. \n유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. \n유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. \n● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위\n● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위\n● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위\n● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위\n● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위\n● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위\n● 제공된 데이터의 일부 혹은..."
+    },
+    "07 Docker Infrastructure and MySQL": {
+      "filename": "07 Docker Infrastructure and MySQL.pdf",
+      "char_count": 8242,
+      "preview": "SPEAKER\n서영학© 2025 Upstage Co., Ltd.2저작권안내\n(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은\n운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.\n콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. \n유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. \n유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. \n● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위\n● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위\n● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위\n● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위\n● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위\n● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위\n● 제공된 데이터의 일부 혹은..."
+    },
+    "08 Understanding Databases and MySQL": {
+      "filename": "08 Understanding Databases and MySQL.pdf",
+      "char_count": 6597,
+      "preview": "SPEAKER\n서영학© 2025 Upstage Co., Ltd.2저작권안내\n(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은\n운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.\n콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. \n유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. \n유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. \n● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위\n● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위\n● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위\n● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위\n● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위\n● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위\n● 제공된 데이터의 일부 혹은..."
+    },
+    "09 Managing MySQL on a Server": {
+      "filename": "09 Managing MySQL on a Server.pdf",
+      "char_count": 5692,
+      "preview": "SPEAKER\n서영학© 2025 Upstage Co., Ltd.2저작권안내\n(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은\n운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.\n콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. \n유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. \n유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. \n● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위\n● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위\n● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위\n● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위\n● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위\n● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위\n● 제공된 데이터의 일부 혹은..."
+    },
+    "10 Maintainable Architecture": {
+      "filename": "10 Maintainable Architecture.pdf",
+      "char_count": 5616,
+      "preview": "SPEAKER\n서영학© 2025 Upstage Co., Ltd.2저작권안내\n(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은\n운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.\n콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. \n유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. \n유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. \n● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위\n● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위\n● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위\n● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위\n● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위\n● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위\n● 제공된 데이터의 일부 혹은..."
+    },
+    "SeSAC_CS with AI_Guide": {
+      "filename": "SeSAC_CS with AI_Guide.pdf",
+      "char_count": 0,
+      "preview": ""
+    }
+  },
+  "daily_missions": {
+    "[SeSAC] [개발환경 구성] basic mission_day01_answer의 사본": {
+      "filename": "[SeSAC] [개발환경 구성] basic mission_day01_answer의 사본.pdf",
+      "char_count": 999,
+      "preview": "step\n \n1.\n \nUV\n로\n \nFast\n \nAPI\n \n라이브러리\n \n추가하기\n  \n \n \nDay\n \n01\n \n답안지\n \n작성자:\n \n이영기기\n \nStep\n \n1.\n \nUV\n로\n \nFast\n \nAPI\n \n라이브러리\n \n추가하기\n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n \n콘텐츠\n \n일부\n \n또는\n \n전부를\n \n복사,\n \n복제,\n \n판매,\n \n재판매\n \n공개,\n \n공유\n \n등을\n \n할\n \n수\n \n없습니다.\n \n \n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n \n콘텐츠\n \n일부\n \n또는\n \n전부를\n \n복사,\n \n복제,\n \n판매,\n \n재판매\n \n공개,\n \n공유\n \n등을\n \n할\n \n수\n \n없습니다.\n \n \n \n \n*저작권\n \n주의\n \n..."
+    },
+    "[SeSAC] [개발환경 구성] basic mission_day02_answer의 사본": {
+      "filename": "[SeSAC] [개발환경 구성] basic mission_day02_answer의 사본.pdf",
+      "char_count": 688,
+      "preview": " \n \n \nDay\n \n02\n \n답안지\n \n작성자:\n \n이영기\n \nStep\n \n1.\n \n마크다운\n \n및\n \n다양한\n \n사이트를\n \n이용하여\n \nGithub\n \nReadMe\n \n꾸미기\n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n \n콘텐츠\n \n일부\n \n또는\n \n전부를\n \n복사,\n \n복제,\n \n판매,\n \n재판매\n \n공개,\n \n공유\n \n등을\n \n할\n \n수\n \n없습니다.\n \n \n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n \n콘텐츠\n \n일부\n \n또는\n \n전부를\n \n복사,\n \n복제,\n \n판매,\n \n재판매\n \n공개,\n \n공유\n \n등을\n \n할\n \n수\n \n없습니다.\n \n \n \nGithub\n \nRepository\n주소와,\n \nReadMe\n \n스크린샷을..."
+    },
+    "[SeSAC] [개발환경 구성] basic mission_day03_answer의 사본": {
+      "filename": "[SeSAC] [개발환경 구성] basic mission_day03_answer의 사본.pdf",
+      "char_count": 1744,
+      "preview": "step\n \n1.\n \n저장소\n \n클론\n \n및\n \n깃\n \n브랜치\n \n생성\n  \n \n \nDay\n \n03\n \n답안지\n \n작성자:이영기\n \nStep\n \n1.\n \n저장소\n \n클론\n \n및\n \n깃\n \n브랜치\n \n생성\n \ngit\n \nbranch\n를\n \n이용하여\n \n현재\n \n어떤\n \n브랜치들이\n \n나열되어있는지\n \n스크린샷으로\n \n찍어\n \n첨부합니다.\n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n \n콘텐츠\n \n일부\n \n또는\n \n전부를\n \n복사,\n \n복제,\n \n판매,\n \n재판매\n \n공개,\n \n공유\n \n등을\n \n할\n \n수\n \n없습니다.\n \n \n \n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n \n콘텐츠\n \n일부\n \n또는\n \n전부를\n \n복사,\n \n복제,\n ..."
+    },
+    "[SeSAC] [개발환경 구성] basic mission_day04_answer의 사본": {
+      "filename": "[SeSAC] [개발환경 구성] basic mission_day04_answer의 사본.pdf",
+      "char_count": 781,
+      "preview": "step\n \n1.\n \nDocker\n로\n \nMySQL\n \n컨테이너\n \n실행하기\n  \n \n \nDay\n \n04\n \n답안지\n \n작성자:\n \n(이영기)\n \nStep\n \n1.\n \nDocker\n로\n \nMySQL\n \n컨테이너\n \n실행하기\n \nDocker\n로\n \nMysql\n를\n \n실행하고,\n \ndocker\n \nps\n \n명령어를\n \n통해\n \n \nMysql\n가\n \n실행되고있는\n \n모습을\n \n캡처하여\n \n첨부합니다.\n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n \n콘텐츠\n \n일부\n \n또는\n \n전부를\n \n복사,\n \n복제,\n \n판매,\n \n재판매\n \n공개,\n \n공유\n \n등을\n \n할\n \n수\n \n없습니다.\n \n \n \n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n ..."
+    },
+    "[SeSAC] [개발환경 구성] basic mission_day05_answer의 사본": {
+      "filename": "[SeSAC] [개발환경 구성] basic mission_day05_answer의 사본.pdf",
+      "char_count": 854,
+      "preview": "step\n \n1.\n \n빈칸에\n \n적절한\n \n쿼리문\n \n작성하기\n  \n \n \nDay\n \n05\n \n답안지\n \n작성자:\n \n(이영기)\n \nStep\n \n1.\n \n빈칸에\n \n적절한\n \n쿼리문\n \n작성하기\n \nhttps://github.com/atozwizard/atozwizard\n \n주어진\n \n코드의\n \n빈칸에\n \n적절한\n \n쿼리문을\n \n작성\n \n후\n \nGitHub\n에\n \n올려\n \nRepository\n \n주소를\n \n제출합니다.\n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n \n콘텐츠\n \n일부\n \n또는\n \n전부를\n \n복사,\n \n복제,\n \n판매,\n \n재판매\n \n공개,\n \n공유\n \n등을\n \n할\n \n수\n \n없습니다.\n \n \nstep\n \n2.\n \nPostman\n으로\n \n정상동작\n \n확인하기\n \n  \n \n \nDay\n \n05\n \n답안지\n \n작성자:\n \n(이영기)\n \nStep\n \n2..."
+    }
+  },
+  "advanced_missions": {
+    "[SeSAC] [개발환경 구성] advanced mission_day01_answer의 사본": {
+      "filename": "[SeSAC] [개발환경 구성] advanced mission_day01_answer의 사본.pdf",
+      "char_count": 1142,
+      "preview": "step\n \n1.\n \n피보나치\n \n함수에\n \n브레이크\n \n포인트\n \n찍기\n  \n \n \nDay\n \n01\n \n답안지\n \n작성자:\n \n이영기기\n \nStep\n \n1.\n \n피보나치\n \n함수에\n \n브레이크\n \n포인트\n \n찍기\n \n브레이크\n \n포인트를\n \n찍은\n \n화면을\n \n캡쳐하여\n \n첨부해주세요.\n \n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n \n콘텐츠\n \n일부\n \n또는\n \n전부를\n \n복사,\n \n복제,\n \n판매,\n \n재판매\n \n공개,\n \n공유\n \n등을\n \n할\n \n수\n \n없습니다.\n \n \nstep\n \n2.Evaluate\n \nExpression\n으로\n \n직접\n \n값\n \n확인하기\n \n  \n \n \nDay\n \n05\n \n답안지\n \n작성자:\n \n이영기\n \nStep\n \n2.\n \nEvaluate\n \nExpression\n으로\n \n직접\n \n값\n \n확인하기\n \nEvaluate\n \nExp..."
+    },
+    "[SeSAC] [개발환경 구성] advanced mission_day02_answer의 사본": {
+      "filename": "[SeSAC] [개발환경 구성] advanced mission_day02_answer의 사본.pdf",
+      "char_count": 1241,
+      "preview": "step\n \n1.\n \ngit\n \nlog\n를\n \n통해\n \nHead\n \nCommit\n \n파악하기\n  \n \n \nDay\n \n02\n \n답안지\n \n작성자:\n \n이영기\n \nstep\n \n1.\n \ngit\n \nlog\n를\n \n통해\n \nHead\n \nCommit\n \n파악하기\n \n질문\n \n답변하기\n \n01.\n \nHEAD\n는\n \n무엇을\n \n가리키고\n \n있나요?\n \nmain\n \n02.\n \nHEAD\n \n이전\n \n커밋으로\n \n되돌아가면\n \n어떤\n \n변화가\n \n발생할까요?\n \n하던\n \n내용이\n \n날아갈\n \n수\n \n있다\n \n03.\n협업\n \n환경에서\n \nreset\n \n대신\n \nrevert\n가\n \n필요한\n \n이유는\n \n무엇일까요?\n \n모든\n \n것을\n \n커밋\n,\n \n기록시키니까\n \n백업이\n \n가능해진다\n.\n \nstash\n에\n \n임시저장하는\n \n것보다\n \n확실함\n.\n \n강의내용\n \n따라가다가\n \n여러번\n \n날렸음\n.\n \n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n..."
+    },
+    "[SeSAC] [개발환경 구성] advanced mission_day03_answer의 사본": {
+      "filename": "[SeSAC] [개발환경 구성] advanced mission_day03_answer의 사본.pdf",
+      "char_count": 709,
+      "preview": "Step\n \n1.\n \n조장\n \n저장소\n \nFork\n \n하기\n  \n \n \nDay\n \n03\n \n답안지\n \n작성자:\n \n이영기)\n \nStep\n \n1.\n \n조장\n \n저장소\n \nFork\n \n하기\n \n \n조장의\n \n저장소를\n \nFork\n후\n \n캡처하여\n \nGithub\n \nRepository\n \n주소와함께\n \n제출합니다..\n \nhttps://github.com/atozwizard/nqn4iwin-practice\n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n \n콘텐츠\n \n일부\n \n또는\n \n전부를\n \n복사,\n \n복제,\n \n판매,\n \n재판매\n \n공개,\n \n공유\n \n등을\n \n할\n \n수\n \n없습니다.\n \n \nStep\n \n2.Pull\n \nRequest\n \n생성하기\n \n  \n \nDay\n \n03\n \n답안지\n \n작성자:\n \n이영기\n \nStep\n \n1.\n \nPull\n \nRequest\n \n..."
+    },
+    "[SeSAC] [개발환경 구성] advanced mission_day04_answer의 사본": {
+      "filename": "[SeSAC] [개발환경 구성] advanced mission_day04_answer의 사본.pdf",
+      "char_count": 1010,
+      "preview": " \n \n \nDay\n \n04\n \n답안지\n \n작성자:\n \n(이영기)\n \nStep\n \n1.\n \nSQL\n문제\n \n해결하기\n \nuser_id\n \nname\n \nage\n \nrole\n \ncreated_at\n \n1\n \nKim\n \n28\n \nUSER\n \n2023-01-10\n \n2\n \nLee\n \n35\n \nADMIN\n \n2022-11-30\n \n3\n \nPark\n \n22\n \nUSER\n \n2024-03-15\n \n4\n \nChoi\n \n41\n \nUSER\n \n2021-07-21\n \n아래\n \n조건을\n \n만족하는\n \n사용자의\n \n \n이름(\nname)\n과\n \n나이(\nage)\n \n조회하는\n \nSQL\n \n문을\n \n작성하세요.\n \n \n조회\n \n조건\n \n1.\n \n나이가\n \n30세\n \n이상인\n \n사용자\n \n2.\n \n역할(\nrole)\n이\n \nUSER\n인\n \n사용자\n \n3.\n \n가입일(\ncreated_at)\n이\n \n2022년\n \n이후인\n \n사용자\n \n셀렉트\n \n프롬\n \n에이지>=30\n \n셀렉트\n \n프롬\n \n롤\n \n=\n \nuser\n \n셀..."
+    },
+    "[SeSAC] [개발환경 구성] advanced mission_day05_answer의 사본": {
+      "filename": "[SeSAC] [개발환경 구성] advanced mission_day05_answer의 사본.pdf",
+      "char_count": 905,
+      "preview": "step\n \n1.\n \n3-Layered\n \nArchitecture\n로\n \n리팩토링\n  \n \n \nDay\n \n05\n \n답안지\n \n작성자:\n \n(이영기)\n \nStep\n \n1.\n \n3-Layered\n \nArchitecture\n로\n \n리팩토링\n \n3\n \nLayered\n \nArchiteture\n로\n \n리펙토링한\n \n프로젝트를\n \nGithub\n에\n \n올리고,\n \n \nRepository\n \n주소를\n \n첨부해주세요\n \n \nhttps://github.com/atozwizard/atozwizard.git\n \n \n*저작권\n \n주의\n \n(주)업스테이지가\n \n제공하는\n \n모든\n \n교육\n \n콘텐츠의\n \n지식재산권은\n \n운영\n \n주체인\n \n(주)업스테이지에게\n \n귀속되어\n \n있습니다.\n \n콘텐츠\n \n일부\n \n또는\n \n전부를\n \n복사,\n \n복제,\n \n판매,\n \n재판매\n \n공개,\n \n공유\n \n등을\n \n할\n \n수\n \n없습니다.\n \n \nstep\n \n2.\n \nSQLAlchemy\n를\n \n이용한\n \nDB\n \n접근\n \n리팩토..."
+    }
+  }
+}
