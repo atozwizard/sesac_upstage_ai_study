@@ -1,0 +1,465 @@
+# 03.3주차_개발환경구성
+
+## Tech Stack
+
+- (자동 탐지된 기술 없음)
+
+## Files
+
+### Lectures (23)
+- (EXT) [SeSAC] [개발환경 구성] 코랩 세션_Wrap Up 리포트 (template)의 사본.pdf
+- 01.강의자료\00 Development Environment Course Introduction.pdf
+- 01.강의자료\01 Creating a Developer Friendly Computer Environment.pdf
+- 01.강의자료\02-Python Development Environment.pptx
+- 01.강의자료\03 Git Basics.pdf
+- 01.강의자료\04 Git Advanced.pdf
+- 01.강의자료\05 GitHub for Collaboration.pdf
+- 01.강의자료\06 Project Management and GitHub.pdf
+- 01.강의자료\07 Docker Infrastructure and MySQL.pdf
+- 01.강의자료\08 Understanding Databases and MySQL.pdf
+- 01.강의자료\09 Managing MySQL on a Server.pdf
+- 01.강의자료\10 Maintainable Architecture.pdf
+- 01.강의자료\SeSAC_CS with AI_Guide.pdf
+- 02.daily mission\[SeSAC] [개발환경 구성] basic mission_day01_answer의 사본.pdf
+- 02.daily mission\[SeSAC] [개발환경 구성] basic mission_day02_answer의 사본.pdf
+- 02.daily mission\[SeSAC] [개발환경 구성] basic mission_day03_answer의 사본.pdf
+- 02.daily mission\[SeSAC] [개발환경 구성] basic mission_day04_answer의 사본.pdf
+- 02.daily mission\[SeSAC] [개발환경 구성] basic mission_day05_answer의 사본.pdf
+- 03.advanced mission\[SeSAC] [개발환경 구성] advanced mission_day01_answer의 사본.pdf
+- 03.advanced mission\[SeSAC] [개발환경 구성] advanced mission_day02_answer의 사본.pdf
+- 03.advanced mission\[SeSAC] [개발환경 구성] advanced mission_day03_answer의 사본.pdf
+- 03.advanced mission\[SeSAC] [개발환경 구성] advanced mission_day04_answer의 사본.pdf
+- 03.advanced mission\[SeSAC] [개발환경 구성] advanced mission_day05_answer의 사본.pdf
+
+### Missions (0)
+
+### Scripts (4863)
+- 03.3주차_개발환경구성_module.py
+- 00.project\main.py
+- 00.project\backend\main.py
+- 00.project\backend\.venv\Lib\site-packages\py.py
+- 00.project\backend\.venv\Lib\site-packages\typing_extensions.py
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc\main.py
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\annotated_types\test_cases.py
+- 00.project\backend\.venv\Lib\site-packages\annotated_types\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\from_thread.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\functools.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\lowlevel.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\pytest_plugin.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\to_interpreter.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\to_process.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\to_thread.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\_eventloop.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\_resources.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\_sockets.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\_streams.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\_subprocesses.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\_tasks.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\_testing.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\streams\buffered.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\streams\file.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\streams\memory.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\streams\stapled.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\streams\text.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\streams\tls.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\streams\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_backends\_asyncio.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_backends\_trio.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_backends\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_asyncio_selector_thread.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_contextmanagers.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_eventloop.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_exceptions.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_fileio.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_resources.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_signals.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_sockets.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_streams.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_subprocesses.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_synchronization.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_tasks.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_tempfile.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_testing.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\_typedattr.py
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\certifi\core.py
+- 00.project\backend\.venv\Lib\site-packages\certifi\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\certifi\__main__.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\api.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\cd.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\constant.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\legacy.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\md.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\models.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\utils.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\version.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__main__.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\cli\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\cli\__main__.py
+- 00.project\backend\.venv\Lib\site-packages\click\core.py
+- 00.project\backend\.venv\Lib\site-packages\click\decorators.py
+- 00.project\backend\.venv\Lib\site-packages\click\exceptions.py
+- 00.project\backend\.venv\Lib\site-packages\click\formatting.py
+- 00.project\backend\.venv\Lib\site-packages\click\globals.py
+- 00.project\backend\.venv\Lib\site-packages\click\parser.py
+- 00.project\backend\.venv\Lib\site-packages\click\shell_completion.py
+- 00.project\backend\.venv\Lib\site-packages\click\termui.py
+- 00.project\backend\.venv\Lib\site-packages\click\testing.py
+- 00.project\backend\.venv\Lib\site-packages\click\types.py
+- 00.project\backend\.venv\Lib\site-packages\click\utils.py
+- 00.project\backend\.venv\Lib\site-packages\click\_compat.py
+- 00.project\backend\.venv\Lib\site-packages\click\_termui_impl.py
+- 00.project\backend\.venv\Lib\site-packages\click\_textwrap.py
+- 00.project\backend\.venv\Lib\site-packages\click\_utils.py
+- 00.project\backend\.venv\Lib\site-packages\click\_winconsole.py
+- 00.project\backend\.venv\Lib\site-packages\click\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\ansi.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\ansitowin32.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\initialise.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\win32.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\winterm.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\tests\ansitowin32_test.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\tests\ansi_test.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\tests\initialise_test.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\tests\isatty_test.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\tests\utils.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\tests\winterm_test.py
+- 00.project\backend\.venv\Lib\site-packages\colorama\tests\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\dns\asyncbackend.py
+- 00.project\backend\.venv\Lib\site-packages\dns\asyncquery.py
+- 00.project\backend\.venv\Lib\site-packages\dns\asyncresolver.py
+- 00.project\backend\.venv\Lib\site-packages\dns\btree.py
+- 00.project\backend\.venv\Lib\site-packages\dns\btreezone.py
+- 00.project\backend\.venv\Lib\site-packages\dns\dnssec.py
+- 00.project\backend\.venv\Lib\site-packages\dns\dnssectypes.py
+- 00.project\backend\.venv\Lib\site-packages\dns\e164.py
+- 00.project\backend\.venv\Lib\site-packages\dns\edns.py
+- 00.project\backend\.venv\Lib\site-packages\dns\entropy.py
+- 00.project\backend\.venv\Lib\site-packages\dns\enum.py
+- 00.project\backend\.venv\Lib\site-packages\dns\exception.py
+- 00.project\backend\.venv\Lib\site-packages\dns\flags.py
+- 00.project\backend\.venv\Lib\site-packages\dns\grange.py
+- 00.project\backend\.venv\Lib\site-packages\dns\immutable.py
+- 00.project\backend\.venv\Lib\site-packages\dns\inet.py
+- 00.project\backend\.venv\Lib\site-packages\dns\ipv4.py
+- 00.project\backend\.venv\Lib\site-packages\dns\ipv6.py
+- 00.project\backend\.venv\Lib\site-packages\dns\message.py
+- 00.project\backend\.venv\Lib\site-packages\dns\name.py
+- 00.project\backend\.venv\Lib\site-packages\dns\namedict.py
+- 00.project\backend\.venv\Lib\site-packages\dns\nameserver.py
+- 00.project\backend\.venv\Lib\site-packages\dns\node.py
+- 00.project\backend\.venv\Lib\site-packages\dns\opcode.py
+- 00.project\backend\.venv\Lib\site-packages\dns\query.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rcode.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdata.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdataclass.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdataset.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdatatype.py
+- 00.project\backend\.venv\Lib\site-packages\dns\renderer.py
+- 00.project\backend\.venv\Lib\site-packages\dns\resolver.py
+- 00.project\backend\.venv\Lib\site-packages\dns\reversename.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rrset.py
+- 00.project\backend\.venv\Lib\site-packages\dns\serial.py
+- 00.project\backend\.venv\Lib\site-packages\dns\set.py
+- 00.project\backend\.venv\Lib\site-packages\dns\tokenizer.py
+- 00.project\backend\.venv\Lib\site-packages\dns\transaction.py
+- 00.project\backend\.venv\Lib\site-packages\dns\tsig.py
+- 00.project\backend\.venv\Lib\site-packages\dns\tsigkeyring.py
+- 00.project\backend\.venv\Lib\site-packages\dns\ttl.py
+- 00.project\backend\.venv\Lib\site-packages\dns\update.py
+- 00.project\backend\.venv\Lib\site-packages\dns\version.py
+- 00.project\backend\.venv\Lib\site-packages\dns\versioned.py
+- 00.project\backend\.venv\Lib\site-packages\dns\win32util.py
+- 00.project\backend\.venv\Lib\site-packages\dns\wire.py
+- 00.project\backend\.venv\Lib\site-packages\dns\xfr.py
+- 00.project\backend\.venv\Lib\site-packages\dns\zone.py
+- 00.project\backend\.venv\Lib\site-packages\dns\zonefile.py
+- 00.project\backend\.venv\Lib\site-packages\dns\zonetypes.py
+- 00.project\backend\.venv\Lib\site-packages\dns\_asyncbackend.py
+- 00.project\backend\.venv\Lib\site-packages\dns\_asyncio_backend.py
+- 00.project\backend\.venv\Lib\site-packages\dns\_ddr.py
+- 00.project\backend\.venv\Lib\site-packages\dns\_features.py
+- 00.project\backend\.venv\Lib\site-packages\dns\_immutable_ctx.py
+- 00.project\backend\.venv\Lib\site-packages\dns\_no_ssl.py
+- 00.project\backend\.venv\Lib\site-packages\dns\_tls_util.py
+- 00.project\backend\.venv\Lib\site-packages\dns\_trio_backend.py
+- 00.project\backend\.venv\Lib\site-packages\dns\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\dns\dnssecalgs\base.py
+- 00.project\backend\.venv\Lib\site-packages\dns\dnssecalgs\cryptography.py
+- 00.project\backend\.venv\Lib\site-packages\dns\dnssecalgs\dsa.py
+- 00.project\backend\.venv\Lib\site-packages\dns\dnssecalgs\ecdsa.py
+- 00.project\backend\.venv\Lib\site-packages\dns\dnssecalgs\eddsa.py
+- 00.project\backend\.venv\Lib\site-packages\dns\dnssecalgs\rsa.py
+- 00.project\backend\.venv\Lib\site-packages\dns\dnssecalgs\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\dns\quic\_asyncio.py
+- 00.project\backend\.venv\Lib\site-packages\dns\quic\_common.py
+- 00.project\backend\.venv\Lib\site-packages\dns\quic\_sync.py
+- 00.project\backend\.venv\Lib\site-packages\dns\quic\_trio.py
+- 00.project\backend\.venv\Lib\site-packages\dns\quic\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\dnskeybase.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\dsbase.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\euibase.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\mxbase.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\nsbase.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\svcbbase.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\tlsabase.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\txtbase.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\util.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\__init__.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\AFSDB.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\AMTRELAY.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\AVC.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\CAA.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\CDNSKEY.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\CDS.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\CERT.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\CNAME.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\CSYNC.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\DLV.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\DNAME.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\DNSKEY.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\DS.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\DSYNC.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\EUI48.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\EUI64.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\GPOS.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\HINFO.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\HIP.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\ISDN.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\L32.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\L64.py
+- 00.project\backend\.venv\Lib\site-packages\dns\rdtypes\ANY\LOC.py
+
+### Projects (3990)
+- README_GENERATED.md
+- README_TECHSTACK.md
+- README_TECHSTACK_DRAFT.md
+- 00.project\.idea\.gitignore
+- 00.project\.idea\00.project.iml
+- 00.project\.idea\misc.xml
+- 00.project\.idea\modules.xml
+- 00.project\.idea\workspace.xml
+- 00.project\.idea\inspectionProfiles\profiles_settings.xml
+- 00.project\backend\.gitignore
+- 00.project\backend\.python-version
+- 00.project\backend\pyproject.toml
+- 00.project\backend\README.md
+- 00.project\backend\requirements.txt
+- 00.project\backend\uv.lock
+- 00.project\backend\.git\config
+- 00.project\backend\.git\description
+- 00.project\backend\.git\FETCH_HEAD
+- 00.project\backend\.git\HEAD
+- 00.project\backend\.git\hooks\applypatch-msg.sample
+- 00.project\backend\.git\hooks\commit-msg.sample
+- 00.project\backend\.git\hooks\fsmonitor-watchman.sample
+- 00.project\backend\.git\hooks\post-update.sample
+- 00.project\backend\.git\hooks\pre-applypatch.sample
+- 00.project\backend\.git\hooks\pre-commit.sample
+- 00.project\backend\.git\hooks\pre-merge-commit.sample
+- 00.project\backend\.git\hooks\pre-push.sample
+- 00.project\backend\.git\hooks\pre-rebase.sample
+- 00.project\backend\.git\hooks\pre-receive.sample
+- 00.project\backend\.git\hooks\prepare-commit-msg.sample
+- 00.project\backend\.git\hooks\push-to-checkout.sample
+- 00.project\backend\.git\hooks\sendemail-validate.sample
+- 00.project\backend\.git\hooks\update.sample
+- 00.project\backend\.git\info\exclude
+- 00.project\backend\.idea\.gitignore
+- 00.project\backend\.idea\backend.iml
+- 00.project\backend\.idea\misc.xml
+- 00.project\backend\.idea\modules.xml
+- 00.project\backend\.idea\vcs.xml
+- 00.project\backend\.idea\workspace.xml
+- 00.project\backend\.idea\inspectionProfiles\profiles_settings.xml
+- 00.project\backend\.venv\.gitignore
+- 00.project\backend\.venv\.lock
+- 00.project\backend\.venv\pyvenv.cfg
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc\py.typed
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc\__pycache__\main.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc-0.0.4.dist-info\entry_points.txt
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc-0.0.4.dist-info\INSTALLER
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc-0.0.4.dist-info\METADATA
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc-0.0.4.dist-info\RECORD
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc-0.0.4.dist-info\REQUESTED
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc-0.0.4.dist-info\WHEEL
+- 00.project\backend\.venv\Lib\site-packages\annotated_doc-0.0.4.dist-info\licenses\LICENSE
+- 00.project\backend\.venv\Lib\site-packages\annotated_types\py.typed
+- 00.project\backend\.venv\Lib\site-packages\annotated_types\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\annotated_types-0.7.0.dist-info\INSTALLER
+- 00.project\backend\.venv\Lib\site-packages\annotated_types-0.7.0.dist-info\METADATA
+- 00.project\backend\.venv\Lib\site-packages\annotated_types-0.7.0.dist-info\RECORD
+- 00.project\backend\.venv\Lib\site-packages\annotated_types-0.7.0.dist-info\REQUESTED
+- 00.project\backend\.venv\Lib\site-packages\annotated_types-0.7.0.dist-info\WHEEL
+- 00.project\backend\.venv\Lib\site-packages\annotated_types-0.7.0.dist-info\licenses\LICENSE
+- 00.project\backend\.venv\Lib\site-packages\anyio\py.typed
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\__pycache__\_eventloop.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\__pycache__\_resources.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\__pycache__\_sockets.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\__pycache__\_streams.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\__pycache__\_subprocesses.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\__pycache__\_tasks.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\__pycache__\_testing.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\abc\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\streams\__pycache__\memory.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\streams\__pycache__\stapled.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\streams\__pycache__\tls.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\streams\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_contextmanagers.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_eventloop.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_exceptions.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_fileio.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_resources.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_signals.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_sockets.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_streams.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_subprocesses.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_synchronization.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_tasks.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_tempfile.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_testing.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\_typedattr.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\_core\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\__pycache__\from_thread.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\__pycache__\lowlevel.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\__pycache__\to_thread.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\anyio-4.12.1.dist-info\entry_points.txt
+- 00.project\backend\.venv\Lib\site-packages\anyio-4.12.1.dist-info\INSTALLER
+- 00.project\backend\.venv\Lib\site-packages\anyio-4.12.1.dist-info\METADATA
+- 00.project\backend\.venv\Lib\site-packages\anyio-4.12.1.dist-info\RECORD
+- 00.project\backend\.venv\Lib\site-packages\anyio-4.12.1.dist-info\REQUESTED
+- 00.project\backend\.venv\Lib\site-packages\anyio-4.12.1.dist-info\top_level.txt
+- 00.project\backend\.venv\Lib\site-packages\anyio-4.12.1.dist-info\WHEEL
+- 00.project\backend\.venv\Lib\site-packages\anyio-4.12.1.dist-info\licenses\LICENSE
+- 00.project\backend\.venv\Lib\site-packages\certifi\cacert.pem
+- 00.project\backend\.venv\Lib\site-packages\certifi\py.typed
+- 00.project\backend\.venv\Lib\site-packages\certifi\__pycache__\core.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\certifi\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\certifi\__pycache__\__main__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\certifi-2026.1.4.dist-info\INSTALLER
+- 00.project\backend\.venv\Lib\site-packages\certifi-2026.1.4.dist-info\METADATA
+- 00.project\backend\.venv\Lib\site-packages\certifi-2026.1.4.dist-info\RECORD
+- 00.project\backend\.venv\Lib\site-packages\certifi-2026.1.4.dist-info\top_level.txt
+- 00.project\backend\.venv\Lib\site-packages\certifi-2026.1.4.dist-info\WHEEL
+- 00.project\backend\.venv\Lib\site-packages\certifi-2026.1.4.dist-info\licenses\LICENSE
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\md.cp314-win_amd64.pyd
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\md__mypyc.cp314-win_amd64.pyd
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\py.typed
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\cli\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\cli\__pycache__\__main__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__pycache__\api.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__pycache__\cd.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__pycache__\constant.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__pycache__\legacy.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__pycache__\md.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__pycache__\models.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__pycache__\utils.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__pycache__\version.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer\__pycache__\__main__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer-3.4.4.dist-info\entry_points.txt
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer-3.4.4.dist-info\INSTALLER
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer-3.4.4.dist-info\METADATA
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer-3.4.4.dist-info\RECORD
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer-3.4.4.dist-info\top_level.txt
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer-3.4.4.dist-info\WHEEL
+- 00.project\backend\.venv\Lib\site-packages\charset_normalizer-3.4.4.dist-info\licenses\LICENSE
+- 00.project\backend\.venv\Lib\site-packages\click\py.typed
+- 00.project\backend\.venv\Lib\site-packages\click-8.3.1.dist-info\INSTALLER
+- 00.project\backend\.venv\Lib\site-packages\click-8.3.1.dist-info\METADATA
+- 00.project\backend\.venv\Lib\site-packages\click-8.3.1.dist-info\RECORD
+- 00.project\backend\.venv\Lib\site-packages\click-8.3.1.dist-info\REQUESTED
+- 00.project\backend\.venv\Lib\site-packages\click-8.3.1.dist-info\WHEEL
+- 00.project\backend\.venv\Lib\site-packages\click-8.3.1.dist-info\licenses\LICENSE.txt
+- 00.project\backend\.venv\Lib\site-packages\colorama\__pycache__\ansi.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\colorama\__pycache__\ansitowin32.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\colorama\__pycache__\initialise.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\colorama\__pycache__\win32.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\colorama\__pycache__\winterm.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\colorama\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\colorama-0.4.6.dist-info\INSTALLER
+- 00.project\backend\.venv\Lib\site-packages\colorama-0.4.6.dist-info\METADATA
+- 00.project\backend\.venv\Lib\site-packages\colorama-0.4.6.dist-info\RECORD
+- 00.project\backend\.venv\Lib\site-packages\colorama-0.4.6.dist-info\REQUESTED
+- 00.project\backend\.venv\Lib\site-packages\colorama-0.4.6.dist-info\WHEEL
+- 00.project\backend\.venv\Lib\site-packages\colorama-0.4.6.dist-info\licenses\LICENSE.txt
+- 00.project\backend\.venv\Lib\site-packages\dns\py.typed
+- 00.project\backend\.venv\Lib\site-packages\dnspython-2.8.0.dist-info\INSTALLER
+- 00.project\backend\.venv\Lib\site-packages\dnspython-2.8.0.dist-info\METADATA
+- 00.project\backend\.venv\Lib\site-packages\dnspython-2.8.0.dist-info\RECORD
+- 00.project\backend\.venv\Lib\site-packages\dnspython-2.8.0.dist-info\REQUESTED
+- 00.project\backend\.venv\Lib\site-packages\dnspython-2.8.0.dist-info\WHEEL
+- 00.project\backend\.venv\Lib\site-packages\dnspython-2.8.0.dist-info\licenses\LICENSE
+- 00.project\backend\.venv\Lib\site-packages\dotenv\py.typed
+- 00.project\backend\.venv\Lib\site-packages\email_validator\py.typed
+- 00.project\backend\.venv\Lib\site-packages\email_validator\__pycache__\exceptions.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\email_validator\__pycache__\rfc_constants.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\email_validator\__pycache__\syntax.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\email_validator\__pycache__\types.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\email_validator\__pycache__\validate_email.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\email_validator\__pycache__\version.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\email_validator\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\email_validator-2.3.0.dist-info\entry_points.txt
+- 00.project\backend\.venv\Lib\site-packages\email_validator-2.3.0.dist-info\INSTALLER
+- 00.project\backend\.venv\Lib\site-packages\email_validator-2.3.0.dist-info\METADATA
+- 00.project\backend\.venv\Lib\site-packages\email_validator-2.3.0.dist-info\RECORD
+- 00.project\backend\.venv\Lib\site-packages\email_validator-2.3.0.dist-info\REQUESTED
+- 00.project\backend\.venv\Lib\site-packages\email_validator-2.3.0.dist-info\top_level.txt
+- 00.project\backend\.venv\Lib\site-packages\email_validator-2.3.0.dist-info\WHEEL
+- 00.project\backend\.venv\Lib\site-packages\email_validator-2.3.0.dist-info\licenses\LICENSE
+- 00.project\backend\.venv\Lib\site-packages\fastapi\py.typed
+- 00.project\backend\.venv\Lib\site-packages\fastapi\dependencies\__pycache__\models.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\dependencies\__pycache__\utils.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\dependencies\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\middleware\__pycache__\asyncexitstack.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\middleware\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\openapi\__pycache__\constants.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\openapi\__pycache__\docs.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\openapi\__pycache__\models.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\openapi\__pycache__\utils.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\openapi\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\security\__pycache__\api_key.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\security\__pycache__\base.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\security\__pycache__\http.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\security\__pycache__\oauth2.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\security\__pycache__\open_id_connect_url.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\security\__pycache__\utils.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\security\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\_compat\__pycache__\shared.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\_compat\__pycache__\v2.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\_compat\__pycache__\__init__.cpython-314.pyc
+- 00.project\backend\.venv\Lib\site-packages\fastapi\__pycache__\applications.cpython-314.pyc
+
+### Notebooks (25)
+- extracted_content\(EXT) [SeSAC] [개발환경 구성] 코랩 세션_Wrap Up 리포트 (template)의 사본.txt
+- extracted_content\00 Development Environment Course Introduction.txt
+- extracted_content\01 Creating a Developer Friendly Computer Environment.txt
+- extracted_content\03 Git Basics.txt
+- extracted_content\04 Git Advanced.txt
+- extracted_content\05 GitHub for Collaboration.txt
+- extracted_content\06 Project Management and GitHub.txt
+- extracted_content\07 Docker Infrastructure and MySQL.txt
+- extracted_content\08 Understanding Databases and MySQL.txt
+- extracted_content\09 Managing MySQL on a Server.txt
+- extracted_content\10 Maintainable Architecture.txt
+- extracted_content\advanced_missions_extracted.txt
+- extracted_content\daily_missions_extracted.txt
+- extracted_content\lectures_extracted.txt
+- extracted_content\SeSAC_CS with AI_Guide.txt
+- extracted_content\[SeSAC] [개발환경 구성] advanced mission_day01_answer의 사본.txt
+- extracted_content\[SeSAC] [개발환경 구성] advanced mission_day02_answer의 사본.txt
+- extracted_content\[SeSAC] [개발환경 구성] advanced mission_day03_answer의 사본.txt
+- extracted_content\[SeSAC] [개발환경 구성] advanced mission_day04_answer의 사본.txt
+- extracted_content\[SeSAC] [개발환경 구성] advanced mission_day05_answer의 사본.txt
+- extracted_content\[SeSAC] [개발환경 구성] basic mission_day01_answer의 사본.txt
+- extracted_content\[SeSAC] [개발환경 구성] basic mission_day02_answer의 사본.txt
+- extracted_content\[SeSAC] [개발환경 구성] basic mission_day03_answer의 사본.txt
+- extracted_content\[SeSAC] [개발환경 구성] basic mission_day04_answer의 사본.txt
+- extracted_content\[SeSAC] [개발환경 구성] basic mission_day05_answer의 사본.txt

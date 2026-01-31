@@ -1,0 +1,260 @@
+25 Upstage 
+웹 서버 개발하기 
+SPEAKER 
+서영학 © 2025 Upstage Co., Ltd. 
+2 저작권 안내 
+ 
+(주)업스테이지가 제공하는 모든 교육 콘텐츠의 지식재산권은 
+운영 주체인 (주)업스테이지 또는 해당 저작물의 적법한 관리자에게 귀속되어 있습니다. 
+콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할 수 없습니다. 
+유출될 경우 지식재산권 침해에 대한 책임을 부담할 수 있습니다. 
+유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. 
+● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위 
+● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위 
+● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위 
+● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위 
+● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위 
+● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수 있는 저작물을 작성, 공개하는 행위 
+● 제공된 데이터의 일부 혹은 전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위위 
+3 목표: 웹서버를 고도화 해보자 (route - service) 
+fastapi 
+목차 
+fastapi 개발 (route - service) 
+API 라우터 
+Pydantic : 요청/응답 모델링과 모델 안정성 
+Global Exception Handler 
+- 에러/예외 
+로그 시스템 
+4 FastAPI 개발하기 05 - 01 
+웹 서버 기능 고도화 
+라우트 
+Pydantic 과 모델 안정성 
+서비스 
+
+5 웹서버에 기능을 넣어보자 fastapi 
+지금 서버는 너무 기능이 없다 
+웹 서버 구조(책임별 계층화) 
+•router ‒ service - repository 
+fastapi 를 통해 api 라우팅 
+
+6 요구사항  fastapi 
+User 를 생성하는 API를 만들어주세요 
+1. HTTP 요청을 받기 
+- 생성이기 때문에 POST 
+- 요청 포맷 정의 (request) 
+- 응답 포맷 정의 (response) 
+2. 유저 입력이 검증 및 기타 로직 
+3. 유저 저장 
+- 유저 저장 성공/실패 여부 알려주기 
+
+7 (실습) API 생성 fastapi 
+실습 순서 
+0. uvicorn 으로 fastapi 실행 설정 
+1. 라우터 분리 후 API 생성 
+2. 요청/응답 정의 
+3. api에 적용 git switch feature/fastapi/userapi-practice 
+git pull 
+uv sync 
+8 (실습) APIRouter로 API 분리하기 fastapi 
+실습 과정  app/api/route/user_routers 
+1. 라우터 분리 후 API 생성 
+main.py  FastAPI() 에 user_router 추가 
+9 Pydantic 이란? fastapi 
+Python 타입 힌트를 기반으로 데이터 검증과 변환을 자동으로 해주는 라이브러리 
+Python은 동적 타입 언어라 잘못된 타입의 데이터가 들어오면 에러 
+Python은 동적 타입 → 검증을 직접 해야 함 
+API에서 들어오는 JSON은 타입이 제각각 → 안정적인 검증 필요 
+데이터 모델링 = BaseModel 
+
+10 (실습) API 요청/응답 모델  fastapi 
+실습 과정 
+2. 요청/응답 정의 
+ 
+git switch feature/fastapi/userapi 
+git pull 
+uv sync 
+11 (실습) API 생성 fastapi 
+실습 순서 
+3. api에 적용 
+
+12 (실습) API 생성 fastapi 
+실습 순서 
+3. api에 적용 
+
+async가 무조건 빠른 것이 아니다 
+I/O작업이 많고 동시 요청 async def 
+- 웹소켓, 스트림 등 실시간 처리 
+- I/O작업, OpenAI API 호출 
+- 비동기 
+CPU 연산이 많으면 def 
+- 이미지 처리, 복잡한 연산 
+- 간단한 CRUD 위주의 API 
+- 블로킹 라이브러리(pymysql)등 사용시 
+13 (심화) async def / def 차이 fastapi 
+https://velog.io/@dbstjrwnekd/%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D 동기 처리와 비동기 처리 
+FastAPI는 내부적으로 Starlette의 이벤트 루프를 사용 
+async def → event loop에서 실행 
+def → 내부적으로 자동으로 threadpool에서 실행 
+async def 
+"async 는 ‘ 많이 기다리는  상황" 을 최적화하는  도구
+14 서비스 로직을 위한 Service 05 - 02 
+Service 
+Repository 
+15 요구사항  fastapi 
+User 를 생성하는 API를 만들어주세요 
+1. HTTP 요청을 받기 
+- 생성이기 때문에 POST 
+- 요청 포맷 정의 (request) 
+- 응답 포맷 정의 (response) 
+2. 유저 입력이 검증 및 기타 로직 
+3. 유저 저장 
+- 유저 저장 성공/실패 여부 알려주기 
+
+16 요구사항이 많아질수록 읽기 어려워지는 Router 코드 fastapi 
+라우터에 로직이 많아지면 어떻게 될까? 
+•로직 중복 증가 
+•한 눈에 역할이 보이지 않는다 
+•수정 난이도 증가 
+•팀 협업 충돌 (git conﬂict) 
+•유지보수 비용 폭증 
+API layer는 요청을 받고 응답 포맷을 다루는 역할만 수행하자 
+
+17 서비스 로직 처리를 위한 Service fastapi 
+Service의 역할 
+서버의 역할: 요청을 받고, 요청을 처리하고 응답을 보낸다 
+이 "요청을 처리"하는 부분 
+핵심 로직(비즈니스 로직)을 담당 
+
+18 서비스 로직 처리를 위한 Service fastapi 
+요구사항:  User 를 생성하는 API를 만들어주세요 
+들어온 데이터가 정확한지 검증 로직 필요 
+1. service 객체를 만들고 api 로직을 service로 옮기자 
+2. 옮긴 로직에 요청을 검증하는 로직을 추가하자 
+19 (실습) Service에 간단한 저장 로직 추가 fastapi 
+요구사항:  User 를 생성하는 API를 만들어주세요 
+git switch feature/fastapi/userservice 
+git pull 
+uv sync 
+들어온 데이터가 정확한지 검증 로직 필요 
+1. service 객체를 만들고 api 로직을 service로 옮기자 
+2. 옮긴 로직에 요청을 검증하는 로직을 추가하자 
+20 서비스 에러 상황에 대처 
+Global ExceptionHandler 05 - 03 
+에러 / 예외 
+응답 안정성 
+21 예측하지 않은 다양한 문제 상황들 fastapi 
+요청은 언제나 정직하지 않다 
+•잘못된 요청 형식 
+•예상 못한 None 접근 
+•비즈니스 로직 예외 
+등등 
+클라이언트 크러쉬 발생 
+에러 핸들링과 예외 처리 필요성 
+문제는  반드시  발생한다 . 문제를  막는 것이 아니라 , 
+문제를  예측하고  처리하는  구조 를 만드는  것이 
+중요
+22 에러 / 예외 fastapi 
+오류는 어떤 상황이 있을까? 
+예측 못하는 버그 = 에러 
+예측하고 관리할 수 있으면  = 예외(Exception) 
+에러 핸들링과 예외 처리 
+코드를 try/except로 도배하는 것이 아니라, 
+문제를 처리하는 레이어를 아예 따로 만드는 것이 좋은 설계 
+
+23 예외와 Global Exception Handler fastapi 
+전체 서비스의 오류를 한곳에서 통제하는 ExceptionHandler 
+클라이언트에게 일관된 형태의 응답(JSON) 제공 
+로그 추적을 체계화 
+보안적 이유로 내부 에러 메시지를 그대로 노출하지 않도록 보호 
+트랜잭션 롤백 같은 공통 처리 가능 
+24 (실습) Global Exception Handler fastapi 
+실습 순서 
+1. 디버깅을 이용해 GlobalException에 붙는지 확인 
+2. 허용 불가능한 이메일로 요청 보내기 
+코드 위치 
+예외 정의 
+exceptions.py 
+핸들러 
+main.py 
+git switch feature/fastapi/exceptionhandler 
+git pull 
+uv sync 
+25 로그 시스템 05 - 04 
+개발자 블랙박스 
+26 로그 시스템 fastapi 
+장애는 꼭 내가 안 볼 때 터진다 
+문제를 발견하고 서버에 접속해도 이미 지난 상태 
+에러가 발생한 시점에 기록이 있어야 에러를 잡을 수 있다 
+로그는 개발자의 블랙박스 
+27 fastapi 로그 시스템 fastapi 
+로그는 개발자의 블랙박스 
+logging 
+  파이썬의 “로그 시스템 전체” 
+  파이썬 표준 라이브러리 
+  import logging 
+logger 
+   실제로 로그를 찍는 객체 
+  logger = logging.getLogger("app") 
+  logging 으로 로그를  찍으면  어디서  찍힌 로그인지  파악이  안된다  
+각 파일마다  logger 객체를  만들어  쓰자 
+28 logging 설정 fastapi 
+logging level 과 format 
+
+29 logging 설정과 로그 레벨 fastapi 
+logging 은 노출할 로깅 레벨 설정, logger는 레벨에 맞게 기록 
+
+30 (실습) 실제 로그 찍히는 지 확인 fastapi 
+실습 순서 
+1. logger.info / logging.error 로 로그 코드 추가 
+2. 로그 찍히는 지 확인 
+3. logging 옵션에 error 로 설정 
+4. 로그 찍히는 지 확인 
+git switch feature/fastapi/logging 
+git pull 
+uv sync 
+31 logging 설정과 로그 포맷 fastapi 
+로그 기록은 어떤 내용을 담을 수 있을까? 
+
+32 logger + exception handler fastapi 
+Exception handler는 실제 에러난 곳이 아니다 
+logger.exception  은 에러가 일어난 위치를 확인할 수 있다. 
+error + exc=true 
+
+33 로그 파일 저장 fastapi 
+ﬁlename 지정하면 ﬁle로 log 저장 
+
+34 logger 에서 콘솔과 파일 둘 다 출력 할 수 있나? fastapi 
+logging 과 핸들러 
+. basicConﬁg 는 로그에 대한 “단일 핸들러”만 만들 수 있다 
+콘솔 핸들러와 파일 핸들러를 각각 만든 후 핸들러 등록하는 식으로 작동 
+
+35 (실습) 실제 로그 찍히는 지 확인 fastapi 
+실습 순서 git switch feature/fastapi/logging-ﬁlehandler 
+git pull 
+uv sync 
+1. logger.info / logging.error 로 앱 시작 전 로그 찍기 
+2. logs 폴더 안에 로그가 찍히는지 확인 
+
+36 (심화) log 파일 크기 관리 fastapi 
+로그 파일을 시간 별로 잘라서 저장한다: Rolling 
+하나의 파일에 계속 로그가 붙게 되면, 읽는 시간이 오래 걸린다 
+- 메모리 부족 
+- 가독성 하락 
+파일을 시간 별로 나눠 저장해주는 handler 
+git switch feature/fastapi/logging-ﬁlehandler-rolling 
+git pull 
+uv sync 
+37 총정리 fastapi 
+웹서버의 요청 처리 흐름과 계층화 
+- router 
+데이터 모델과 타입 Pydantic 
+- 데이터 검증과 타입 힌트 
+- 요청 응답 모델 기반 
+비즈니스 로직을 처리하는 Service 
+- 요구사항을 실제로 수행하는 층 
+Exception Handler / Logging 
+예외를 처리하는 방법 
+서버에서 일어난 일을 기록하는 방법 
+
+www.upstage.ai © 2025 Upstage Co., Ltd. 
+

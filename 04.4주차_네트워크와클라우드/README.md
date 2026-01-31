@@ -1,0 +1,469 @@
+# 04.4주차_네트워크와클라우드
+
+## Tech Stack
+
+- (자동 탐지된 기술 없음)
+
+## Files
+
+### Lectures (26)
+- (EXT) [SeSAC] [네트워크와 클라우드] 코랩 세션_Wrap Up 리포트 (template)의 사본.pdf
+- 01.강의자료\00 Course Introduction.pptx.pdf
+- 01.강의자료\01 Understanding Web Communication and HTTP.pdf
+- 01.강의자료\02 Network Fundamental Knowledge.pdf
+- 01.강의자료\03 Getting Started with Cloud Computing.pdf
+- 01.강의자료\04 Managing Cloud Servers.pdf
+- 01.강의자료\05 Web Server User Service 1.pdf
+- 01.강의자료\06 Web Server User Service 2.pdf
+- 01.강의자료\07 Cloud Deployment Automation 1.pdf
+- 01.강의자료\09 Getting Started with Cloud Exploring AWS Components.pdf
+- 01.강의자료\1-08 Cloud Deployment Automation 2.pdf
+- 01.강의자료\1-Why Cloud Computing Is Essential for AI Agent.pdf
+- 01.강의자료\2-10 Network and AI.pdf
+- 01.강의자료\Why CI_CD Is Essential  for AI Agent.pdf
+- 01.강의자료\Why Operational and AI Infrastructure Integration Is Essential for AI Agent (1).pdf
+- 01.강의자료\Why Operational and AI Infrastructure Integration Is Essential for AI Agent.pdf
+- 01.강의자료\Why Web Server Development Is Essential for AI Agent.pdf
+- 02.daily mission\[SeSAC] [네트워크와 클라우드] basic mission_day01_answer의 사본.pdf
+- 02.daily mission\[SeSAC] [네트워크와 클라우드] basic mission_day02_answer의 사본.pdf
+- 02.daily mission\[SeSAC] [네트워크와 클라우드] basic mission_day03_answer의 사본.pdf
+- 02.daily mission\[SeSAC] [네트워크와 클라우드] basic mission_day04_answer의 사본.pdf
+- 03.advanced mission\[SeSAC] [네트워크와 클라우드] advanced mission_day01_answer의 사본.pdf
+- 03.advanced mission\[SeSAC] [네트워크와 클라우드] advanced mission_day02_answer의 사본.pdf
+- 03.advanced mission\[SeSAC] [네트워크와 클라우드] advanced mission_day03_answer의 사본.pdf
+- 03.advanced mission\[SeSAC] [네트워크와 클라우드] advanced mission_day04_answer의 사본.pdf
+- 03.advanced mission\[SeSAC] [네트워크와 클라우드] advanced mission_day05_answer의 사본.pdf
+
+### Missions (0)
+
+### Scripts (2215)
+- 04.4주차_네트워크와클라우드_module.py
+- 00.project\upstage-network-lecture\main.py
+- 00.project\upstage-network-lecture\test_todo.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\typing_extensions.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\_virtualenv.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\annotated_doc\main.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\annotated_doc\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\annotated_types\test_cases.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\annotated_types\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\from_thread.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\functools.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\lowlevel.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\pytest_plugin.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\to_interpreter.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\to_process.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\to_thread.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\abc\_eventloop.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\abc\_resources.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\abc\_sockets.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\abc\_streams.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\abc\_subprocesses.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\abc\_tasks.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\abc\_testing.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\abc\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\streams\buffered.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\streams\file.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\streams\memory.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\streams\stapled.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\streams\text.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\streams\tls.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\streams\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_backends\_asyncio.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_backends\_trio.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_backends\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_asyncio_selector_thread.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_contextmanagers.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_eventloop.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_exceptions.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_fileio.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_resources.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_signals.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_sockets.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_streams.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_subprocesses.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_synchronization.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_tasks.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_tempfile.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_testing.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\_typedattr.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\anyio\_core\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\certifi\core.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\certifi\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\certifi\__main__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\core.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\decorators.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\exceptions.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\formatting.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\globals.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\parser.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\shell_completion.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\termui.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\testing.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\types.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\utils.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\_compat.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\_termui_impl.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\_textwrap.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\_utils.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\_winconsole.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\click\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\ansi.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\ansitowin32.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\initialise.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\win32.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\winterm.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\tests\ansitowin32_test.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\tests\ansi_test.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\tests\initialise_test.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\tests\isatty_test.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\tests\utils.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\tests\winterm_test.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\colorama\tests\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\distro\distro.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\distro\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\distro\__main__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\dotenv\cli.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\dotenv\ipython.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\dotenv\main.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\dotenv\parser.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\dotenv\variables.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\dotenv\version.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\dotenv\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\dotenv\__main__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\applications.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\background.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\cli.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\concurrency.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\datastructures.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\encoders.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\exceptions.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\exception_handlers.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\logger.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\params.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\param_functions.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\requests.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\responses.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\routing.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\staticfiles.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\templating.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\testclient.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\types.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\utils.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\websockets.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\__main__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\dependencies\models.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\dependencies\utils.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\dependencies\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\middleware\cors.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\middleware\gzip.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\middleware\httpsredirect.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\middleware\trustedhost.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\middleware\wsgi.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\middleware\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\openapi\constants.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\openapi\docs.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\openapi\models.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\openapi\utils.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\openapi\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\security\api_key.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\security\base.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\security\http.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\security\oauth2.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\security\open_id_connect_url.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\security\utils.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\security\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\_compat\shared.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\_compat\v2.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\fastapi\_compat\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\platform\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\fail_clearing_run_switches.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\fail_cpp_exception.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\fail_initialstub_already_started.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\fail_slp_switch.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\fail_switch_three_greenlets.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\fail_switch_three_greenlets2.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\fail_switch_two_greenlets.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\leakcheck.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_contextvars.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_cpp.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_extension_interface.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_gc.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_generator.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_generator_nested.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_greenlet.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_greenlet_trash.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_leaks.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_stack_saved.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_throw.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_tracing.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_version.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\test_weakref.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\greenlet\tests\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\h11\_abnf.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\h11\_connection.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\h11\_events.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\h11\_headers.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\h11\_readers.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\h11\_receivebuffer.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\h11\_state.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\h11\_util.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\h11\_version.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\h11\_writers.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\h11\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_api.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_exceptions.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_models.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_ssl.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_synchronization.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_trace.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_utils.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_async\connection.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_async\connection_pool.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_async\http11.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_async\http2.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_async\http_proxy.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_async\interfaces.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_async\socks_proxy.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_async\__init__.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_backends\anyio.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_backends\auto.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_backends\base.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_backends\mock.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_backends\sync.py
+- 00.project\upstage-network-lecture\.venv\Lib\site-packages\httpcore\_backends\trio.py
+
+### Projects (1779)
+- README_GENERATED.md
+- README_TECHSTACK.md
+- README_TECHSTACK_DRAFT.md
+- 00.project\upstage-keypair.pem
+- 00.project\.git\config
+- 00.project\.git\description
+- 00.project\.git\FETCH_HEAD
+- 00.project\.git\HEAD
+- 00.project\.git\index
+- 00.project\.git\hooks\applypatch-msg.sample
+- 00.project\.git\hooks\commit-msg.sample
+- 00.project\.git\hooks\fsmonitor-watchman.sample
+- 00.project\.git\hooks\post-update.sample
+- 00.project\.git\hooks\pre-applypatch.sample
+- 00.project\.git\hooks\pre-commit.sample
+- 00.project\.git\hooks\pre-merge-commit.sample
+- 00.project\.git\hooks\pre-push.sample
+- 00.project\.git\hooks\pre-rebase.sample
+- 00.project\.git\hooks\pre-receive.sample
+- 00.project\.git\hooks\prepare-commit-msg.sample
+- 00.project\.git\hooks\push-to-checkout.sample
+- 00.project\.git\hooks\sendemail-validate.sample
+- 00.project\.git\hooks\update.sample
+- 00.project\.git\info\exclude
+- 00.project\.git\objects\33\02289ee9090a35ee29f255232aae7d8121c258
+- 00.project\upstage-network-lecture\.env
+- 00.project\upstage-network-lecture\.env.example
+- 00.project\upstage-network-lecture\.gitignore
+- 00.project\upstage-network-lecture\.python-version
+- 00.project\upstage-network-lecture\docker-compose.yml
+- 00.project\upstage-network-lecture\pyproject.toml
+- 00.project\upstage-network-lecture\README.md
+- 00.project\upstage-network-lecture\uv.lock
+- 00.project\upstage-network-lecture\.git\COMMIT_EDITMSG
+- 00.project\upstage-network-lecture\.git\config
+- 00.project\upstage-network-lecture\.git\description
+- 00.project\upstage-network-lecture\.git\FETCH_HEAD
+- 00.project\upstage-network-lecture\.git\HEAD
+- 00.project\upstage-network-lecture\.git\index
+- 00.project\upstage-network-lecture\.git\ORIG_HEAD
+- 00.project\upstage-network-lecture\.git\packed-refs
+- 00.project\upstage-network-lecture\.git\REBASE_HEAD
+- 00.project\upstage-network-lecture\.git\hooks\applypatch-msg.sample
+- 00.project\upstage-network-lecture\.git\hooks\commit-msg.sample
+- 00.project\upstage-network-lecture\.git\hooks\fsmonitor-watchman.sample
+- 00.project\upstage-network-lecture\.git\hooks\post-update.sample
+- 00.project\upstage-network-lecture\.git\hooks\pre-applypatch.sample
+- 00.project\upstage-network-lecture\.git\hooks\pre-commit.sample
+- 00.project\upstage-network-lecture\.git\hooks\pre-merge-commit.sample
+- 00.project\upstage-network-lecture\.git\hooks\pre-push.sample
+- 00.project\upstage-network-lecture\.git\hooks\pre-rebase.sample
+- 00.project\upstage-network-lecture\.git\hooks\pre-receive.sample
+- 00.project\upstage-network-lecture\.git\hooks\prepare-commit-msg.sample
+- 00.project\upstage-network-lecture\.git\hooks\push-to-checkout.sample
+- 00.project\upstage-network-lecture\.git\hooks\sendemail-validate.sample
+- 00.project\upstage-network-lecture\.git\hooks\update.sample
+- 00.project\upstage-network-lecture\.git\info\exclude
+- 00.project\upstage-network-lecture\.git\logs\HEAD
+- 00.project\upstage-network-lecture\.git\logs\refs\stash
+- 00.project\upstage-network-lecture\.git\logs\refs\heads\main
+- 00.project\upstage-network-lecture\.git\logs\refs\heads\test
+- 00.project\upstage-network-lecture\.git\logs\refs\heads\feature\fastapi\logging
+- 00.project\upstage-network-lecture\.git\logs\refs\heads\feature\fastapi\orm
+- 00.project\upstage-network-lecture\.git\logs\refs\heads\feature\fastapi\orm-refactor
+- 00.project\upstage-network-lecture\.git\logs\refs\heads\feature\fastapi\userapi
+- 00.project\upstage-network-lecture\.git\logs\refs\heads\release\0.0.1
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\network\HEAD
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\network\main
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\network\feature\fastapi\orm-refactor
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\network\release\0.0.1
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\origin\HEAD
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\origin\main
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\origin\deploy\ci
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\origin\deploy\cicd
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\origin\deploy\githubaction
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\origin\feature\ai\upstage-embedding
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\origin\feature\fastapi\logging-filehandler-rolling
+- 00.project\upstage-network-lecture\.git\logs\refs\remotes\origin\release\0.0.1
+- 00.project\upstage-network-lecture\.git\objects\00\142e6383f8c3c38b879b7f640369f9968ad206
+- 00.project\upstage-network-lecture\.git\objects\00\2d8b62d7ae74dc4863276f6620f68383acb908
+- 00.project\upstage-network-lecture\.git\objects\00\4b448dfab9d85b60bf65a5464c2cea9db112f3
+- 00.project\upstage-network-lecture\.git\objects\01\4ec2205f52a49edff10287e21b4118bc796c89
+- 00.project\upstage-network-lecture\.git\objects\03\caa3cf8a43a765d390de2cb69c8c0c61d7e5ab
+- 00.project\upstage-network-lecture\.git\objects\05\2bccf0e008e3e38833a9dd35e0ea3bc2089de8
+- 00.project\upstage-network-lecture\.git\objects\05\8fdbd3c9eec298fe1cfe49a8804f287150ab15
+- 00.project\upstage-network-lecture\.git\objects\06\698951fbf97649d37a102a0ea0ef5beec0511e
+- 00.project\upstage-network-lecture\.git\objects\07\aa81dedf4b7f58d1ee2e1c51b314efce686663
+- 00.project\upstage-network-lecture\.git\objects\08\1cded3b2401149783489bbafd8b4212cc9a58a
+- 00.project\upstage-network-lecture\.git\objects\0b\ee35941495c94e091ecb7ea5137e84292f8cef
+- 00.project\upstage-network-lecture\.git\objects\0b\f257ac7924b4d5d9da609ca1e1bf9d72b9199c
+- 00.project\upstage-network-lecture\.git\objects\0c\b54112b506a19dfec3ee3fabe460238c8f2545
+- 00.project\upstage-network-lecture\.git\objects\0d\f080a7f897323c2d4bb01b5ff2f962611ded7b
+- 00.project\upstage-network-lecture\.git\objects\0e\95f639759adc0ad1e56cf8086fed57bafe3bc1
+- 00.project\upstage-network-lecture\.git\objects\0f\28abe174156ed766f02c9bb3a610d7674da93a
+- 00.project\upstage-network-lecture\.git\objects\11\3c84672c68c80d3dcb1b07f1eaed4f59974faf
+- 00.project\upstage-network-lecture\.git\objects\11\a49ef0d6d6380dfd9a069af5f5607b4fd3c016
+- 00.project\upstage-network-lecture\.git\objects\12\f82fd7806305aee1d36687b16ec3baf5966a95
+- 00.project\upstage-network-lecture\.git\objects\14\26c61f361923e18189dfc8d4e7cea9479eef1d
+- 00.project\upstage-network-lecture\.git\objects\14\378fac1ed8c955638b9ad05e41d5939f4c60af
+- 00.project\upstage-network-lecture\.git\objects\15\2c82180446f8a9f008a898255612cabbdf00db
+- 00.project\upstage-network-lecture\.git\objects\15\3fcf9ac28fc86c2ebd4a5d53ac0294735bd6c1
+- 00.project\upstage-network-lecture\.git\objects\16\2ad957f475cf714e3585dd7136e027996afcce
+- 00.project\upstage-network-lecture\.git\objects\16\eccea296c975ff34e72e88a9dcfa8a73aa5bb5
+- 00.project\upstage-network-lecture\.git\objects\1a\a532eb8b59b576d8b5bc239470d20b07645655
+- 00.project\upstage-network-lecture\.git\objects\1b\022d47c6b5570bf5e9966866dd31494733192f
+- 00.project\upstage-network-lecture\.git\objects\1d\439d7110f5a30b710b410952466fbe547ca30b
+- 00.project\upstage-network-lecture\.git\objects\1d\7fa7ca0de4be2bf714530dae3a018992c3d416
+- 00.project\upstage-network-lecture\.git\objects\1e\888b9c3eadaed5d4d7478328da698af5754a1b
+- 00.project\upstage-network-lecture\.git\objects\1e\e469a1fb084b58e71f54e64a026073419b6268
+- 00.project\upstage-network-lecture\.git\objects\1f\b76507c40189e352ada57d5050955d5b3ffe07
+- 00.project\upstage-network-lecture\.git\objects\20\d3cbb577f0e93c8c787c6327d33f9a738c2a80
+- 00.project\upstage-network-lecture\.git\objects\21\b900016e2cdf79f80cef984d1020bb00aa3d6f
+- 00.project\upstage-network-lecture\.git\objects\22\5f945aa3a6af8a7d0b133f6392728a056b1b52
+- 00.project\upstage-network-lecture\.git\objects\22\75f1fc095cc09ade6bac61c844451a7be0d338
+- 00.project\upstage-network-lecture\.git\objects\23\b744d344687dab27524260a48d025f427ffb1c
+- 00.project\upstage-network-lecture\.git\objects\23\e25f3e56abc27c5bcb5e1442e1c5f40d3a4877
+- 00.project\upstage-network-lecture\.git\objects\23\e5270c9f92dcab186cbfefb586935088216327
+- 00.project\upstage-network-lecture\.git\objects\24\02f88630fa04684b047377d825d8731be242e9
+- 00.project\upstage-network-lecture\.git\objects\24\3381362e4cdc12d029a98d58af74706786b165
+- 00.project\upstage-network-lecture\.git\objects\24\5f87484c518531e645fa86458a94ca107dddd4
+- 00.project\upstage-network-lecture\.git\objects\27\cba325c6fadb790f4ddd973c2fbd4a89ba712b
+- 00.project\upstage-network-lecture\.git\objects\27\fb028211a447d942d5a3855d5dab0cb110f5e8
+- 00.project\upstage-network-lecture\.git\objects\28\06661478155a4590c0a992da9520faffe557f0
+- 00.project\upstage-network-lecture\.git\objects\28\098280a3e23626f55246381ad5785b69f0d2ad
+- 00.project\upstage-network-lecture\.git\objects\28\4785a2be1a59d1164311ddd82621a4ef21f01e
+- 00.project\upstage-network-lecture\.git\objects\28\cb9bd5cfeae5e9927580b9de216fd823b59da4
+- 00.project\upstage-network-lecture\.git\objects\2a\7ccf82dc5a85bd67a6eaebdc128f34758417a7
+- 00.project\upstage-network-lecture\.git\objects\2c\1697c72b3bb8fbb64af31f89e4361ef152a08f
+- 00.project\upstage-network-lecture\.git\objects\2c\b1983a90006d13b32c5bdbe461e6412ae6cd79
+- 00.project\upstage-network-lecture\.git\objects\2d\99ca559513c037fc1dbc799e5b49da15cb7561
+- 00.project\upstage-network-lecture\.git\objects\30\ef0da643dcfd1afc924a815aa075a199dbb28a
+- 00.project\upstage-network-lecture\.git\objects\32\f29c78af1d3dbe13ef792c231601adbda6baf5
+- 00.project\upstage-network-lecture\.git\objects\35\3fb9137977ea7eb9c476e52ee4c3cc2c0b5bf8
+- 00.project\upstage-network-lecture\.git\objects\36\2b6efe1523ecb0df31c7b1c7cfe3bf31cb575a
+- 00.project\upstage-network-lecture\.git\objects\36\492347b8bb4855a9b7067a997748b1f9ad62f4
+- 00.project\upstage-network-lecture\.git\objects\37\e5332987f0a683a813d8b97ab2d41c98872ba9
+- 00.project\upstage-network-lecture\.git\objects\38\3f8a562910fd2f3af73a6dac2ee1bad5d4e17f
+- 00.project\upstage-network-lecture\.git\objects\39\86cec46649bd2ec54a88f4679af5e20a3163fb
+- 00.project\upstage-network-lecture\.git\objects\3b\258a7ce95c5b49135fc45d24a95edc30f175d9
+- 00.project\upstage-network-lecture\.git\objects\3b\3520a134b317fe9f7351bd1c6dd284588f84e1
+- 00.project\upstage-network-lecture\.git\objects\3b\b1d0c04a879d368bce63b40c244eedacaedf7a
+- 00.project\upstage-network-lecture\.git\objects\3c\678a42833521b7b2513b64e4d6ed86bbcdfabc
+- 00.project\upstage-network-lecture\.git\objects\3d\2dace8ef3303f9bc690a3ee82c764b52f81112
+- 00.project\upstage-network-lecture\.git\objects\3d\dacec228f9ba4107897f3884351a74fadc048b
+- 00.project\upstage-network-lecture\.git\objects\40\60c1a40e97b88e33f25a9810bf852def951876
+- 00.project\upstage-network-lecture\.git\objects\40\cde144bd79b7d4882b3a0369ac75e82a80c477
+- 00.project\upstage-network-lecture\.git\objects\46\a8563b0f1cb4d1304df11c321894271dbe6b16
+- 00.project\upstage-network-lecture\.git\objects\46\dd920c265dae4f057fea8b55e18fed56db6a7a
+- 00.project\upstage-network-lecture\.git\objects\47\59f9ecdba91012403fd216afae52b3671b9414
+- 00.project\upstage-network-lecture\.git\objects\48\c83411b39c72852b96bee9727c8482d7ae5512
+- 00.project\upstage-network-lecture\.git\objects\4a\4ddaf491bfeb4abb45710dac747e48cf96be50
+- 00.project\upstage-network-lecture\.git\objects\4b\80797da55aaaf7d56b09af43c24c0946bed1dd
+- 00.project\upstage-network-lecture\.git\objects\4c\025f92565aeb539b748a42a9327ad311d03b6b
+- 00.project\upstage-network-lecture\.git\objects\4f\7498cf39d03002b9d49a6f8048e0e5d627c948
+- 00.project\upstage-network-lecture\.git\objects\51\fc7045cc3685886ff9445d7ccbb65ec3e23ee1
+- 00.project\upstage-network-lecture\.git\objects\52\7efa822c9970240ab76c12cf6414080e446057
+- 00.project\upstage-network-lecture\.git\objects\53\5f9d4d0cdf8e30e2630270c0119983930ae314
+- 00.project\upstage-network-lecture\.git\objects\54\92111b6abd6b8510060542e286a81c6af0816b
+- 00.project\upstage-network-lecture\.git\objects\56\773404fcdea059867a06cf416e2df96bca9020
+- 00.project\upstage-network-lecture\.git\objects\57\b69f07ce17aaffae0d134e4b5e0fbc30c098b9
+- 00.project\upstage-network-lecture\.git\objects\57\f9182d44c60f7007f7648dbf641d9c2b2cf5fd
+- 00.project\upstage-network-lecture\.git\objects\58\0ffd892b03b693cfef2221cc855454a15dcc20
+- 00.project\upstage-network-lecture\.git\objects\58\80fcd89e9613fca1a0117bfc272c8333a7f55e
+- 00.project\upstage-network-lecture\.git\objects\59\3371bbd4fb126ed9cfe251e462eb94ebb17be7
+- 00.project\upstage-network-lecture\.git\objects\5a\13a70209ed8ec0512bbff0f8fbc6000c464bc1
+- 00.project\upstage-network-lecture\.git\objects\5a\14de7571dfc6cb0dba78a2eb58cfcee717764c
+- 00.project\upstage-network-lecture\.git\objects\5a\c16cebe75aa2f50c57a5311341898ade1007b6
+- 00.project\upstage-network-lecture\.git\objects\5b\38afe6a70385fb597be7684f5ec4a5151bea81
+- 00.project\upstage-network-lecture\.git\objects\5d\6fc4f98a103f00335d1182ec5a2753ae6f2421
+- 00.project\upstage-network-lecture\.git\objects\5d\7a42eaf9822426e22c6ec903c7b27880d9a6ab
+- 00.project\upstage-network-lecture\.git\objects\5d\9151076658f09ef6deace86761141de43823eb
+- 00.project\upstage-network-lecture\.git\objects\5e\314a93766af51c494c19315b1509bee359802a
+- 00.project\upstage-network-lecture\.git\objects\5e\aacfec55bb8ffac2f48c4698f0a78166324688
+- 00.project\upstage-network-lecture\.git\objects\5f\4c6deb00d24ee37eca69e5cffe0270a1a8100d
+- 00.project\upstage-network-lecture\.git\objects\60\0640864d169eb3ad55f31c5fb767663bdbe28f
+- 00.project\upstage-network-lecture\.git\objects\65\130220129d80a607b7fda0b86764d228b12b3f
+- 00.project\upstage-network-lecture\.git\objects\65\161b92f667b9ffdd7708d025b526f42f09b9e3
+- 00.project\upstage-network-lecture\.git\objects\69\a541116a13b83535dd06d1ea330f672f298e41
+- 00.project\upstage-network-lecture\.git\objects\6a\f6d9d35be0334768f2f6acb30523ce14f5702a
+- 00.project\upstage-network-lecture\.git\objects\6b\0b62ebef16b7bf1674ebbe000c3271cb815263
+- 00.project\upstage-network-lecture\.git\objects\6b\f90ec72bf332a72817a5e89550bfe531a3c129
+- 00.project\upstage-network-lecture\.git\objects\70\5669406ed3e459e250d39c8ae49a42c2ec41f6
+- 00.project\upstage-network-lecture\.git\objects\71\1ccd17143895ff38a14352ee50f8ca3557a52c
+- 00.project\upstage-network-lecture\.git\objects\71\605b4f20a099167efb9447391972689fc04669
+- 00.project\upstage-network-lecture\.git\objects\72\c8d3bc8f8794fe12c77b7320e4920255cddc9d
+- 00.project\upstage-network-lecture\.git\objects\75\543a27a3af461f28bd2d351182adf4cb53420c
+- 00.project\upstage-network-lecture\.git\objects\75\6a2bc5e215401c6c6e0e3dcecc55ece850a7a1
+- 00.project\upstage-network-lecture\.git\objects\76\cc7fd876459cfb3065389399b451265614e597
+- 00.project\upstage-network-lecture\.git\objects\77\5db15cb83f74b97a527e8ff0cf4de08fcd5221
+- 00.project\upstage-network-lecture\.git\objects\77\8c223593cea546aaa5ebb28b40a4ff4142d1da
+- 00.project\upstage-network-lecture\.git\objects\77\cd973fb29e03a269479423d8c5765b3dc18a38
+- 00.project\upstage-network-lecture\.git\objects\78\554cf3d23782203a07267871dbb197b95845d7
+- 00.project\upstage-network-lecture\.git\objects\78\835c2b36bdb506ee6dc733dc5da57e3660881c
+- 00.project\upstage-network-lecture\.git\objects\78\96db5ac0e5b6a8a96fe5841ef8a230856bff14
+- 00.project\upstage-network-lecture\.git\objects\7a\6a4377cc043ea6d0928bfe6b026a39dfbdea3d
+- 00.project\upstage-network-lecture\.git\objects\7a\c9741096b2083629301ed837a83af50ddbfaee
+- 00.project\upstage-network-lecture\.git\objects\7b\fb668fbd995ab8f4bb368e4efc4a93c9db1d6b
+- 00.project\upstage-network-lecture\.git\objects\7c\68b045992cc53984d31536a4d3724e9ede2191
+- 00.project\upstage-network-lecture\.git\objects\7c\fabc0035cd241ae197b9e4aab9ae0797979429
+- 00.project\upstage-network-lecture\.git\objects\7d\fa359b0cd21bd78daf86c25d4d42f7f01e6250
+
+### Notebooks (26)
+- extracted_content\(EXT) [SeSAC] [네트워크와 클라우드] 코랩 세션_Wrap Up 리포트 (template)의 사본.txt
+- extracted_content\00 Course Introduction.pptx.txt
+- extracted_content\01 Understanding Web Communication and HTTP.txt
+- extracted_content\02 Network Fundamental Knowledge.txt
+- extracted_content\03 Getting Started with Cloud Computing.txt
+- extracted_content\04 Managing Cloud Servers.txt
+- extracted_content\05 Web Server User Service 1.txt
+- extracted_content\06 Web Server User Service 2.txt
+- extracted_content\07 Cloud Deployment Automation 1.txt
+- extracted_content\09 Getting Started with Cloud Exploring AWS Components.txt
+- extracted_content\1-08 Cloud Deployment Automation 2.txt
+- extracted_content\1-Why Cloud Computing Is Essential for AI Agent.txt
+- extracted_content\2-10 Network and AI.txt
+- extracted_content\Why CI_CD Is Essential  for AI Agent.txt
+- extracted_content\Why Operational and AI Infrastructure Integration Is Essential for AI Agent (1).txt
+- extracted_content\Why Operational and AI Infrastructure Integration Is Essential for AI Agent.txt
+- extracted_content\Why Web Server Development Is Essential for AI Agent.txt
+- extracted_content\[SeSAC] [네트워크와 클라우드] advanced mission_day01_answer의 사본.txt
+- extracted_content\[SeSAC] [네트워크와 클라우드] advanced mission_day02_answer의 사본.txt
+- extracted_content\[SeSAC] [네트워크와 클라우드] advanced mission_day03_answer의 사본.txt
+- extracted_content\[SeSAC] [네트워크와 클라우드] advanced mission_day04_answer의 사본.txt
+- extracted_content\[SeSAC] [네트워크와 클라우드] advanced mission_day05_answer의 사본.txt
+- extracted_content\[SeSAC] [네트워크와 클라우드] basic mission_day01_answer의 사본.txt
+- extracted_content\[SeSAC] [네트워크와 클라우드] basic mission_day02_answer의 사본.txt
+- extracted_content\[SeSAC] [네트워크와 클라우드] basic mission_day03_answer의 사본.txt
+- extracted_content\[SeSAC] [네트워크와 클라우드] basic mission_day04_answer의 사본.txt

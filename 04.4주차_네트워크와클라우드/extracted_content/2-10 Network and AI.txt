@@ -1,0 +1,376 @@
+25 Upstage 
+네트워크와 AI 
+SPEAKER 
+서영학 © 2025 Upstage Co., Ltd. 
+2 저작권 안내 
+ 
+(주)업스테이지가 제공하는 모든 교육 콘텐츠의 지식재산권은 
+운영 주체인 (주)업스테이지 또는 해당 저작물의 적법한 관리자에게 귀속되어 있습니다. 
+콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할 수 없습니다. 
+유출될 경우 지식재산권 침해에 대한 책임을 부담할 수 있습니다. 
+유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. 
+● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위 
+● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위 
+● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위 
+● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위 
+● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위 
+● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수 있는 저작물을 작성, 공개하는 행위 
+● 제공된 데이터의 일부 혹은 전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위위 
+3 목표: AI 가 있는 시스템 Network와 AI 
+목차 
+GPU 운영에 대한 기초적 이해 
+AI가 있는 서비스 아키텍처 
+RAG 란? 
+- AI 클라우드와 Vector DB를 통해 AI서비스 연동하기 
+4 GPU 운영을 한다면 10 - 01 
+5 AI 서버를 다룰 때 알아야할 것들 Network와 AI 
+GPU 는 귀하고 비싼 컴퓨터 자원이다 
+일반 서버는 금방 생기지만 GPU 서버는 수량이 적고 예약도 어렵다 
+
+6 AI 를 쓰기 위해선 GPU 메모리에 모델이 올라가야(로드)된다 Network와 AI 
+GPU 는 켜는데 시간이 더 오래 걸린다 
+•GPU NVIDIA 드라이버 로딩, CUDA , cuDNN 등 라이브러리 초기화 시간 
+•모델 파일 (수십 GB)을 GPU 메모리에 올리는 과정도 오래 걸린다 
+•GPU 서버 한 번 줄이면 (scale-in) 다시 늘리는데 오래 걸려 장애로 이어지기도 한다 
+그래서 첫 요청을 처리할 때 생기는 지연 시간(cold start)이 생긴다 
+LLM 모델은 특히 더 크다 
+LLM 모델 크기, LLAMA 70B = 140GB 
+메모리에 올려야 연산이 되는데 모델이 너무 커서 올리는 시간이 오래걸림 
+7 GPU 장애는 왜 잘 날까? Network와 AI 
+GPU 는 열·메모리·연산 구조가 훨씬 민감한 특수 장치 
+- 동시 연산 처리가 CPU보다 훨씬 많아 열이 크게 발생 
+- 열이 많으면 속도 감소 및 커널 에러 발생 위험 
+- 전력, 발열 때문에 하드웨어 스트레스가 크다 (수명) 
+- GPU 모니터링에서 온도는 중요한 지표 
+- 냉각(쿨링) 시스템의 중요성 
+GPU는 메모리가 비싸고 LLM은 메모리를 엄청 쓴다 
+- 계산량이 늘어나면 (긴 프롬프트) 쉽게 OOM (Out Of Memory) 
+
+8 GPU 장애는 왜 잘 날까? Network와 AI 
+Multi-GPU 환경 등 "GPU끼리 대화 통신" 과정에서 지연 문제 
+- 큰 모델은 GPU 여러 개가 나눠서 계산하는데 이때 GPU끼리 데이터를 계속 주고받아야 함 
+- GPU 간 통신이 조금만 느려도 전체 모델 느려짐 
+- 하나의 GPU에서 오류 나면 전체 오류로 전파될수도 있다 
+GPU 드라이버, CUDA, PyTorch 등 버전 충돌 
+- GPU 생태계는 보전 호환성이 아주 민감 
+하드웨어 에러 
+- GPU 생태계는 보전 호환성이 아주 민감 
+9 GPU 를 잘 쓰는 방법 Network와 AI 
+요청은 하나가 아니라 묶어서 처리 
+GPU는 한 번에 많이 계산할 때 효율적이다 
+GPU 하나에 여러 모델을 위험 
+GPU 하나에 여러 모델이 올라가면 두 개가 GPU 서로 뺏는다 
+메모리 단편화 발생 
+OOM 발생 위험이 커짐 (토큰 캐시, batch buﬀer 등 추가 메모리) 
+다만 최근에 GPU 가상화 기술들이 많이 발전하고 있는 중 (ex- AWS Bedrock) 
+하나의 모델에 여러 GPU는 굿 
+모델의 한 층을 여러 GPU가 나눠 계산하는 기술 (NV LINK) 
+다만 이 때 네트워크 문제 (Latency 급증, throughput 감소) 가능 
+10 현실적으로 AI를 사용하는 방법 Network와 AI 
+GPU 없이도 클라우드를 통해 AI 서비스 운영 
+
+11 (실습) Upstage API를 활용해 AI chat 해보기 Network와 AI 
+실습 순서 
+1. Upstage API 키발급(가입) 
+1-1. API key 환경변수로 처리 
+2. 프로젝트  세팅 후 upstage 샘플 코드 확인 
+ 
+3. FastAPI API와 연동 
+openai 설치 (버전) + 호환성 
+4. 답변확인 
+git switch feature/ai/upstage-chat 
+git pull 
+uv sync 
+LLM 쓰기 전 주의할 점 
+● API Key는 코드에 직접 넣지 않는다 
+● 환경 변수로 관리한다 
+● 외부 API 호출이므로 실패 가능성을 고려한다 
+● 응답 속도와 비용을 인지한다 
+12 (실습) Upstage API를 활용해 AI chat 해보기 Network와 AI 
+실습 진행 https://console.upstage.ai/docs/capabilities/generate/chat 
+1. Upstage API 키발급 ( 가입) https://console.upstage.ai/docs/getting-started 
+1-1. 발급한 API key 환경변수로 처리 
+ .env 파일 
+git switch feature/ai/upstage-chat 
+git pull 
+uv sync 
+13 (실습) Upstage API를 활용해 AI chat 해보기 Network와 AI 
+실습 진행 https://console.upstage.ai/docs/capabilities/generate/chat 
+2. 프로젝트  세팅 후 
+     upstage 샘플 코드 확인 
+git switch feature/ai/upstage-chat 
+git pull 
+uv sync 
+14 (실습) Upstage API를 활용해 AI chat 해보기 Network와 AI 
+실습 진행 
+3. FastAPI API와 연동 
+openai 패키지 설치 (버전) + 호환성 
+API 생성 
+git switch feature/ai/upstage-chat 
+git pull 
+uv sync 
+15 (실습) Upstage API를 활용해 AI chat 해보기 Network와 AI 
+실습 결과 
+git switch feature/ai/upstage-chat 
+git pull 
+uv sync 
+16 router에 AI 연동 코드가 있는게 맞을까? Network와 AI 
+Router의 책임은 요청/응답 처리 
+유저의 채팅 메시지(요청)를 받아 chat_service로 넘기자 
+Service는 요청을 받고 AI 호출 전, 추가적인 전처리를 통해 질문을 다듬고 Client에 보낸다 
+● 비용 최적화, 답변 최적화, 답변 정제 등 
+Repository는 DB 뿐 아니라 외부 의존성(LLM API 호출)을 관리한다 
+● Repository / AI Client 에서 Upstage AI 연동 
+추후 다른 LLM으로 서비스를 바꾼다고 했을 때 Repository만 수정하면 된다. 
+17 (실습) client로 Upstage API 연동 리팩토링 Network와 AI 
+실습 진행 
+1. service/ chat_service.py 생성
+● chat request를 받아서 repository에 이관 (추가적인 로직을 넣을 준비) 
+2. repository / upstage_client.py 에 UpstageClient 생성 
+● router의 코드 중, 연동 관련 코드를 UpstageClient로 이관 
+● OpenAI 라이브러리 의존성, key 관리 등 
+git switch feature/ai/upstage-layered 
+git pull 
+uv sync 
+18 서비스 아키텍처 with AI 모델 10 - 02 
+19 복잡해지는 서비스 구조와 서버 Network와 AI 
+수 많은 기능들을 추가되는 서비스 
+•Web Server 
+•Auth Server 
+•API Gateway 
+•AI Inference Server 
+•Vector DB Server 
+•Background Worker 
+
+20 여러 서버로 나눈 이유? (역할을 나눠 각각 띄우는 이유) Network와 AI 
+각 서버가 하는 역할이 다르다, 그리고 각 서버가 받는 부하(메모리크기, 연산량)가 다르다 
+단순 요청을  넘겨주는  서버 
+인증 데이터를  가져오는  서버 
+영상 같은 미디어를  압축 저장하는  서버 
+AI 추론을  진행하는  서버 
+수 많은 데이터를  저장하는  서버
+유저의 응답과 연관 
+속도가 중요
+리소스를 많이 먹는다
+21 AI 모델: 학습과정 / 추론 과정 Network와 AI 
+AI 서비스화를 위해 학습이 된 모델을 "추론 과정에 집중한다 " 
+결국 모델을 학습을 시키는 이유는 추론을 시키기 위해 
+추론과정 특징 
+- 응답 속도  = 서비스 품질 
+- 모델 크기 커질 수록 추론 가격 증대 (GPU 비용) 
+어떻게 추론을 안정적이고 빠르게 제공하는가? 
+
+22 AI 모델을 가진 시스템에서 주의할 점 Network와 AI 
+AI에서 중요한 건 데이터! 
+•모델 성능 상한선은 데이터 품질이 결정 
+•같은 AI모델이라도 데이터 따라 성능 차이 큼 
+•데이터 수집 · 정제 · 업데이트 중요 
+•추론은 학습의 결과물 재사용 과정 
+데이터를 어떻게 효율적으로 구조화하고 저장할까? 
+23 데이터 처리가 중요한 이유 Network와 AI 
+AI는 '망가진 데이터'를 그대로 이해하지 못한다 
+데이터 품질 = 모델 품질 
+•noise 제거 
+•schema 통일 
+•텍스트 정규화 
+•문서 chunk 분할 
+•토큰 길이 최소화 
+•이상한 답변 필터링, 정제 
+24 데이터 전처리 / 후처리 예시 Network와 AI 
+전처리 예시 
+•HTML 태그 제거 
+•표/리스트 구조 정리 
+•제목/본문 분리 
+•문서 단위 chunking 
+•embed-friendly 형식으로 변환 후처리 예시 
+•모델 출력 정제 
+•포맷팅 · JSON 변환 
+•hallucination 필터링 
+•요약/정답 구조화 
+25 AI 데이터는 지속적으로 재학습한다 Network와 AI 
+데이터가 바뀌면 학습도 다시 필요함 
+실무 데이터는 계속 업데이트 
+데이터 수집의 필요성과 AI 학습 파이프라인으로 연결 재수집  → 재전처리  → 재임베딩  → 재학습의  루프
+26 RAG 시스템 10 - 03 
+vector db 
+embedding 
+Indexing 
+RAG 
+27 AI 서비스를 만들고 싶은데.. Network와 AI 
+좀 더 현실적인 문제점 
+AI 서비스를 만들고 싶다. 
+챗봇도 만들고, 추천도 하고, 질문도 잘 답했으면 좋겠다. 
+모델은 우리 서비스의 최신 정보를 모른다 
+사내 문서, 정책, DB 내용은 반영되지 않음 
+데이터가 바뀔 때마다 다시 학습할 수도 없다 
+
+모델이 모르는 정보를 "외부 지식으로 보완" 
+AI 모델 
+일반 지식은 많지만 
+우리 회사 문서나 특화된 자료는 모르는 사람 
+Vector DB 
+잘 정리된 참고서 모음집 
+Vector DB(벡터 데이터베이스) 에 저장해둔 자료들 중에서 
+가장 비슷한 내용(top-k)을 검색해서 
+그 자료를 AI 모델에게 함께 전달하면 
+모델이 훨씬 정확하고 풍부한 답변을 만들 수 있음 
+28 RAG: Retrieval + Generation Network와 AI 
+https://medium.com/@drjulija/what-is-retrieval-augmented-generation-rag-938e4f6e03d1 
+
+29 Vector DB (Store) 란? Network와 AI 
+Vector 검색 
+Vector 는 행렬 (공간) 
+데이터를 행렬로 표현할 수 있으면 
+거리를 찾을 수 있다(코사인 유사도) 
+거리 = 유사도 
+대화가 아니라 단순 유사도 찾을 거면 vector store 에서 처리 가능 
+ex) 추천 시스템, 닮은 사진 찾기 등 
+
+30 Embedding Network와 AI 
+데이터를 숫자(행렬) 로 바꾸는 과정 
+문서 수집 
+전처리 
+chunk 분할 
+임베딩 생성 
+vector 저장 
+검색 
+디테일한 과정은 수업 외 내용 
+https://www.syncly.kr/blog/what-is-embedding-and-how-to-use 
+https://www.syncly.kr/blog/what-is-embedding-and-how-to-use 
+https://console.upstage.ai/docs/capabilities/embed 
+https://console.upstage.ai/docs/capabilities/embed 
+
+31 RAG: Data indexing Network와 AI 
+https://medium.com/@drjulija/what-is-retrieval-augmented-generation-rag-938e4f6e03d1 vector db 에 데이터(지식)를 저장하는 방식 
+
+32 RAG: Retrieval & Generation Network와 AI 
+https://medium.com/@drjulija/what-is-retrieval-augmented-generation-rag-938e4f6e03d1 실제 답변을 하는 단계 
+
+33 (실습) Upstage API 를 활용해 embedding 해보기 Network와 AI 
+실습 순서 https://console.upstage.ai/docs/capabilities/embed 
+1. Upstage API 키발급 
+2. Upstage 샘플 코드 사용 
+model = "embedding-query" 
+3. fastapi api 와 연동 
+openai 설치 (버전) + 호환성 
+4. 답변확인 git switch feature/ai/upstage-embedding 
+git pull 
+uv sync 
+34 (실습) Upstage API 를 활용해 embedding 해보기 Network와 AI 
+실습 순서 
+1. Upstage API 키발급 ( 가입)
+https://console.upstage.ai/docs/getting-started 
+2. 프로젝트  세팅 후 upstage 샘플 코드 복사 
+https://console.upstage.ai/docs/capabilities/embed git switch feature/ai/upstage-embedding 
+git pull 
+uv sync 
+35 (실습) Upstage API 를 활용해 embedding 해보기 Network와 AI 
+실습 순서 
+3. fastapi api 와 연동 
+openai 설치 (버전) + 호환성 
+api 생성 
+git switch feature/ai/upstage-embedding 
+git pull 
+uv sync 
+36 (실습) Upstage API 를 활용해 embedding 해보기 Network와 AI 
+실습 순서 
+4. 답변확인: 행렬 값 추출 
+
+37 (심화) VectorDB에 지식 넣기 ( indexing) Network와 AI 
+지식 Embedding 하고 ChromaDB에 넣기 
+1. 문서 수집 & 정제 (Document Collection) 
+2. 문서 → 청크 → 임베딩(Embedding) 
+3. Vector DB에 저장 (Indexing) 
+4. API 생성 
+git switch complete/vectordb 
+git pull 
+uv sync 
+38 (실습) docker-compose 로 chromadb 실행해보기 Network와 AI 
+실습 진행 
+1. infra/chromadb/docker-compose.yml 확인 
+cd infra/chromadb 
+2. docker-compose 실행 
+docker-compose up -d 
+3. docker-compose 안에 정의된 서비스 컨테이너 확인 
+docker-compose ps 
+5. 실행된 서비스 로그 확인 
+docker-compose logs 
+git switch complete/vectordb 
+git pull 
+uv sync 
+39 VectorDB에 지식 넣기 ( indexing) Network와 AI 
+지식 Embedding 하고 ChromaDB에 넣기 
+1. 문서 수집 & 정제 (Document Collection) 
+// 요청할 때 정제되었다고 가정 
+2. 문서 → 청크 → 임베딩(Embedding) 
+2-1
+// 데이터 샘플 
+infra/chromadb/sample_knowledge.json 
+2-2
+// 임베딩 : upstage 에서 embedding 작업 
+app/service/embedding_service.py 
+3. VectorDB에 저장 (Indexing) 
+UpstageClient 
+4. API 생성 
+POST /agent/knowledge 
+https://console.upstage.ai/docs/capabilities/embed 
+git switch complete/vectordb 
+git pull 
+uv sync 
+40 VectorDB에 지식 넣기 ( indexing )Network와 AI 
+결과 
+git switch complete/vectordb 
+git pull 
+uv sync 
+41 (실습) 지식 기반으로 AI에 질문해보기 (Generation) Network와 AI 
+질문을 임베딩하고 ChromaDB 에서 값을 받고 AI 에 적용 
+1. 질문을 받는 API 생성 
+POST /agent/query 
+{
+    "query": "ChromaDB 사용법을 알려줘" 
+}
+2. 질문에 embedding 적용 
+vector_service.search() 
+3. embedding 값으로 query 
+4. query된 값을 프롬프팅해서 Upstage AI에 질문 
+git switch complete/vectordb 
+git pull 
+uv sync 
+
+42 (실습) 지식 기반으로 AI에 질문해보기 (Generation) Network와 AI 
+(결과)질문을 임베딩하고 ChromaDB 에 질문해보기 
+git switch complete/vectordb 
+git pull 
+uv sync 
+43 총정리 Network와 AI 
+GPU 운영에  대한 기초적  이해
+- 비싸고 민감한 GPU 자원 
+AI 가 있는 서비스  아키텍처 
+- 코드로 AI와 대답해보기 
+- AI 서버 분리 (MSA 환경) 
+- 데이터 품질, 데이터 전처리 후처리 
+RAG 
+- Embedding 
+- Vector DB를 통한 AI에게 정보 
+44 네트워크 수업 총 리뷰 Complete 
+클라우드 시작을 위한 네트워크 CS 지식 
+- 유저 요청이 서버로 오는 과정 
+- LAN과 WAN 
+- IP , Port 개념과 NAT 
+Fast API 사용법과 서버 아키텍처 
+- 유저 API 요청과 요청을 처리하는 방법 
+- 계층형 아키텍처 
+- 의존성과 의존성 주입 
+45 네트워크 수업 돌아보기 Network 
+AWS 사용법과 운영 
+- EC2 세팅과 운영, 접근 방법(ssh, 방화벽) 
+배포와 배포 자동화 
+- 내 코드가 제품(서비스화) 되는 과정 
+- github action과 배포 자동화 
+서비스 아키텍처와 with AI 
+- 다양한 AWS 컴포넌트와 조합 
+- AI API 사용해보기 
+- RAG 
+
+www.upstage.ai © 2025 Upstage Co., Ltd. 
+

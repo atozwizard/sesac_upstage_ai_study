@@ -1,0 +1,33 @@
+Lecture 10:
+Problem Solving & Coding
+김수경
+이화여자대학교 인공지능융합전공 소속© 2025 Upstage Co., Ltd.
+1
+2저작권안내
+(주)업스테이지가 제공하는 모든교육콘텐츠의 지식재산권은
+운영주체인 (주)업스테이지 또는해당저작물의 적법한관리자에게 귀속되어 있습니다 .
+콘텐츠일부또는전부를복사 , 복제 , 판매 , 재판매공개 , 공유등을할수없습니다 . 
+유출될경우지식재산권 침해에대한책임을부담할수있습니다 . 
+유출에해당하여 금지되는 행위의예시는다음과같습니다 . 
+● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위
+● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위
+● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위
+● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위
+● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위
+● 다른 정보와 결합하여 Upstage Education 의콘텐츠임을 알아볼 수있는 저작물을 작성 , 공개하는 행위
+● 제공된 데이터의 일부 혹은 전부를 Upstage Education 프로젝트 /실습 수행 이외의 목적으로 사용하는 행위
+Problem 1 –Hash Table
+https://leetcode.com/problems/two -sum/10 Problem Solving & Coding
+Problem 1 –Hash Table10 Problem Solving & Coding
+Problem 2 –Graph (BFS/DFS)
+https://leetcode.com/problems/number -of-islands/10 Problem Solving & Coding
+Problem 2 –Graph (BFS/DFS)10 Problem Solving & Coding
+Problem 3 –Tree
+https://leetcode.com/problems/maximum -depth -of-binary -
+tree/description/10 Problem Solving & Coding
+Problem 3 –Tree10 Problem Solving & Coding
+Problem 4 –Heap
+https://leetcode.com/problems/kth -largest -element -in-an-array/10 Problem Solving & Coding
+Problem 4 –Heap10 Problem Solving & Coding
+www.upstage.ai © 2025 Upstage Co., Ltd.
+

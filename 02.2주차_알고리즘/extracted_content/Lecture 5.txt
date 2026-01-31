@@ -1,0 +1,474 @@
+Lecture 5:
+Tree
+김수경
+이화여자대학교  인공지능융합전공  소속© 2025 Upstage Co., Ltd.
+1
+2저작권  안내
+(주)업스테이지가  제공하는  모든  교육  콘텐츠의  지식재산권은
+운영  주체인  (주)업스테이지  또는  해당  저작물의  적법한  관리자에게  귀속되어  있습니다 .
+콘텐츠  일부  또는  전부를  복사 , 복제 , 판매 , 재판매  공개 , 공유  등을  할 수 없습니다 . 
+유출될  경우  지식재산권  침해에  대한  책임을  부담할  수 있습니다 . 
+유출에  해당하여  금지되는  행위의  예시는  다음과  같습니다 . 
+● 콘텐츠를  재가공하여  온/오프라인으로  공개하는  행위
+● 콘텐츠의  일부  또는  전부를  이용하여  인쇄물을  만드는  행위
+● 콘텐츠의  전부  또는  일부를  녹취  또는  녹화하거나  녹취록을  작성하는  행위
+● 콘텐츠의  전부  또는  일부를  스크린  캡쳐하거나  카메라로  촬영하는  행위
+● 지인을  포함한  제3자에게  콘텐츠의  일부  또는  전부를  공유하는  행위
+● 다른  정보와  결합하여  Upstage Education 의 콘텐츠임을  알아볼  수 있는  저작물을  작성 , 공개하는  행위
+● 제공된  데이터의  일부  혹은  전부를  Upstage Education 프로젝트 /실습  수행  이외의  목적으로  사용하는  행위
+Definition of Tree
+● A general tree T is partitioned into disjoint subsets:
+○ A single node r, the root
+○ Sets of general trees, called subtrees  of r● Terminology
+○ node (vertex)
+○ edge
+○ parent
+○ child
+○ siblings
+○ root
+○ leaf
+○ ancestor
+○ descendant
+○ subtree
+05 Tree
+3
+Tree Examples
+05 Tree
+[1]http://18president.p a.go.kr/cheon gwad ae/organization/go vernment.php
+[2] https://kr.pinterest.com/pin/146578162866571659/[1] [2] 
+4
+5Binary Tree01
+Definition of Binary Tree
+● T is binary tree , if
+○ T is empty, or
+○ T is partitioned into three disjoint subsets:
+■ A single node r, the root
+■ Up to two sets that are binary trees , called left and right subtrees of r
+r
+TL TR05 Tree
+6
+An Example of Binary Tree
+● Algebraic expressions
+05 Tree
+[1]https://user.ceng.met u.edu.tr/~t can/ceng301_s1516/Schedule/week10.pdf[1] 
+7
+Height of a Tree
+● Def. Height  of a Tree: the number of nodes  on the longest path from the root to a leaf.
+Height: 3 Height: 5Height: 705 Tree
+[1]https://user.ceng.met u.edu.tr/~t can/ceng301_s1516/Schedule/week10.pdf[1] 
+8
+Full Binary Tree
+● Def. A binary tree T of height h is called Full binary tree , if
+○ it is empty ( h = 0), or
+○ both its left and right subtrees are full (of height h - 1).
+Full BT of Height 0
+Full BT of
+Height 1Full BT of
+Height 2Full BT of
+Height 3
+Full BT of Height 4
+So now, you may feel why this is called full binary tree:
+it is filled with nodes at all possible positions !05 Tree
+] 
+9
+Complete Binary Tree
+● Def. A binary tree T is called Complete binary tree , if
+○ T is full down to level h - 1, and
+○ with level h filled in from left to right.
+Complete BT of
+Height 2Complete BT of
+Height 3Complete BT of Height 4
+Must be filled (to be complete)
+Optionally filled (to be complete)05 Tree
+10
+[1][2]
+[3] [4] [5] [6][0]Array -based Implementation
+● Recall: Array is a fundamental data structure with contiguous fixed -length chunk  of memory space.
+○ When we implement List  with an array, it was straightforward to map the indices.
+○ How can we assign designated indices for a binary tree?
+● Let’s assume the tree is full, and assign the indices from 
+root, left to right.
+[7][8][9][10] [11][12][13][14]8
+972
+3 415
+5 2 1 8 7 3 4 9 … …[0][1][2][3][4][5][6][7][8][9]
+Height 1 Height 2 Height 3 Height 4
+This implementation is efficient if the tree is 
+(almost) full or complete.05 Tree
+11
+Array -based Implementation
+● One more thing to consider: How can we figure out direct children  of a node?
+○ With a tree, we usually access data from the root to the leaf.
+○ Common rule connecting a node to its children?
+[1][2]
+[3] [4] [5] [6][0]
+[7][8][9][10] [11][12][13][14]8
+72
+3
+9 215● From parent, its left child :
+[parent index] * 2 + 1  
+● Right child:
+[parent index] * 2 + 2  
+● Similarly, from a child, its parent :
+[child index - 1] // 205 Tree
+12
+Array -based Implementation
+● Now, think about more general case: the tree may not be close to complete.
+○ If we don’t have a node, we may set None  (or some other indicator for emptiness).
+5 2 1 8 No
+ne3No
+neNo
+ne7 …[0][1][2][3][4][5][6][7][8][9]
+[1][2]
+[3] [4] [5] [6][0]
+[7][8][9][10] [11][12][13][14]8
+72
+3
+9 215
+● This implementation becomes less efficient  if the tree gets far from full or complete .05 Tree
+13
+Reference -based Implementation
+● It is similar to the linked list; instead of having a single 
+link to another node, Binary Tree Node has two 
+references  to other nodes!
+class TreeNode ():
+  def __init__ (self, x):
+    self.item = x
+    self.left = None
+    self.right = None
+class BinaryTree ():
+  def __init__ (self, node):
+    self.root = node05 Tree
+[1]http://ocw.ut m.my/file.php /31/Mod ule/ocwSearchTreeDec2011.pdf[1] 
+14
+Tree Traversal
+● Traversal: visiting all nodes once
+○ It is not straightforward to visit all nodes in a given tree, unlike an array or a linked list.
+● There can be many different ways of traversal. We cover a few widely -used ones:
+r
+TL TRr
+TL TRr
+TL TR
+Preorder
+Root  - Left - Right21
+3
+Inorder
+Left - Root  - RightPostorder
+Left - Right - Root12
+3 13
+2
+● Inside each subtree, the same rule applies recursively.05 Tree
+15
+Tree Traversal Example
+● Preorder traversal?60
+20 70
+10 40
+30 50● Inorder traversal?● Postorder traversal?
+60 {20 subtree} 70
+60 20 10 {40 subtree}  70
+60 20 10 40 30 50  70
+{20 subtree} 60 70
+10 20 {40 subtree}  60 70
+10 20 30 40 50  60 70{20 subtree} 70 60
+10 {40 subtree} 20  70 60
+10 30 50 40  20 70 6005 Tree
+16
+Tree Traversal Implementation
+● Use recursion!
+○ Base case: empty tree. Do nothing!
+○ General case: 2 recursive calls + visiting the root.
+○ The order depends on {pre, in, post} -order.
+def preorder (node):
+  if node is not None:
+    print(node.item)
+    preorder (node.left)
+    preorder (node.right)
+preorder (root)def inorder(node):
+  if node is not None:
+    inorder(node.left)
+    print(node.item)
+    inorder(node.right)
+inorder(root)05 Tree
+17
+18Binary Search Tree02
+Definition of Binary Search Tree
+● Each node has a search key .
+○ There are no duplicates  among the search keys in a binary search tree.
+● For each node n, it satisfies:
+○ n’s key is greater than all keys in its left subtree TL.
+○ n’s key is less than all keys in its right subtree TR.
+○ Both TL and TR are binary search trees.r
+TL TR< <05 Tree
+19
+Binary Search Tree Examples
+Check!  All these 3 BSTs contain the same data.05 Tree
+[1]https://user.ceng.met u.edu.tr/~t can/ceng301_s1516/Schedule/week10.pdf[1] 
+20
+Binary Search Tree Operations
+● Insert  a new item into a binary search tree.
+● Retrieve  (search ) the item with a given search key from a binary search tree.
+● Delete  the item with a given search key from a binary search tree.
+● For all, according to the rule that {left subtree} < root < {right subtree} at all levels!05 Tree
+21
+Search (Retrieval)
+● Task : Search if there is a node with the given key, and output the item if so.
+○ If the given key is not in the tree, we should be able to figure it out as well.60
+20 70
+10 40
+30 50● Main Idea : At each node, decide which subtree to search further. Only 
+3 cases:
+○ [Case 1] If the search key = item  at the node, we found  it!
+○ [Case 2] If the search key < item  at the node, the target must 
+be in its left subtree  if exists.
+○ [Case 3] If the search key > item  at the node, the target must 
+be in its right subtree  if exists.
+○ For Case 2 & 3, move to the corresponding subtree, then repeat 
+the same testing.
+○ Repeat until you reach at a leaf. If you still do not meet Case 1, 
+we conclude the key is not in the tree .40 55
+Found!
+Not exists05 Tree
+22
+Search (Retrieval): Implementation
+● Implementation based on recursive calls:
+def search(root, key):
+  if root is None:
+    return None  # Not found
+  elif key == root.item:
+    return root  # Found
+  elif key < root.item:
+    return search(root.left, key)
+  else:  # key > root.item
+    return search(root.right, key)Base case (empty BST): Not found!
+General case: case 1, 2, 305 Tree
+23
+Search (Retrieval): Time Complexity
+● Time complexity  of search operation?
+○ At each node, we compare two values once, and decide where to go. → O(1)
+○ How many times?
+● Thus, the worst time performance = tree height!
+● In terms of N (the number of data points in the tree), what’s the asymptotic (Big O) complexity of tree search?Length from the root to the leaf!
+If the tree is balanced  (close to full), the height 
+gets closer to O(log N).
+If the tree is unbalanced (close to linked list), the height 
+gets closer to O(N).
+Then, how the shape of a tree is determined? We will revisit this soon.05 Tree
+[1]https://user.ceng.met u.edu.tr/~t can/ceng301_s1516/Schedule/week10.pdf[1] 
+[1] 
+24
+Insertion
+● Task : Insert a new key into the BST, preserving BST conditions.
+○ We need to find the right location to put the new node.60
+20 70
+10 40
+30 50● Main Idea : Insertion is basically a failed search . When we conclude the 
+item does not exist, insert the new node right there!
+○ [Case 1] If the search key = item  at the node, we found  it!
+○ [Case 2] If the search key < item  at the node, the target must be 
+in its left subtree  if exists.
+○ [Case 3] If the search key > item  at the node, the target must be 
+in its right subtree  if exists.
+○ For Case 2 & 3, move to the corresponding subtree, then do the 
+same testing.
+○ Repeat until you reach at a leaf. Insert the new node there!55
+5505 Tree
+25
+Insertion: Implementation
+● Implementation based on recursive calls:
+def insert(root, item):
+  if root is None:
+    new_node = TreeNode(item)
+    return new_node
+  elif key == root.item:
+    # ERROR: already exists
+  elif key < root.item:
+    new_subtree = insert(root.left, item)
+    root.left = new_subtree
+    return root
+  else:  # key > root.item
+    new_subtree = insert(root.right, item)
+    root.right = new_subtree
+    return rootBase case: Create new node
+General case: 3 ways05 Tree
+26
+Deletion
+● Task : Delete a node with the given key, preserving BST conditions  after deletion.
+○ After deletion of an intermediate node, the tree will be broken 
+ .
+● Main Idea :
+○ [Case 1] If the node to delete is a leaf , simply remove it.
+○ [Case 2] If the node to delete has a single child , the subtree will take it over.
+○ [Case 3] If the node to delete has both children , elect the leftmost item in the right subtree as the new 
+root.05 Tree
+27
+Deletion (Case 1)
+● When the target node is a leaf , we can simply remove it.60
+20 70
+10 40
+30 50● After deletion, the resulting tree
+○ is still connected , and
+○ still satisfies the BST conditions .
+80
+3505 Tree
+28
+Deletion (Case 2)
+● When the target node has one child , the existing child takes the position of 
+the target node, taking its descendents (subtree). 60
+20 70
+10 40
+30 50● After deletion, the resulting tree
+○ is broken ,
+○ still satisfies the BST conditions.8080● After the right subtree takes over, the resulting tree
+○ is no longer broken ,
+○ still satisfies the BST conditions.
+This slide is best seen with animations. 3505 Tree
+29
+Deletion (Case 3)
+● When the target node has both children , we elect the target’s immediate successor (=left -most node in the 
+right subtree) as the new root.
+60
+20 70
+10 40
+30 50● After deletion, the resulting tree is broken.
+○ Cannot simply take one subtree as new root, since we have 
+two.
+80● To make the resulting tree satisfy BST conditions, we elect the 
+immediate successor  of the deleted node. The resulting tree, however, 
+is still broken !
+○ Why immediate successor? With it, it’s guaranteed to satisfy the 
+BST conditions!This slide is best seen with animations.
+30
+Similarly, we may nominate the immediate predecessor  (=right -most item in the left subtree.)35● The deleted immediate successor node may need to adopt its orphan 
+right child (if any).
+○ Here, it is guaranteed that no left child exists.3505 Tree
+30
+Deletion: Implementation
+def delete(root, key):
+  if root is None:
+    return root
+  if key < root.key:
+    root.left = delete(root.left, key)
+  elif key > root.key:
+    root.right = delete(root.right, key)
+  else:
+  ... (to be continued)Locating the target
+delete  function returns the subtree to 
+replace the target node to be deleted.05 Tree
+31
+Deletion: Implementation
+... (continuing)
+  else:
+    if root.left is None:
+      new_root = root.right
+      root = None
+      return new_root
+    elif root.right is None:
+      new_root = root.left
+      root = None
+      return new_root
+    else:
+      im_su = get_immediate_successor (root)
+      root.key = im_su.key
+      root.right = delete(root.right, im_su.key)
+  
+    return rootCase 3: both childrenCase 1: no child if root.right  is also None
+Case 2: single childdef get_immediate_successor (target):
+    curr = target.right
+    while curr.left is not None :
+      curr = curr.left
+    return curr
+After this line, we now 
+delete the node im_su . 05 Tree
+32
+Revisiting the shape of BST
+● For a given data, how is the shape of BST determined?
+○ Let’s try to insert “4, 7, 2, 3, 5, 1, 6”:
+4
+7 2
+3 5 1
+6○ Suppose the same data is given in a different 
+order: “7, 6, 5, 4, 3, 2, 1”:
+7
+6
+5
+4
+3
+2
+1Shape of the tree is determined by the 
+order of insertion !
+Unfortunately, we often cannot control 
+the datastream itself. 
+05 Tree
+33
+Balanced Trees
+● We desire to make the tree more balanced  for faster operations.
+● There are some special trees that guarantee balance  up to some level, but details of them are beyond of this 
+course.
+Red -black tree
+: guarantees that the height is lower than 2 log( N+1).AVL tree
+: guarantees that heights of the two child subtrees 
+of any node differ by at most 1.05 Tree
+[1]https://kostja.github.io/misc/2017/02/23/tarant ool -data -struct ures.html
+[2]https://blog.naver.com/luex r/223479906039[1] [2] 
+34
+Tree Sort
+● Inorder traversal  on a binary search tree lists the data in sorted order.
+○ Due to the BST conditions, all values in the left subtree < root value < all values in the right subtree, at all 
+nodes.
+○ Inorder traversal visits nodes in the order of left - root - right!
+r
+TL TR
+Inorder
+Left - Root  - Right12
+3● Time complexity?
+○ We first need to insert all data into a BST.
+→ O(log N) per each element × N of them = O(N log N)
+(This assumes use one of the balanced trees!)
+○ Then, inorder traversal: O(N)
+← we visit one node at a time.
+○ Overall, O(N log N) if the tree is balanced.
+Otherwise, worst performance will be O(N2).05 Tree
+35
+Time Complexity
+● Time complexity of Binary Search Tree operations?
+Task Average -case Worst -case
+Insertion
+Retrieval
+Deletion
+TraversalO(log N)
+O(log N)
+O(log N)O(N)
+O(N)
+O(N)
+= When the tree is significantly unbalanced.O(N) O(N)
+When?05 Tree
+36
+37Applications of Binary Search Trees03
+Problem 1
+● Test if two binary trees are symmetric.
+60
+20 70
+10 40
+30 5060
+20 70
+10 40
+30 5005 Tree
+38
+Problem 2
+● Test if a binary tree is balanced.
+○ A binary tree is balanced if the difference in the height of its left and right subtrees is at most 1 for all 
+nodes in the tree.
+60
+20 70
+10 40
+30 5060
+20 70
+10 4005 Tree
+39
+Problem 3
+05 Tree
+40
+Problem 305 Tree
+41
+www.upstage.ai © 2025 Upstage Co., Ltd.
+

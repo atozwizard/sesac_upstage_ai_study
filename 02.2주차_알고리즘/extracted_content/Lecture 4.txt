@@ -1,0 +1,343 @@
+Lecture 4:
+Hash Tables
+김수경
+이화여자대학교  인공지능융합전공  소속© 2025 Upstage Co., Ltd.
+1
+2저작권  안내
+(주)업스테이지가  제공하는  모든  교육  콘텐츠의  지식재산권은
+운영  주체인  (주)업스테이지  또는  해당  저작물의  적법한  관리자에게  귀속되어  있습니다 .
+콘텐츠  일부  또는  전부를  복사 , 복제 , 판매 , 재판매  공개 , 공유  등을  할 수 없습니다 . 
+유출될  경우  지식재산권  침해에  대한  책임을  부담할  수 있습니다 . 
+유출에  해당하여  금지되는  행위의  예시는  다음과  같습니다 . 
+● 콘텐츠를  재가공하여  온/오프라인으로  공개하는  행위
+● 콘텐츠의  일부  또는  전부를  이용하여  인쇄물을  만드는  행위
+● 콘텐츠의  전부  또는  일부를  녹취  또는  녹화하거나  녹취록을  작성하는  행위
+● 콘텐츠의  전부  또는  일부를  스크린  캡쳐하거나  카메라로  촬영하는  행위
+● 지인을  포함한  제3자에게  콘텐츠의  일부  또는  전부를  공유하는  행위
+● 다른  정보와  결합하여  Upstage Education 의 콘텐츠임을  알아볼  수 있는  저작물을  작성 , 공개하는  행위
+● 제공된  데이터의  일부  혹은  전부를  Upstage Education 프로젝트 /실습  수행  이외의  목적으로  사용하는  행위
+Data Structures So Far
+Insertion Retrieval Deletion Restriction
+Sorted Array
+Sorted Linked list
+Stack
+Queue
+Hash TableO(N)
+O(N)
+O(1)O(log N)
+O(N)
+O(1)O(N)
+O(N)
+O(1)
+O(1)
+O(1)O(1)
+O(1)O(1)
+O(1)LIFO
+FIFO
+● 911 emergency calls and locating caller’s address
+● Airline information system
+● Web searchNeeded for applications that 
+need radically fast operations:04 Hash Tables
+3
+4Data Indexed Arrays01
+Data Indexed Arrays
+● A regular list: [2, 5, 9, 10]
+○ In this setting, we take O( N) to search a particular value.
+Index[0][1][2][3]
+Value 2 5 9 10
+● What if we represent the data in a data -indexed array ?
+Index [0][1][2][3][4][5][6][7][8][9][10]
+Value F F T F F T F F F T T04 Hash Tables
+5
+Data Indexed Arrays
+Index [0][1][2][3][4][5][6][7][8][9][10]
+Value F F F F F F F F F F F● A data -indexed array has all possible data as its indices !
+○ Initially, all values of the array are False  (i.e., di_array[x] = False  for all x in di_array ), meaning 
+the array is empty.
+○ When we insert  some value, the corresponding index becomes True .
+○ Here, we assume that no duplicate keys are allowed.
+di_array = DataIndexedArray()
+di_array.insert(3)
+di_array.insert(6)
+di_array.delete(3)
+T T04 Hash Tables
+6
+Data Indexed Arrays
+● Why is this good?
+○ We can insert, delete, and retrieve values in O(1) !
+● Any problem then?
+○ We can’t deal with values larger than 10 (the array size).
+○ In other words, we need to use very large memory space  if we’d like to deal with large number, even though 
+the data size itself is small.
+○ It is not trivial how to deal with non -integer values , like string or floating point numbers.
+di_array.insert(“ewha") di_array.insert(21057381)
+04 Hash Tables
+7
+Strings in Data Indexed Arrays
+● Recall that each character can be represented as an 
+ASCII code value (0~255).
+○ “ewha”:
+■ e: 101
+■ w: 87
+■ h : 104
+■ a: 97
+○ “ewha” 256: (101 ×2563) + (87 ×2562) + 
+(104 ×256) + 97
+● In this way, a string can be represented as a unique 
+integer .
+04 Hash Tables
+[1]https://nl.pint erest.com/pin/395261304802336725/[1] 
+8
+Large Numbers in Data Indexed Arrays
+● But still, we can’t avoid the problem of treating large numbers.
+○ We may need some way to put arbitrary integers  in a reasonable size of memory .
+Index[0][1][2][3][4][5][6][7][8] …[999]
+Value F F F F F F F F F … Fdi_array.insert(21057381)04 Hash Tables
+9
+10Hash Tables02
+Hash Table
+Given a key, a function (called hash function ) determines where to locate it.
+→ As long as this function can compute the address in O(1),
+   insertion / retrieval / deletion can be still within O(1) .
+Input range : the data domain
+(e.g., string, arbitrarily large 
+integer)Address calculator  should 
+output an integer between 0 and 
+table_size - 1.04 Hash Tables
+[1] https://www.slideshare.net/slideshow/hashing -in-data -struct ure -is-presented -in-these -slides/274382978[1] 
+11
+Hash Functions
+● A good hash function:
+○ Easy and fast  to compute (in O(1))
+○ Scatter  the data evenly  on the hash table.
+● Selection digits
+○ h(001 36482 5) = 35
+● Folding
+○ h(001364825) = 001 + 364 + 825 = 1190
+● Modulo arithmetic
+○ h(x) = x mod  table_size
+○ h(1004) = 4 (if table_size = 100)
+○ This is widely used, as it maps the integers uniformly  
+over the internal array regardless of its size!
+Hmm, then what should we do if 
+two different keys coincidently 
+map to the same address ?
+Modulo operator (%)
+x % y is the remainder 
+when we divide x by y .04 Hash Tables
+12
+Collision
+● Yes, unfortunately, it can happen with all hash functions we listed 
+ .
+○ Collision : the phenomenon that two keys are mapped into the same location in the hash table.
+● Selection digits
+○ h(001 36482 5) =  h(741 32538 5) = 35
+● Folding
+○ h(001364825) = h(825364001) = 1190
+● Modulo arithmetic
+○ h(2205) = h(2405) = 5 if table_size = 10004 Hash Tables
+[1]https://www.cs.colostate.edu/~cs165/.Sp ring20/slides/16 -Hashing.pdf[1] 
+13
+Collision Resolution
+● Collision is unavoidable; so, we need a method to resolve it efficiently.
+● There are two groups of approaches:
+○ Open addressing : allowing the items to be located in another place if the collision happened.
+○ Separate chaining : allowing more than one item to be located at a place.
+Open Addressing
+4567
+Let’s find another place to put it.Separate chaining
+4567 7597Let’s put it there together with the 
+existing one(s).Example: According to our hash function, 4567 
+needs to be located at [22], but it is already 
+occupied 
+ .04 Hash Tables
+[1]https://www.cs.colostate.edu/~cs165/.Sp ring20/slides/16 -Hashing.pdf[1] 
+14
+Open Addressing
+● Linear probing : if the designated spot is occupied, try the right next 
+index , until it finds an available one.
+hi(x) = ( h0(x) + i) mod  table_size
+● Causes primary clustering :
+○ All keys mapped to [22], [23], [24], [25], … will suffer from 
+collision.
+○ If this cluster gets bigger, insertion / retrieval / deletion of keys 
+corresponding to this region will take O( N) instead of O(1).
+○ Gets significantly worse especially if consecutive numbers are 
+sequentially added. ( e.g., 22 → 23 → 24, …)
+04 Hash Tables
+[1]https://www.cs.colostate.edu/~cs165/.Sp ring20/slides/16 -Hashing.pdf[1] 
+15
+Open Addressing
+● Quadratic probing : if the designated spot is occupied, try the next set of 
+indices, quadratically increasing  with the number of trials.
+hi(x) = ( h0(x) + i2) mod  table_size
+● Solves primary clustering :
+○ Items collided at [23] suffers less from significant collisions 
+originally happened at [22].
+● Still suffers from secondary clustering :
+○ For items collided at the same index for the first time, they must 
+always follow the same trace.
+04 Hash Tables
+[1]https://www.cs.colostate.edu/~cs165/.Sp ring20/slides/16 -Hashing.pdf[1] 
+16
+Open Addressing
+● Double Hashing : using two different hash functions to reduce 
+collision probability.
+hi(x) = ( α(x) + i * β(x)) mod  table_size
+where α(x), β(x): some hash functions
+● Can avoid primary and secondary clustering, since we probe with 
+different steps depending on the input.h0(58)
+h0(14)
+h0(91)58
+91
+14h1(14)h1(91)04 Hash Tables
+17
+Separate Chaining
+● Each location of the hash table is allowed to have more than one item.
+○ A simplest example: a reference to a linked list.
+04 Hash Tables
+[1] https://med ium.com/@ramyjzh/d ata -struct ures -for-dummies -hash -tables -579ddd 1a4389[1] 
+18
+Separate Chaining
+● Actually, we can put any other data structure that support key -based search.
+04 Hash Tables
+[1] https://med ium.com/@ramyjzh/d ata -struct ures -for-dummies -hash -tables -579ddd 1a4389[1] 
+19
+Performance of a Hash Table
+● In general, having more items in the table reduces performance of a hash table.
+○ This is unique to hash tables, unlike most other data structures!
+● Let’s define load factor ( α) formally:  N/M
+○ N: the actual number of elements inserted
+○ M: the number of indices (table_size)
+● With open addressing , α is always between 0 and 1. Once it reaches to 1,
+we can’t add more data because there is no more available space.
+○ If α gets close to 1 , there are probably lots of collisions, meaning longer processing time .
+● With separate chaining , load factor can be > 1.
+○ In this case, load factor means the average chain length per index, which is equivalent to th e expected 
+number of linear traversal  to locate an item.
+○ Obviously, higher load factor means slower data processing.04 Hash Tables
+20
+Efficiency of Hashing
+When the load factor is low, hash table achieves ≈O(1), 
+regardless of the collision resolution method.04 Hash Tables
+[1]https://www.eecs.yorku.ca/course_archive/2003 -04/F/2011/2011A/DatStr_152_HashTab les.pdf[1] 
+21
+How to Decide the Table Size ( M)
+● If we know the data size ( N) to be inserted, we can set M = N/α, where α is the desired load factor.
+○ With small α, we focus more on speed.
+○ With large α, we care more about the memory space.
+○ It is known that α = 0.6~0.75  is a good balance between them.
+● What if we don’t know the data size?
+○ We have no choice but to dynamically adapt.
+○ Starting with some default size (say, 101), then ( roughly ) double it when the load factor becomes larger 
+than some threshold ( e.g., 0.6~0.75).04 Hash Tables
+22
+0 1 2 3 4
+valuesindex 5 6 7 8 9Resizing Example
+M=5N=0
+α=00 1 2 3 4
+valuesindex
+M=5N=1
+α=0.2M=5N=2
+α=0.4M=5N=3
+α=0.6M=5N=4
+α=0.8
+M=5N=5
+α=1.0M=5N=6
+α=1.2M=5N=7
+α=1.4M=5N=8
+α=1.6
+Resizing!
+Redistributing all 
+items!M=10N=8
+α=0.804 Hash Tables
+23
+Time Complexity of Resizing
+● Besides resizing, hash table achieves O(1) insertion, deletion, and retrieval.
+● Resizing is obviously not free 
+○ Resizing a hash table with N items requires O(N) time to redistribute all N items.
+● A good news 
+ : we don’t always resize since one resizing operation doubles the number of indices.
+○ The number of redistributing items while inserting N items:
+■ 1 + 2 + 4 + 8 + ….  + N = 2N - 1
+○ Overall, redistributing cost becomes O((2 N-1)/N) = O(1) on average !04 Hash Tables
+24
+25Implementations:
+Dictionary vs Set in Python03
+Python Dictionary
+>>> tel = {'jerry': 1086, 'jose': 8249}
+>>> tel[‘soo'] = 4127
+>>> tel
+{'jerry': 1086, 'jose': 8249, ＇soo': 5564}
+>>> tel['jose']
+8249
+>>> del tel['jerry']
+>>> tel['shawn'] = 8080
+>>> tel
+{'jose': 8249, ‘soo': 5564, 'shawn': 8080}
+>>> list(tel)
+['jose', ‘soo', 'shawn']
+>>> sorted(tel)
+['shawn', ‘soo', 'jose']
+>>> 'jinri' in tel
+False
+>>> 'jeongwoo' not in tel
+TrueInsertion
+Retrieval
+Deletion● Python internally provides the 
+hash table under the name of 
+Dictionary .
+○ Key -value pairs  are 
+stored in a hash table.
+○ Key are unique and 
+hashable.
+○ Insertion, retrieval, 
+deletion supported in 
+O(1) .04 Hash Tables
+26
+Python Set
+>>> a = set('abracadabra')
+>>> b = set('alacazam')
+>>> a
+{'a', 'r', 'b', 'c', 'd'}
+>>> a - b
+{'r', 'd', 'b'}
+>>> a | b
+{'a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'}
+>>> a & b
+{'a', 'c'}
+>>> a ^ b
+{'r', 'd', 'b', 'm', 'z', 'l'}Unique letters in a
+Set difference
+Set OR● If you don’t have an associated value , you 
+may use Python Set , instead of Dictionary .
+○ Only elements (keys) are stored in 
+the hash table.
+○ Elements are unique and hashable.
+○ Insertion, retrieval, deletion supported 
+in O(1) .Set AND
+Set XOR04 Hash Tables
+27
+28Applications of Hash Tables04
+Problem 1 - Palindrome
+04 Hash Tables
+29
+Problem 2 - Smallest Missing Integer
+● Given a list of integers, return the smallest positive integer which is not in that list.
+Examples:
+● [7, 2, 3, 5, 4, 1]  → 6
+● [-1, 5, 2, 3, 9] → 1
+● [17, 25, 4308, 1, 99] → 2# TODO(students): implement this!
+def smallest_missing_pos_int (self, list):
+  for each item in the list:
+    insert into a hash table (hastset)
+  for i = 1, 2, 3, ...:
+    if the hash table contains i: keep going
+    else: return i
+Note : think about how many times we should iterate here.04 Hash Tables
+30
+Problem 3 – Two Sum
+04 Hash Tables
+31
+www.upstage.ai © 2025 Upstage Co., Ltd.
+

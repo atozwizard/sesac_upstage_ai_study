@@ -1,0 +1,209 @@
+Lecture 1: 
+Basic of Algorithm & 
+Computational Complexity 
+김수경 
+이화여자대학교 인공지능융합전공 소속 © 2025 Upstage Co., Ltd. 
+2 저작권 안내 
+ 
+(주)업스테이지가 제공하는 모든 교육 콘텐츠의 지식재산권은 
+운영 주체인 (주)업스테이지 또는 해당 저작물의 적법한 관리자에게 귀속되어 있습니다. 
+콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할 수 없습니다. 
+유출될 경우 지식재산권 침해에 대한 책임을 부담할 수 있습니다. 
+유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. 
+● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위 
+● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위 
+● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위 
+● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위 
+● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위 
+● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수 있는 저작물을 작성, 공개하는 행위 
+● 제공된 데이터의 일부 혹은 전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위 
+3 강사 소개 
+김수경 
+現 이화여자대학교  인공지능융합전공  소속 조교수 
+관심 연구 분야
+-Explainable AI (XAI) 
+-NLP and Medical AI 
+-AI for Science 
+-RL based Optimization 
+
+4 Algorithms & Complexity 
+01
+5 What is Algorithm? 01 Basic of Algorithm & Computational Complexity 
+● Computational procedure  to solve a problem 
+[1] https://blog.naver.com/sumr2002/220359932991 
+[2] http://jokesandfun.de/infographic/the-cake-is-a-factﬂowchart/ 
+[1] [2] 
+6 Eﬃciency of an Algorithm 01 Basic of Algorithm & Computational Complexity 
+Do you like fast/eﬃcient computer program, or slow one? 
+Of course, we always expect our computers to do their jobs most eﬃciently !
+[1] https://www.vecteezy.com/photo/20621853-stressed-and-overworked-businessman 
+[2] https://stock.adobe.com/search?k=smashed+computer&asset_id=52541504 
+[3] https://www.istockphoto.com/kr/%EC%82%AC%EC%A7%84/%EC%97%AC%EC%9E%90-%EC%BB%B4%ED%93%A8%ED%84%B0-gm118986833-12293508 
+[2] [1] [3] 
+7 Computation Complexity 01 Basic of Algorithm & Computational Complexity 
+● Cost of algorithm = Sum of operation costs 
+● Model of computation speciﬁes 
+○ What operations  an algorithm is allowed to use 
+○ Cost (time, space) of each operation 
+● Execution costs 
+○ Time complexity of a program: how much time ?
+○ Space complexity of a program: how much memory ?
+8 Measuring Time Complexity 01 Basic of Algorithm & Computational Complexity 
+● Measure execution time  in seconds using a client program ( e.g., time module) 
+○ (+) Easy to measure 
+○ (+) Gives actual time 
+○ (-) Large amounts of time might be required. 
+○ (-) Results depend on lots of factors (machine, compiler, data…) 
+● Count the number of operations in terms of input size  N
+○ (+) Machine independent. 
+○ (+) Gives algorithm’s scalability. 
+○ (-) Tedious to compute… 
+○ (-) Does not give actual time. 
+● Fortunately, we care only about asymptotic behavior (with a very large N ‒ Big Data!) 
+9 Elementary School Algorithm 01 Basic of Algorithm & Computational Complexity 
+Example: Integer multiplication 
+● Input: two N-digit numbers x, y
+● Output: product of x and y
+● Primitive operations allowed: 
+○ Add 2 single-digit numbers 
+○ Multiply 2 single-digit numbers 
+5678 
+×1234 
+23
+13
+72
+22
+17034 
+11356 
+5678 
+7006652 
+10 Elementary School Algorithm 01 Basic of Algorithm & Computational Complexity 
+Example: Integer multiplication 
+● Input: two N-digit numbers x, y
+● Output: product of x and y
+● Primitive operations allowed: 
+○ Add 2 single-digit numbers 
+○ Multiply 2 single-digit numbers 5678 
+×1234 
+23
+13
+72
+22
+17034 
+11356 
+5678 
+7006652 N multiplications 
+(up to) N-1 additions For each row: 
+N rows 
+Total operations ≤ 3 N2In total, 
+N(2N-1 ) operations 
+(up to) N2 additions How many primitive operations used? 
+11 Software Engineer’s Example 01 Basic of Algorithm & Computational Complexity 
+def linear_search (list, value): 
+  for i in range(len(list)): 
+    if list[i] == value: 
+      return i 
+  return -1 
+def selection_sort (list): 
+  for i in range(len(list)): 
+    smallest = i 
+    for j in range(i+1, len(list)): 
+      if list[j] < list[smallest]: 
+        smallest = j 
+    list[i], list[smallest] = list[smallest], 
+list[i] Let’s denote len(list)  as N:
+Operation Count 
+== Operation Count 
+smallest = i 
+< 
+smallest = j 
+swap 1 to N N
+(N2 - N)/2 
+0 to (N2 - N)/2 
+N
+12 Big O Notation 
+02
+How to Characterize Time Complexity more formally  and simply ?
+13 Simpliﬁcation of Time Complexity 01 Basic of Algorithm & Computational Complexity 
+1. We care only about the worst-case  performance! 
+ ← because we do not know what input data we will get in advance. 
+Operation Count 
+smallest = i N
+< (N2 - N)/2 
+smallest = j 0 to (N2 - N)/2 
+swap N
+14 Simpliﬁcation of Time Complexity 01 Basic of Algorithm & Computational Complexity 
+2. Focus only on a single operation with the  highest order  of growth (=most expensive). 
+● There may be multiple good choices. Then, just choose any of them. 
+Operation Count 
+smallest = i N
+< (N2 - N)/2 
+smallest = j (N2 - N)/2 
+swap N
+15 Simpliﬁcation of Time Complexity 01 Basic of Algorithm & Computational Complexity 
+3. Remove lower order terms. 
+← They do not really matter, since the higher order one dominates. 
+Operation Count 
+smallest = i ignored 
+< ignored 
+smallest = j (N2 - N)/2 
+swap ignored 
+16 Simpliﬁcation of Time Complexity 01 Basic of Algorithm & Computational Complexity 
+4. Remove constants. 
+← We have already thrown away information at step 2. At this stage, constants are not meaningful. 
+Operation Count 
+smallest = i ignored 
+< ignored 
+smallest = j (N2)/2
+swap ignored Worst-case order of growth : N2
+17 Formal Deﬁnition 01 Basic of Algorithm & Computational Complexity 
+● If a function T (N) has its order of growth  less than or equal to f (N), we write this as T (N) ∈ O( f (N)), where O is 
+called Big-O notation. 
+● More mathematically, T (N) ∈ O( f (N)) means that there exists a positive constant c such that T (N)  ≤ c f (N) for all 
+values of N greater than some positive N0 (i.e., large N).
+
+18 Example 01 Basic of Algorithm & Computational Complexity 
+● T (N) = N 2 + 5N 5
+● T (N) ∈ O(N 5)?
+○ That is, is there a positive constant c such that N 2 + 5N 5  ≤ cN 5 for large N?
+○ Yes! 
+■ N 2 + 5N 5 < N 5 + 5N 5 = 6N 5
+■ With c = 6, it holds. 
+● T (N) ∈ O( N 7)?
+○ That is, is there a positive constant c such that N 2 + 5N 5  ≤ cN 7 for large N?
+○ Yes! 
+■ N 2 + 5N 5 < N 5 + 5N 5 = 6N 5 < 6N 7 
+■ With c = 6, it holds. 
+
+19 Example(cont’d) 01 Basic of Algorithm & Computational Complexity 
+● T (N) = N 2 + 5N 5
+● T (N) ∈ O(N 4)?
+○ That is, is there a positive constant c such that N 2 + 5N 5  ≤ cN 4 for large N?
+○ No 😕
+■ Even if we set very large c, still for N > c, 5N 5 > N 5 > cN 4.
+● We are usually interested in the tightest  order; in this example, O( N 5).
+
+20 Exercise(cont’d) 01 Basic of Algorithm & Computational Complexity 
+● T(N) = 2 N2 + 3N
+● T(N) = 1/ N + 100 
+● T(N) = 100cos( N) + 50 N2
+● T(N) = log N + 2N
+● T(N) = 2N + N2
+O(N2)
+O(1) 
+O(N2)
+O(N)
+O(2N)
+21 What is Important for Asymptotic Analysis? 01 Basic of Algorithm & Computational Complexity 
+● Compare the two algorithms below: 
+○ Algo1 requires 2N 2 operations, while 
+○ Algo2 requires 500 N operations. 
+○ Algo1 is faster than Algo2 for a small N, but becomes much slower for a very large N.
+○ What is important? How fast function is growing !
+● Order of growth: 
+500 N
+2N 2
+22 Asymptotic Analysis 01 Basic of Algorithm & Computational Complexity 
+
+www.upstage.ai © 2025 Upstage Co., Ltd. 
+

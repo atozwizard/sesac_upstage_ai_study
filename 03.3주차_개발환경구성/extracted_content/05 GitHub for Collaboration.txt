@@ -1,0 +1,248 @@
+SPEAKER
+서영학© 2025 Upstage Co., Ltd.
+2저작권안내
+(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은
+운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.
+콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. 
+유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. 
+유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. 
+● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위
+● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위
+● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위
+● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위
+● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위
+● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위
+● 제공된 데이터의 일부 혹은전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위위
+3오늘의목표: Git 에서Github 확장Git 
+목차
+Git 에서Github으로확장,Github이해
+github권한과github세팅
+git clone, push, pull 등git과github기본기능다루기
+fork, pull request,  코드리뷰, issue 등github기능다루기
+405 -01
+Git과Github 
+Github 계정
+Git repository 
+Git remote 
+Github push 
+5혼자개발 → 여럿이하는개발( 회사)Github
+개발자with 개발자
+하나의프로젝트를같이개발하는순간어떤문제가생길까? 
+다른사람의코드를어떻게가져올까?
+•다른사람이만든코드를어떻게가져올까?
+•내가만든코드를어떻게공유할까?
+6개발자끼리코드를공유할중앙저장소(온라인) 필요Github
+Github 이란?
+로컬Git이연결되는온라인저장소
+코드협업을위한 플랫폼(저장소에서기능이추가됨)
+Git 저장소 를온라인에서관리
+GitHub는세계최대 오픈소스 플랫폼
+백업· 공유· 리뷰· 자동화제공
+Git = 도구, GitHub = 서비스
+팀개발의중심
+오픈소스: 공개된협업프로젝트
+
+7Git != Github Github
+Git과Github 다르다, 둘간관계
+Git = 버전관리도구(로컬)
+GitHub = Git 저장소를호스팅하는온라인서비스
+Git 없이는GitHub를사용할수없음
+GitHub는협업· 리뷰· 공유· 자동화제공
+Github 말고도 GitLab, Bitbucket 등다른서비스도존재
+
+8Github 에서사용하는용어들Github
+주요용어
+✔remote = 원격저장소 주소
+•"어디로보낼까? 어디에서 가져올까?"를 remote를통해판단
+✔origin = 기본remote 이름
+✔(Code) Repository(repo): 코드저장소= Github
+✔Push / Pull: 업로드 / 다운로드
+✔Fork: 다른저장소 내계정으로 복사(권한문제해결)
+upstream = 원본저장소remote 이름
+✔Pull Request(PR): 변경요청
+✔Issue: 작업/버그 기록
+✔Code Review: 변경검토과정
+
+9Github 에서사용하는용어들Github
+Git -Github 연결하는 용어
+✔저장소 가져오기 → clone
+GitHub 프로젝트를 내컴퓨터로 내려받는 명령
+✔원격주소등록→ remote add
+GitHub와연결하기 위해내Git에게
+"이주소가 GitHub 저장소야" 라고지정
+✔GitHub 에서프로젝트 복사→ fork
+clone이“내컴퓨터로 복사”라면, fork는GitHub 계정으로 복사
+
+10Push / PullGithub
+원격저장소와 코드상태를 맞추는 작업
+push = 내컴퓨터→ GitHub로코드를올린다
+pull = GitHub → 내컴퓨터로코드를받아온다
+push는업로드 , pull은다운로드+ merge 기능을동시에포함.
+push 전에pull 을통해원격저장소와동기화를하고진행해야한다
+실제현업/ 협업에서가장많이사용하는기능
+11(실습) Github 계정생성하고저장소에내코드올리기Github
+실습순서
+github 사이트에서
+1. Github 가입
+2. Repository 생성
+내프로젝트에서
+3. git remote 설정
+4. 코드push << 인증에러
+5. api key 발급및로컬에등록
+6. 코드push (main 브랜치)
+7. branch push 실습
+8. clone 으로올린프로젝트 코드받아보기
+12(실습) Github 계정생성하고저장소에내코드올리기Github
+실습진행
+github 사이트에서
+1. Github 가입 github.com →signup 
+2. Repository 생성
+GitHub에로그인→ New Repository 클릭→ 이름입력후Create
+내프로젝트(llm agent)에서
+3. git remote 설정
+git remote add origingithub.com/{username}/fake-llm-agent
+git remote -v # remote 확인
+4. git push -u origin
+
+13(실습)Github사용을위한key 발급받기Github
+Github을 쓰기위해key 발급을해야한다
+https://github.com/settings/tokens
+note: 토큰이름등록
+expiration: 30일
+select scop: repo 선택
+맨아래generation token
+
+14Github 사용을위한key 저장하기Github
+Github을 쓰기위해key 저장후사용
+윈도우
+git config --global credential.helpermanager-core
+mac
+git config --global credential.helperosxkeychain
+15(실습) Github 계정생성하고저장소에내코드올리기Github
+실습진행
+6. 코드push(main 브랜치)
+git push -u origin
+7. branch push 실습
+git checkout -b feature/login
+git push -u origin feature/login
+8. clone 으로올린프로젝트코드받아보기
+git clone github.com/{username}/fake-llm-agent
+1605 -02
+repository 권한과 fork
+Pull Request 
+Review
+오픈소스기여
+17남의Repository(오픈소스)를수정하고싶어.. 하지만Github
+Push 가거절되는이유= 내저장소가 아니니까
+GitHub의대부분의저장소는내가직접push할수없다. (권한이없기때문)
+권한(permission) 때문.  upstream(원본저장소)은관리자(Maintainer) 외에는push 허용X
+그래서내버전으로개발을하고, 개발내용을공유하려면
+-권한을요청해서받거나
+-저장소를내계정으로복사(fork) 해야한다
+아무나직접push하면프로젝트전체가피해를볼수있다.
+→ PR을통해요청에대한 논의/검증단계를거쳐승인후merge 하는것이안전하다
+18남의Repository(오픈소스)를수정하고싶어.. 하지만Github
+https://opensource.guide/leadership-and-governance/오픈소스의 코드를 관리하는 사람들
+-Contributor: PR로기여(push 권한없음)
+-Committer: 특정브랜치에push 가능
+-Maintainer: 프로젝트관리및merge 권한
+
+19내수정을오픈소스에반영하고싶어Github
+https://opensource.guide/leadership-and-governance/오픈소스의 코드를 관리하는 사람들
+1. 나도오픈소스관리권한을받는다
+2. 내가오픈소스를만든다
+--현실적으로어렵다
+3. 내가만든변경사항을보여주고, 의견을나누고, 승인되면, 상대가가져가반영한다
+20Pull Request (PR)Github
+원본프로젝트에 내가만든기능을 추가하고 싶어
+pull (당겨가는걸) request(요청)
+내가만든거너가당겨가서니프로젝트에넣을래? 
+코드리뷰과정을통해PR에대해논의(리뷰)
+리뷰어가추가로고쳐달라고요청할수있다. or 반려할수있다.
+프로젝트담당자(메인테이너)의승인(Approve) 이후merge →코드에반영이된다
+→ 배포후제품에반영
+21(실습) githubpull requestGithub
+실습순서
+강사repo
+1. 예제프로젝트github.com/inspire12/fake-llm-agent fork 
+수강생repo
+2. fork 로받은프로젝트github.com/ {자신의깃헙주소} /fake-llm-agent  확인
+3. fork 로받은프로젝트 clone
+Trouble shooting)
+-이미clone 받은프로젝트가있으니 backup 폴더 를만들고
+-backup 폴더에서clone 하자
+22(실습) github pull requestGithub
+실습순서
+수강생repo
+4. fork 코드에서수정작업(main 브랜치)
+-아이디로폴더를하나만들고그안에자기소개.md  
+-자기소개/ 이력서등을간단하게업로드
+5. add, commit 후푸시
+commit 명ex)
+docs: {username} 자기소개입니다
+6 push 후내코드가fork 된내repo 에반영되었는지 확인
+23(실습) github pull requestGithub
+실습순서
+7. pull request 요청
+-PR 이요청되면자연스럽게요청을받는쪽에PR 이생긴다
+강사repo
+8. 강사와코드리뷰후코드수정
+-강사와간단한인사말진행후
+9. merge 후코드적용확인
+24(실습) github pull request Github
+실습진행
+fork 를한새프로젝트
+받아서진행
+
+25(실습) github pull request Github
+실습진행
+push 는main branch 
+
+26(실습) github pull request Github
+실습진행
+PR
+
+27Code ReviewGithub
+프로젝트에 반영전충분한 논의/검증이 필요하다
+•다른개발자가작성한코드를검토하는과정
+•코드품질향상목적
+•버그예방
+•일관성유지
+•팀커뮤니케이션강화
+28(실습) pull request 내용기반으로Code Review 하기Github
+실습진행
+PR 날리기
+
+29Code ReviewGithub
+Single Comment (단일코멘트)
+•PR의특정코드줄이나특정라인에남기는 임시메모/ 가벼운피드백 .
+•Review로제출되지않음
+•PR 작성자에게요청사항으로잡히지않음
+•승인/변경요청같은상태변화없음
+•해당댓글은리뷰프로세스를마무리하지않아도됨
+
+30Code ReviewGithub
+Code Review (Review)
+•여러코멘트를묶어서하나의"리뷰"로제출됨
+•Review 버튼을눌러야함
+•Reviewer가어떤조치를요청하는지명확히전달됨
+•PR에"Approved / Request Changes / Comment" 상태가기록됨
+•팀프로세스에서공식적인승인절차로사용
+ Comment: 의견남기고끝
+Approve: "이PR 합쳐도됩니다"
+Request Changes: "이대로는Merge 불가, 수정필요"
+31Code Review 후변경사항반영하기Github
+코드리뷰로 수정사항을받은후
+PR 이올라간상태에서해당브랜치에
+코드를수정해커밋이쌓이면PR에도자동으로쌓인다
+
+32총정리Github
+Github을통한협업
+github개념 익히기
+-저장소, 권한이슈
+githubrepo 코드공유/ 사용하기
+-clone, push, pull
+github실제 협업해보기
+-fork, pull request, Code Review
+www.upstage.ai © 2025 Upstage Co., Ltd.
+

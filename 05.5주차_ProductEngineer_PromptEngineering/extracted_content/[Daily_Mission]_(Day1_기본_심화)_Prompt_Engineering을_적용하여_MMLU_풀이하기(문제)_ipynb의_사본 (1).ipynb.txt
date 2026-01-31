@@ -1,0 +1,870 @@
+# [Daily Mission] Day 1(기본) — MMLU 데이터 활용하기
+
+## 미션 소개
+
+이번 Daily Mission에서는 **LLM 성능 평가의 표준 벤치마크 중 하나인 MMLU 데이터셋**을 활용해 **SOLAR-mini 모델의 Baseline 성능을 직접 측정하는 평가 파이프라인**을 만들어봅니다.
+
+이를 통해 동일한 MMLU 평가 파이프라인을 기준으로 **모델을 어떻게 평가해야 하는지**를 이해하는 것이 목표입니다.
+
+일반적으로 LLM의 성능은 “잘 대답하는 것 같다”라는 감각적인 평가에 의존하기 쉽습니다. 하지만 실제 연구나 실무에서는 정량적인 기준(벤치마크)을 통해 모델을 비교하고 개선합니다.
+
+이번 미션의 목표는 **점수 자체가 아니라**,  
+> 👉 *“LLM을 어떻게 평가하는가?”*  
+> 👉 *“평가를 코드로 어떻게 구현하는가?”*  
+를 이해하는 것입니다.
+
+---
+
+## 이번 미션에서 다룰 내용
+
+이번 미션에서는 다음과 같은 흐름을 따라갑니다.
+
+1. **MMLU란 무엇인지** 이해하고, 왜 널리 사용되는 벤치마크인지 살펴봅니다.
+2. Hugging Face `datasets` 라이브러리를 사용해 **실제 MMLU 데이터를 로드**합니다.
+3. SOLAR-mini API를 이용해서 문제를 풀 수 있도록 **Baseline 프롬프트를 설계**합니다.
+4. 모델의 출력 결과에서 **정답을 추출하고 채점**하는 평가 로직을 구현합니다.
+5. 이를 통해 Baseline 정확도(Accuracy)를 계산하고 결과를 비교합니다.
+
+---
+
+## 왜 Baseline이 중요한가?
+
+프롬프트 엔지니어링이나 기법 개선을 하기 전에 반드시 필요한 것이 있습니다. 바로 “아무것도 안 했을 때의 기준 성능(Baseline)”입니다.
+
+---
+
+## 미션을 마치고 나면
+
+이 미션을 완료하면 다음을 할 수 있게 됩니다.
+
+- ✔️ MMLU 데이터 구조를 이해하고 다룰 수 있다.
+- ✔️ API 기반 모델을 활용할 수 있다.
+- ✔️ 평가 관련 Framework를 익힐 수 있다.  
+- ✔️ “프롬프트가 성능에 영향을 준다”는 말을 **숫자로 확인**할 수 있다  
+
+
+이제 본격적으로 MMLU 데이터를 살펴보며 미션을 시작해봅시다 🚀
+
+
+Refer: Hugging Face `cais/mmlu` Dataset Card / Upstage SOLAR Model Card  
+- MMLU: https://huggingface.co/datasets/cais/mmlu  
+- SOLAR-Mini: https://www.upstage.ai/blog/en/introducing-solar-mini-compact-yet-powerful
+
+
+# MMLU 데이터셋 개요 설명
+## 1️⃣ MMLU란 무엇인가?
+
+MMLU (Massive Multitask Language Understanding)는 대규모 언어 모델(LLM)이 **얼마나 폭넓은 지식과 문제 해결 능력을 갖추고 있는지**를 평가하기 위해 만들어진 대표적인 **객관식 기반 벤치마크 데이터셋**입니다.
+
+MMLU는 다음과 같은 특징을 가집니다.
+
+- 다양한 분야(수학, 과학, 역사, 법률, 의학 등)의 문제 포함
+- 각 문제는 **객관식(보통 4지선다)** 형태
+- 단순 암기뿐 아니라 **지식 이해 + 추론 능력**을 함께 요구
+
+즉, MMLU는  
+> “모델이 특정 한 분야만 잘하는가?”가 아니라  
+> “전반적으로 얼마나 똑똑한가?”를 평가하기 위한 벤치마크입니다.
+---
+
+## 2️⃣ 왜 MMLU를 사용하는가?
+
+LLM을 평가할 때 가장 어려운 점은 “무엇을 기준으로 잘한다고 말할 것인가?”입니다.
+
+MMLU가 널리 사용되는 이유는 다음과 같습니다.
+
+- ✔️ 여러 분야를 아우르는 **종합적인 평가**
+- ✔️ 정답이 명확한 객관식 문제 → **정량적 비교 가능**
+- ✔️ 다양한 모델을 동일한 기준으로 비교 가능
+- ✔️ 실제 연구와 실무에서 널리 사용되는 표준 벤치마크
+
+그래서 MMLU는:
+- 논문
+- Open LLM Leaderboard
+- 모델 성능 비교 리포트
+
+등에서 **기본 평가 지표**로 자주 사용됩니다.
+
+## MMLU에 대한 전처리 (EDA) 진행
+
+### MMLU 데이터 로드
+
+### (Todo1) MMLU의 분야(Subject) 구성
+
+MMLU는 단일 능력을 평가하는 벤치마크가 아니라, **다양한 학문·지식 영역에 걸친 문제들**로 구성되어 있습니다.
+
+대략적으로 다음과 같은 분야들이 포함됩니다.
+
+- 📐 수학 / 논리  
+  - abstract_algebra, linear_algebra, probability 등
+- 🧪 과학  
+  - physics, chemistry, biology
+- 🧠 의학 / 생명과학  
+  - clinical_knowledge, medical_genetics
+- ⚖️ 법학 / 윤리  
+  - professional_law, moral_scenarios
+- 💻 컴퓨터 과학  
+  - computer_security, machine_learning
+- 🌍 인문 / 사회  
+  - world_history, philosophy, sociology
+
+이처럼 MMLU는 **LLM의 전반적인 지식 폭과 추론 능력**을 평가하는 데 초점이 맞춰진 벤치마크입니다.
+
+
+from datasets import get_dataset_config_names
+
+# MMLU에 포함된 모든 subject 목록 가져오기
+subjects = get_dataset_config_names("cais/mmlu")
+
+print(f"총 subject 개수: {len(subjects)}\n")
+print("Subject 목록:") # 여러 subject로 바꿔가면서 실험 평가해보기
+print(subjects)
+
+# TODO 1: 위 Subject 목록을 참고해서 사용할 subject 하나를 지정하시오
+# 힌트: MMLU의 subject 이름은 모두 소문자이며, 공백 대신 '_'를 사용한다
+# 예시: "philosophy", "abstract_algebra", "anatomy" ...
+SUBJECT = "astronomy"
+
+from datasets import load_dataset
+
+# 예시: 하나의 subject만 사용
+dataset = load_dataset("cais/mmlu", SUBJECT)
+
+
+# 각 split의 데이터 개수 확인
+for split in dataset:
+    print(f"{split}: {len(dataset[split])}")
+
+
+### MMLU 샘플의 주요 필드
+
+하나의 MMLU 샘플은 다음과 같은 정보를 포함합니다.
+
+- **question**: 문제 본문
+- **choices**: 선택지 목록 (보통 4개)
+- **answer**: 정답 인덱스 (0부터 시작)
+
+### (Todo2, Todo3) 구조 살펴보기
+
+# 하나의 샘플 출력
+sample = dataset["test"][100]
+sample
+
+
+# 선택지 개수 분포 확인
+
+# TODO 2: test split에 포함된 각 sample에 대해 선택지 개수를 구하시오
+# 힌트: for-loop 또는 list comprehension을 사용할 수 있다
+# choice_lengths = 0
+# for choice in (dataset["test"]):
+#     choice_lengths += (len(choice["choices"]))
+# choice_lengths
+
+choice_lengths = [] # 0이 아니라 빈 리스트로 시작
+for choice in dataset["test"]:
+    choice_lengths.append(len(choice["choices"])) # 더하는 대신 추가(append)
+
+# test에 대해서 특정 선택지로 정답이 치우쳐 있지 않은지 판단
+# 치우쳐져 있으면 올바르게 평가하기 어려움
+
+from collections import Counter
+
+"""
+TODO 3: Counter를 사용해 정답(선택지) 분포를 확인하시오.
+
+- dataset["test"]의 각 sample은 딕셔너리이며, "answer" 키에 정답이 들어있다.
+- MMLU의 "answer"는 보통 0부터 시작하는 index(0=A, 1=B, 2=C, 3=D)이다.
+- 먼저 모든 sample에서 answer만 모아 리스트로 만든 뒤, Counter로 빈도수를 세면 된다.
+"""
+
+# TODO 3-1: test split에서 각 sample의 정답 index를 모아 리스트를 만드시오
+# 힌트: list comprehension 사용 (sample["answer"])
+answers = []
+for sample in dataset["test"]:
+    answers.append(sample["answer"])
+
+# TODO 3-2: Counter로 정답 분포를 계산하시오
+answer_dist = Counter(answers)
+
+answer_dist
+
+
+
+즉, 정답은 문자열이 아니라 `choices` 리스트의 **인덱스 번호**로 주어집니다.
+
+👉 평가를 위해서는 이 인덱스를 다시 **A/B/C/D 형태로 변환**할 필요가 있습니다.
+
+
+# sample이 들어왔을 때 기본적인 prompt로 만들기 위한 함수 (basic formatting)
+
+def format_mmlu_prompt(sample):
+    question = sample["question"]
+    choices = sample["choices"]
+
+    prompt = question + "\n\n"
+    for i, choice in enumerate(choices):
+        prompt += f"{chr(ord('A') + i)}. {choice}\n"
+    prompt += "\nAnswer:"
+
+    return prompt
+
+print(format_mmlu_prompt(dataset["test"][0]))
+
+
+### EDA를 통해 확인한 평가에 필요한 요소
+
+MMLU 평가를 위해 다음 요소들이 필요함을 확인했습니다.
+
+1. 문제 본문 (`question`)
+2. 선택지 목록 (`choices`)
+3. 정답 인덱스 (`answer`)
+4. 정답을 문자(A/B/C/D)로 변환하는 로직
+5. 모델 입력용 프롬프트 템플릿
+
+이제 이 정보를 바탕으로:
+- 모델을 호출하고
+- 출력을 받아
+- 정답을 추출하고
+- 정확도를 계산하는  
+**Baseline 평가 파이프라인**을 구현할 수 있습니다.
+
+
+# (Use own key) Solar 모델 소개
+
+## Solar 모델 소개 (API 기반 사용)
+
+이번 Daily Mission에서는 **Upstage의 Solar 모델을 API 방식으로만 사용**합니다. 즉, 모델을 Hugging Face에서 직접 로드하거나 로컬 환경에서 실행하지 않고, **API Key를 통해 원격으로 호출**하는 방식으로 진행합니다.
+
+---
+
+### Solar 모델이란?
+
+**Solar**는 Upstage에서 개발한 대규모 언어 모델(LLM)로, 다양한 언어 이해 및 추론 작업에서 우수한 성능을 보이는 모델입니다.
+
+특히 Solar 모델은:
+- 질문에 대해 비교적 **명확하고 일관된 형식의 응답**을 생성하며
+- 실제 서비스 환경에서 바로 활용할 수 있도록 **API 형태로 제공**됩니다.
+
+import os
+os.environ["UPSTAGE_API_KEY"] = "up_w8c0bYvkD7x9OUmUjJrzPlRv8GlLV"
+
+import time
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ["UPSTAGE_API_KEY"],
+    base_url="https://api.upstage.ai/v1"
+)
+
+
+def call_model_api(prompt, model="solar-mini-250422"):
+    """
+    API Key를 사용해 단일 프롬프트에 대한 모델 응답을 반환
+    """
+    start_time = time.time()
+
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        stream=False,
+        temperature=0.0,
+        max_tokens=256 # prompt 설계에 따라 max token 수를 줄여도 됨
+    )
+
+    elapsed_time = time.time() - start_time
+
+    output_text = response.choices[0].message.content
+
+    return output_text, elapsed_time
+
+
+# 간단한 테스트 프롬프트
+prompt = "What is the capital of 한국? Answer with a single word to 한국어."
+
+# API 호출
+output_text, elapsed_time = call_model_api(prompt)
+
+print("=== API Raw Output ===")
+print(output_text)
+
+# Prompt란?
+
+## (Todo4) Baseline Prompt 설계
+
+# sample이 들어왔을 때 기본적인 prompt로 만들기 위한 함수 (basic formatting)
+
+def format_mmlu_prompt_basic(sample):
+    question = sample["question"]
+    choices = sample["choices"]
+
+    prompt = question + "\n\n"
+    for i, choice in enumerate(choices):
+        prompt += f"{chr(ord('A') + i)}. {choice}\n"
+
+    return prompt
+
+print(format_mmlu_prompt_basic(dataset["test"][0]))
+
+
+# 구체적인 지시사항 작성
+
+def build_instruction():
+    """
+    TODO 4:
+    이 함수는 LLM에게 문제를 어떻게 풀고, 어떤 형식으로 답을 출력해야 하는지
+    명확하게 지시하는 instruction 문자열을 생성한다.
+
+    중요:
+    - 이후 단계에서 모델 출력에서 정답을 자동으로 추출해야 한다.
+    - 따라서 출력 형식은 반드시 "일관되고 단순"해야 한다.
+    """
+
+    return (
+        # TODO 4-1: 객관식 문제임을 명시하시오
+        "객관식 문제.\n"
+
+        # TODO 4-2: 선택지는 A, B, C, D 중 하나임을 명확히 하시오
+        "선택지는 A,B,C,D 네가지이고 넷 중 반드시 하나를 고르시오\n"
+
+        # TODO 4-3: 출력 형식에 대한 제약을 추가하시오
+
+        "일관되고 단순하게 출력\n"
+    )
+
+
+# system에 대한 role을 기재해서 페르소나 부여
+
+def build_persona():
+    return (
+        # TODO 4-4: 모델을 전문가로 설정하는 문장을 작성하시오
+        # 힌트: expert, knowledge, academic domains 와 같은 표현을 사용할 수 있다
+        "당신은 천문학박사아자 10년차 실무전문가.\n\n"
+    )
+
+# chain of thought을 위한 instruction 작성
+
+def build_cot_instruction():
+  """
+  TODO:
+  이 함수는 모델이 바로 답을 내기 전에 '단계적으로 사고'하도록 유도하는 문장을 만든다.
+
+  - CoT 유도는 어려운 문제에서 정답률을 올리는 데 도움이 될 수 있다.
+  - 단, 최종 출력은 평가를 위해 '정해진 형식'이어야 한다는 점에 주의하자.
+  """
+
+  return (
+      # TODO 4-5: 단계적 추론을 유도하는 문장을 작성하시오
+      "문제를 보고 단계적으로 답을 찾아가 최종 결론을 도출하시오. 모든 추론이 끝나면, 반드시 마지막 줄에 정답 알파벳으로만 출력하세요.\n\n"
+  )
+
+# 예시로 사용할 데이터
+
+dataset["dev"][1]
+
+idx = dataset["dev"][0]["answer"]
+letter = chr(ord('A') + idx)
+
+# 예시 설정
+
+def build_icl_examples():
+    return (
+        "Example:\n"
+        f"Question: {dataset["dev"][0]["question"]}\n"
+        f"A. {dataset["dev"][0]["choices"][0]}\n"
+        f"B. {dataset["dev"][0]["choices"][1]}\n"
+        f"C. {dataset["dev"][0]["choices"][2]}\n"
+        f"D. {dataset["dev"][0]["choices"][3]}\n"
+        f"Answer: {letter}\n\n"
+    )
+
+def format_mmlu_prompt_custom(
+    sample,
+    use_instruction=False,
+    use_persona=False,
+    use_icl=False,
+    use_cot=False
+):
+    prompt = ""
+
+    if use_persona:
+        prompt += build_persona()
+
+    if use_icl:
+        prompt += build_icl_examples()
+
+    if use_cot:
+        prompt += build_cot_instruction()
+
+    if use_instruction:
+      prompt += build_instruction()
+
+    # 문제 본문
+    prompt += sample["question"] + "\n\n"
+    for i, choice in enumerate(sample["choices"]):
+        prompt += f"{chr(ord('A') + i)}. {choice}\n"
+
+    prompt += "\nAnswer:"
+
+    return prompt
+
+
+sample = dataset["test"][0]
+
+print("=== Baseline ===")
+print(format_mmlu_prompt_basic(sample))
+
+
+
+print("\n=== All Techniques ===")
+print(format_mmlu_prompt_custom(sample, use_instruction=True, use_persona=True, use_icl=True, use_cot=True))
+
+# 모델 평가 진행
+
+## 모델을 어떻게 평가할 수 있을까?
+
+지금까지 우리는:
+- MMLU 데이터 구조를 살펴보고
+- 모델을 호출하는 방법을 익히고
+- 프롬프트를 설계해보았습니다.
+
+이제 남은 질문은 하나입니다.
+
+> **“이 모델이 잘하고 있는지, 어떻게 판단할 수 있을까?”**
+
+---
+### 1️⃣ LLM 평가는 왜 어려운가?
+
+일반적인 프로그램과 달리, LLM의 출력은 항상 동일하지 않습니다.
+
+- 같은 질문에도 표현이 달라질 수 있고
+- 정답을 알고 있어도 장황한 설명을 할 수 있으며
+- 때로는 애매한 답을 내놓기도 합니다.
+
+그래서 LLM 평가는 **“출력을 사람이 읽고 판단”하는 방식만으로는 한계**가 있습니다.
+---
+### 2️⃣ MMLU에서의 평가 기준
+
+MMLU는 이 문제를 **객관식 문제**로 해결합니다.
+
+- 각 문제에는 명확한 정답이 있고
+- 모델은 선택지(A, B, C, D) 중 하나를 고르면 됩니다.
+- 평가 지표는 매우 단순합니다.
+
+> **정확도(Accuracy) = 맞힌 문제 수 / 전체 문제 수**
+
+즉, 평가의 핵심은:
+> **“모델이 선택한 답과 정답이 같은가?”**
+---
+### 3️⃣ 평가 파이프라인의 핵심 단계
+
+MMLU 기반 평가 파이프라인은 보통 다음 단계를 거칩니다.
+
+1. 문제 + 선택지를 프롬프트로 구성
+2. 모델에 프롬프트 전달 → 출력 생성
+3. 출력에서 **정답(A/B/C/D) 추출**
+4. 정답과 비교
+5. 정확도 계산
+
+이 중 가장 중요한 단계는 정답 추출(Answer Extraction)입니다.
+
+---
+### 4️⃣ 왜 정답 추출이 중요한가?
+
+모델은 항상 깔끔하게 `A`만 출력하지 않습니다.
+
+예를 들어:
+- `The correct answer is B.`
+- `I think the answer is (C).`
+- `After reasoning, the answer is D.`
+
+따라서 평가를 위해서는 모델의 자연어 출력을 기계적으로 비교 가능한 형태(A/B/C/D)로 변환해야 합니다.
+
+
+## 그렇다면 어떻게 MMLU에 대한 평가를 진행하는지
+
+### (Todo5) extract 함수 작성하기
+
+
+import re
+
+def extract_answer_from_output(output_text, choices=("A", "B", "C", "D")):
+    if output_text is None:
+        return None
+
+    # 소문자로 올 경우를 대비해 대문자로 통일하고 양끝 공백 제거
+    output_text = output_text.strip().upper()
+
+    # TODO 5-1: 정규표현식으로 A/B/C/D 단독 문자 찾기
+    # 패턴 설명: \b는 단어의 경계입니다. 즉, "APPLE"의 A가 아니라 "A"만 따로 있을 때 찾습니다.
+    # [A-D]는 A, B, C, D 중 하나를 의미합니다.
+    pattern = r"\b([A-D])\b"
+    matches = re.findall(pattern, output_text)
+
+    if matches:
+        # 가장 먼저 발견된 선택지를 반환 (또는 마지막 것을 반환하도록 matches[-1] 사용 가능)
+        return matches[0]
+
+    # TODO 5-2: 추가적인 규칙 (Answer: C 같은 구체적 패턴 처리)
+    # 모델이 "The answer is B"라고 할 때 'answer'라는 단어 바로 뒤의 글자를 찾는 규칙
+    match = re.search(r"ANSWER\s*:\s*([A-D])", output_text)
+    if match:
+        return match.group(1)
+
+    # 모든 규칙 실패 시 None 반환
+    return None
+
+test_outputs = [
+    "A",
+    "The correct answer is B.",
+    "After reasoning, the answer is C.",
+    "I think it is D",
+    "I'm not sure.",
+]
+
+for text in test_outputs:
+    print(f"Output: {text}")
+    print("Extracted:", extract_answer_from_output(text))
+    print("-" * 30)
+
+
+### 채점 함수 구현
+
+def index_to_answer_letter(index):
+    """
+    MMLU 정답 인덱스(0,1,2,3)를 문자(A,B,C,D)로 변환
+    """
+    return chr(ord("A") + index)
+
+def evaluate_predictions(pred_outputs, gold_answers, verbose=True):
+    """
+    모델 출력과 정답을 비교해 정확도(Accuracy)를 계산하는 함수
+
+    Parameters
+    ----------
+    pred_outputs : list[str]
+        모델이 생성한 원본 출력 문자열 리스트
+    gold_answers : list[int]
+        정답 인덱스 리스트 (0,1,2,3)
+    verbose : bool
+        True일 경우 각 샘플에 대한 상세 정보 출력
+
+    Returns
+    -------
+    dict
+        {
+            "accuracy": float,
+            "total": int,
+            "correct": int,
+            "details": list[dict]
+        }
+    """
+
+    total = len(pred_outputs)
+    correct = 0
+    details = []
+
+    for output_text, gold_idx in zip(pred_outputs, gold_answers):
+        extracted = extract_answer_from_output(output_text)
+        gold_letter = index_to_answer_letter(gold_idx)
+
+        is_correct = (extracted == gold_letter)
+        if is_correct:
+            correct += 1
+
+        details.append({
+            "model_output": output_text,
+            "extracted_answer": extracted,
+            "gold_answer": gold_letter,
+            "is_correct": is_correct
+        })
+
+        if verbose:
+            print("Model output:", output_text)
+            print("Extracted answer:", extracted)
+            print("Gold answer:", gold_letter)
+            print("Correct:", is_correct)
+            print("-" * 50)
+
+    accuracy = correct / total if total > 0 else 0.0
+
+    return {
+        "accuracy": accuracy,
+        "total": total,
+        "correct": correct,
+        "details": details
+    }
+
+# 예시 테스트
+pred_outputs = [
+    "The correct answer is B.",
+    "A",
+    "I think it is C.",
+    "Not sure."
+]
+
+gold_answers = [1, 0, 2, 3]  # B, A, C, D
+
+result = evaluate_predictions(pred_outputs, gold_answers, verbose=True)
+
+print("Final Accuracy:", result["accuracy"]* 100)
+
+
+# 채점 진행 및 결과 확인
+- 모델의 실제 response 확인
+- 추출된 정답이 무엇인지
+- 정답률 확인
+
+# 평가할 샘플 수
+NUM_SAMPLES = 20
+
+# MMLU test 데이터 선택
+test_samples = dataset["test"].select(range(NUM_SAMPLES))
+
+## (1) Basic Prompt
+
+from tqdm import tqdm
+
+# 결과 저장용 리스트
+model_outputs = []
+extracted_preds = []
+gold_answers = []
+api_times = []
+
+# 평가 루프 (API 사용)
+for sample in tqdm(test_samples):
+    # 1. 프롬프트 생성
+    prompt = format_mmlu_prompt_basic(sample) # 기본 프롬프트 사용
+
+    # 2. API 호출 (추론)
+    output_text, elapsed_time = call_model_api(prompt)
+    api_times.append(elapsed_time)
+
+    model_outputs.append(output_text)
+
+    # 3. 정답 추출
+    pred = extract_answer_from_output(output_text)
+    extracted_preds.append(pred)
+
+    # 4. golden answer 저장
+    gold_answers.append(sample["answer"])
+
+# ============================================
+# 결과 평가
+# ============================================
+
+result = evaluate_predictions(
+    pred_outputs=model_outputs,
+    gold_answers=gold_answers,
+    verbose=True
+)
+
+print("\n================ Evaluation Result (API) ================")
+print(f"Total samples: {result['total']}")
+print(f"Correct: {result['correct']}")
+print(f"Accuracy: {result['accuracy'] * 100:.1f}")
+
+
+## (2) Custom Prompt
+
+from tqdm import tqdm
+
+# 결과 저장용 리스트
+model_outputs = []
+extracted_preds = []
+gold_answers = []
+api_times = []
+
+# 평가 루프 (API 사용)
+for sample in tqdm(test_samples):
+    # 1. 프롬프트 생성
+    prompt = format_mmlu_prompt_custom(sample, use_instruction=True, use_persona=True, use_icl=True)
+    # 2. API 호출 (추론)
+    output_text, elapsed_time = call_model_api(prompt)
+    api_times.append(elapsed_time)
+
+    model_outputs.append(output_text)
+
+    # 3. 정답 추출
+    pred = extract_answer_from_output(output_text)
+    extracted_preds.append(pred)
+
+    # 4. golden answer 저장
+    gold_answers.append(sample["answer"])
+
+# ============================================
+# 결과 평가
+# ============================================
+
+result = evaluate_predictions(
+    pred_outputs=model_outputs,
+    gold_answers=gold_answers,
+    verbose=True
+)
+
+print("\n================ Evaluation Result (API) ================")
+print(f"Total samples: {result['total']}")
+print(f"Correct: {result['correct']}")
+print(f"Accuracy: {result['accuracy'] * 100:.1f}")
+
+
+# 🔥[Daily Mission] Day 1(심화) — MMLU에 가장 최적의 Few-shot 프롬프트 찾기
+
+
+## 이번 미션에서는 다음 요소들을 바꿔가며 실험합니다.
+
+### 1. Shot 수
+- Zero-shot: 예시 없음
+- Few-shot: 예시 2개 이상
+
+### 2. 예시 선택 방식
+- 동일한 subject의 문제
+- 랜덤으로 선택한 문제
+- 상대적으로 쉬운 문제 / 어려운 문제 조합
+
+
+⚠️ 주의  
+한 번에 모든 변수를 바꾸지 말고, **한 번에 하나의 변수만 변경하며 실험**하세요.
+
+subject에 따라 예시가 없는 것이 가장 높을 수도 있습니다. 다양한 subject에 대해서 실험해보세요!
+
+
+
+
+### Zero-shot Baseline 평가
+
+
+from tqdm import tqdm
+
+NUM_SAMPLES = 20
+eval_samples = dataset["test"].select(range(NUM_SAMPLES))
+
+zero_shot_outputs = []
+zero_shot_golds = []
+
+for sample in tqdm(eval_samples):
+    prompt = format_mmlu_prompt_basic(sample)
+
+    output_text, _ = call_model_api(prompt)
+    zero_shot_outputs.append(output_text)
+    zero_shot_golds.append(sample["answer"])
+
+zero_shot_result = evaluate_predictions(
+    pred_outputs=zero_shot_outputs,
+    gold_answers=zero_shot_golds,
+    verbose=True
+)
+
+print("\nZero-shot Accuracy:", zero_shot_result["accuracy"]*100)
+
+
+### Few-shot 프롬프트 일반화 함수
+
+def format_mmlu_prompt_few_shot(sample, examples):
+    """
+    examples: MMLU sample(dict) 리스트
+    """
+    prompt = ""
+
+    for ex in examples:
+        prompt += ex["question"] + "\n\n"
+        for i, choice in enumerate(ex["choices"]):
+            prompt += f"{chr(ord('A') + i)}. {choice}\n"
+        prompt += f"\nAnswer: {chr(ord('A') + ex['answer'])}\n\n"
+
+    # 실제 문제
+    prompt += sample["question"] + "\n\n"
+    for i, choice in enumerate(sample["choices"]):
+        prompt += f"{chr(ord('A') + i)}. {choice}\n"
+    prompt += "\nAnswer:"
+
+    return prompt
+
+
+# few-shot 조합
+few_shot_sets = {
+    "random_2shot": [
+        dataset["validation"][0],
+        dataset["validation"][1]
+    ],
+    "random_3shot": [
+        dataset["validation"][0],
+        dataset["validation"][1],
+        dataset["validation"][2]
+    ]
+}
+
+
+sample = dataset["validation"][-1]
+name, examples = list(few_shot_sets.items())[1] # random_3shot의 예시
+
+few-shot-prompt에 대한 예시 (별다른 intruction이나 기법 없이 shot만 추가)
+
+few_shot_prompt = format_mmlu_prompt_few_shot(sample, examples)
+
+print(few_shot_prompt)
+
+### Few-shot 예시 조합 실험
+
+few_shot_sets = {
+    "random_2shot": [
+        dataset["validation"][0],
+        dataset["validation"][1]
+    ],
+    "random_3shot": [
+        dataset["validation"][0],
+        dataset["validation"][1],
+        dataset["validation"][2]
+    ]
+}
+
+few_shot_results = {}
+
+for name, examples in few_shot_sets.items():
+    outputs = []
+    golds = []
+
+    for sample in tqdm(eval_samples):
+        prompt = format_mmlu_prompt_few_shot(sample, examples)
+        output_text, _ = call_model_api(prompt)
+        outputs.append(output_text)
+        golds.append(sample["answer"])
+
+    result = evaluate_predictions(outputs, golds, verbose=False)
+    few_shot_results[name] = result["accuracy"]
+print()
+for k, v in few_shot_results.items():
+    print(f"{k}: {v*100}")
+
+
+## (Todo) Best Few-shot 조합 선택
+
+지금까지의 실험 결과를 바탕으로,
+가장 높은 정확도를 기록한 Few-shot 예시 조합을 선택하세요.
+
+### 정리 질문
+- 어떤 조합이 가장 성능이 좋았는가?
+- Shot 수가 많아질수록 항상 성능이 좋아졌는가?
+- 예시의 “개수”보다 “선택 방식”이 더 중요했는가?
+
+위 질문에 대한 답을 생각하며 다양한 조합으로 실험을 진행해봅시다.
+
+
+###**콘텐츠 라이선스**
+<font color='red'><b>**(주)업스테이지가 제공하는 모든 교육 콘텐츠의 지식재산권은
+운영 주체인 (주)업스테이지 또는 해당 저작물의 적법한 관리자에게 귀속되어 있습니다.**</b></font>
+
+콘텐츠 일부 또는 전부를 **복사, 복제, 판매, 재판매 공개, 공유** 등을 할 수 없습니다. 유출될 경우 지식재산권 침해에 대한 책임을 부담할 수 있습니다.
+
+유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다.
+* 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위
+* 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위
+* 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위
+* 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위
+* 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위
+* 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수 있는 저작물을 작성, 공개하는 행위
+* 제공된 데이터의 일부 혹은 전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위

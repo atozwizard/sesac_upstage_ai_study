@@ -1,0 +1,482 @@
+[04강] LLM 고급 프롬프팅 기법 (2) 
+조현수 
+이화여자대학교 인공지능학과 조교수 © 2025 Upstage Co., Ltd. 
+2 강의 목표 
+학습 목표 
+•LLM 고급 프롬프팅 기법의 분류 체계 중 검증 관련 프롬프팅 기법을 학습한다. 
+
+3 목차 
+01. 검증 관련 LLM 프롬프팅 기법 
+(1) Self-consistency 
+(2) Self-veriﬁcation 
+(3) Self-reﬁne 
+(4) Tree-of-Thoughts (ToT) 
+
+4 검증 관련 LLM 프롬프팅 기법 01
+Self-consistency / Self-veriﬁcation / Self-reﬁne / ToT 
+5 검증 관련 LLM 프롬프팅 기법 04 LLM 고급 프롬프팅 기법 (2) 
+검증 관련 LLM 프롬프팅 기법 개요 
+•모델  답변에 대한 검증을 유도하는 프롬프트 를 통해 답변의 질을 향상시키는 방법 
+
+검증 관련 LLM 프롬프팅 기법 개요 
+본 강의에서는 다음과 같은 모듈을 구성하고, 각 모듈 별 기법에 대해서 설명함 
+6 Prompt Engineering 
+사용자 의도 파악 
+및 오류 감소 지시사항 (2) 
+ 응답 역할 부여 (1) 
+예시 주입 (3) 검증 기법 RAG (4) 
+외부 메모리 사용 문제 후처리 (5) 
+04 LLM 고급 프롬프팅 기법 (2) 
+7 검증 관련 LLM 프롬프팅 기법 04 LLM 고급 프롬프팅 기법 (2) 
+LLM 답변을 어떤 식으로 검증하여 성능을 올릴 수 있을까? 
+•방법 1) 여러 개의 답변을 생성한 뒤, 가장 일관된 답변을 선택하는 검증 과정 - Self-consistency 
+•방법 2) 정방향 추론으로 얻은 답변을 역방향으로 검증하는 과정 - Self-veriﬁcation 
+입력 예시 
+출력 예시 
+입력(질문) 중간 추론 과정 LLM 가장 일관된 답 출력 중간 추론 과정
+출력 중간 추론 과정
+출력 중간 추론 과정
+입력 예시 
+출력 예시 중간 추론 과정 LLM 출력 중간 추론 과정질문 조건 
+조건화된 출력 X로 대체된 조건 
+입력  
+질문 조건 조건화된 출력 
+역방향 검증 
+8 검증 관련 LLM 프롬프팅 기법 04 LLM 고급 프롬프팅 기법 (2) 
+LLM 답변을 어떤 식으로 검증하여 성능을 올릴 수 있을까? 
+•방법 3) 초기 출력에 대한 자기 피드백(+ 수정 과정)을 통한 검증 - Self-reﬁne 
+•방법 4) 여러 추론 경로를 탐색하는 도중 자기 평가를 통한 검증 - Tree-of-Thoughts (ToT) 
+LLM 출력 중간 추론 과정
+현재까지의 
+추론 과정 평가 입력 예시 
+출력 예시 
+입력(질문) 중간 추론 과정 
+(특정 단위로 출력 유도) LLM 출력 중간 추론 과정
+자기 피드백 입력 예시 
+출력 예시 
+입력(질문) 중간 추론 과정 
+9 검증 관련 LLM 프롬프팅 기법 04 LLM 고급 프롬프팅 기법 (2) 
+LLM 답변을 검증하면 도움이 될까? 
+•LLM의 추론 과정은 확률에 기반하기 때문에 항상 오류가 포함될 가능성이 있음 
+•장점 
+1. 검증 단계를 거치면 이러한 확률적인 오류의 확률을 낮출 수 있음. 
+2. 검증 모듈은 보통 다양한 추론 경로를 생성하기 때문에 다양한 답변 생성도 가능. 
+먼저, 전체 학생의 20%가 컨템포러리 댄스를 수강했으므로 80%가 남는다. 다음으로, 남은 
+80%의 25%가 재즈 댄스를 수강했는데, 이는 원래 전체 학생의 25%가 재즈 댄스를 수강했다는  
+의미가 된다.  그러면 원래 전체의 55%가 남는다. 
+마지막으로, 남은 학생들(55%)이 힙합 댄스를 수강했다. 따라서 전체 학생의 55%가 힙합 
+댄스를 수강했다. ❌
+(추론과정 오류) 
+LLM 검증 
+입력 예시 1 
+출력 예시 n 
+입력(질문) 중간 추론 과정 
+출력 중간 추론 과정
+10 Self-consistency 04 LLM 고급 프롬프팅 기법 (2) 
+Intuition 
+•한 번의 답변보다, 여러 번 답하게 하면 더 잘 맞출 수 있을까? 
+•사람도 한 번의 판단보다, 여러 번 생각해 본 뒤 공통적으로 도달한 결론을 더 신뢰하는 경우가 많음 
+•모델로부터 여러 개의 답변을 생성한 뒤, 그중 가장 일관되게 등장하는 답변을 선택하면 우연한 오류를 줄이고 문제 해결 
+성능을 향상시킬 수 있을 것임 
+[1] Wang, Xuezhi, et al. "Self-consistency improves chain of thought reasoning in language models." arXiv preprint arXiv:2203.11171 (2022). 
+42? 26? 26?
+정답은 26이야 
+11 Self-consistency 04 LLM 고급 프롬프팅 기법 (2) 
+Self-consistency 과정 
+1. 모델로 부터 temperature 샘플링 + CoT 프롬프팅으로  추론 과정들을 포함한 답변 집합 생성 
+2. 답변들로부터 추론 과정 제거 하여 최종 답변 집합 생성 
+3. 최종 답변 집합에서 가장 일관된(다수결) 답을 최종 답 으로 결정 
+•일관된 답을 선택함으로써 샘플링하여 생기는 답변의 불안정성 완화 
+[1] Wang, Xuezhi, et al. "Self-consistency improves chain of thought reasoning in language models." arXiv preprint arXiv:2203.11171 (2022). 
+Q: 주차장에 차가 3대 있고, 2대가 더 
+들어오면 주차장에는 총 몇 대의 차가 
+있나요? 
+A: 이미 주차장에 차가 3대 있습니다. 
+2대가 더 들어옵니다.이제 3 + 2 = 5 
+대입니다. 정답은 5입니다. 
+…
+Q: 재닛의 오리들은 하루에 달걀을 16개 
+낳습니다. 그녀는 매일 아침 아침식사로 
+3개를 먹고, 친구들을 위해 매일 머핀을 
+굽는 데 4개를 사용합니다. 남은 달걀은 
+개당 2달러에 팝니다. 그녀는 하루에 
+얼마를 벌까요? 그녀는 16 - 3 - 4 = 9개의 달걀이 
+남습니다. 따라서 하루에 2달러 × 
+9 = 18달러를 벌게 됩니다. 정답은 18달러입니다. 
+즉, 그녀는  남은 달걀을 
+2 달러 × (16 - 4 - 3) = 26 달러에  
+팝니다 .정답은  
+26 달러입니다 .
+그녀는  아침 식사로  3 개를 
+먹으므로  16 - 3 = 13 개가 
+남습니다 . 그 다음 머핀을  굽기 
+때문에  13 - 4 = 9 개가 
+남습니다 .
+즉, 9 개 × 2 달러 = 
+18 달러입니다 .정답은 18달러입니다. 정답은 18달러입니다. 
+12 Self-consistency 04 LLM 고급 프롬프팅 기법 (2) 
+LLM으로부터 다양한 답변을 생성하는 방법 
+•LLM 텍스트 생성 메커니즘: 현재 문장을 기준으로 다음에 등장할 높은 확률의 다음 단어 리스트에서 랜덤하게 1개를 반복 
+•다음 단어의 확률 분포를 조정 -> 높은 확률의 단어리스트 조정 가능. 
+[1] Wang, Xuezhi, et al. "Self-consistency improves chain of thought reasoning in language models." arXiv preprint arXiv:2203.11171 (2022). 
+나는  밥을 
+A: 먹었다 
+B: 마셨다 
+C: 탔다 
+D: 쉬었다 
+E: 멨다 
+…
+
+13 LLM에서의 Temperature 
+Temperature는 확률 분포(softmax를 통해 나온 확률값들의 분포)를 변형하여 모델이 안전한 선택을 할지 모험적인 선택을 할지 
+결정하는 파라미터 
+- Low Temperature (T < 1.0): 분포를 뾰족하게 만듦, 확률이 높은 단어가 선택될 확률을 더 극대화 (Deterministic) 
+- High Temperature (T > 1.0): 분포를 평평하게 만듦, 확률이 낮은 단어가 선택될 확률을 높임 (Stochastic) 
+LLM Temperature: 무작위성 제어 
+04 LLM 고급 프롬프팅 기법 (2) 
+
+14 Self-consistency 04 LLM 고급 프롬프팅 기법 (2) 
+LLM으로부터 다양한 답변을 생성하는 방법 
+•SC의 직관대로 동작하려면 다양한 답변이 생성되어야 합치는 의미가 있음. 
+•Self-consistency에서 다양한 추론 경로를 샘플링하기 위해 temperature 샘플링 사용 
+•예시기반 CoT 프롬프팅을 통해 추론력도 강화. 
+[1] Wang, Xuezhi, et al. "Self-consistency improves chain of thought reasoning in language models." arXiv preprint arXiv:2203.11171 (2022). 입력 예시 
+출력 예시 
+입력(질문) 중간 추론 과정 LLM 가장 일관된 답 출력 중간 추론 과정
+출력 중간 추론 과정
+출력 중간 추론 과정
+15 Self-consistency 04 LLM 고급 프롬프팅 기법 (2) 
+Self-consistency 과정 
+1. 모델로 부터 temperature 샘플링으로  추론 과정들을 포함한 답변 집합 생성 
+2. 답변들로부터 추론 과정 제거 하여 최종 답변 집합 생성 
+3. 최종 답변 집합에서 가장 일관된(다수결) 답을 최종 답 으로 결정 
+•일관된 답을 선택함으로써 샘플링하여 생기는 답변의 불안정성 완화 
+[1] Wang, Xuezhi, et al. "Self-consistency improves chain of thought reasoning in language models." arXiv preprint arXiv:2203.11171 (2022). 그녀는 16 - 3 - 4 = 9개의 
+달걀이 남습니다. 따라서 
+하루에 2달러 × 9 = 
+18달러를 벌게 됩니다. 
+정답은: 
+18달러
+그녀는 16 - 3 - 4 = 9개의 달걀이 
+남습니다. 따라서 하루에 2달러 × 
+9 = 18달러를 벌게 됩니다. 정답은 18달러입니다. 
+즉, 그녀는  남은 달걀을 
+2 달러 × (16 - 4 - 3) = 26 달러에  
+팝니다 .정답은  
+26 달러입니다 .
+그녀는  아침 식사로  3 개를 
+먹으므로  16 - 3 = 13 개가 
+남습니다 . 그 다음 머핀을  굽기 
+때문에  13 - 4 = 9 개가 
+남습니다 .
+즉, 9 개 × 2 달러 = 
+18 달러입니다 .정답은 18달러입니다. 정답은 18달러입니다. LLM 
+16 Self-veriﬁcation 04 LLM 고급 프롬프팅 기법 (2) 
+Intuition 
+•답변을 역방향으로 검증해보면 더 적절한 답변을 낼 수 있지 않을까? 
+•사람도 수학 문제를 풀고 나서, 정답을 거꾸로 대입하거나 다른 방식으로 다시 계산하는 검산 과정을 통해 실수를 찾아냄 
+•모델이 정방향 추론으로 도달한 답변을 역방향으로 다시 점검(검산) 하도록 유도하면 중간 추론에서 발생한 오류를 발견하고 
+최종 답변의 신뢰도를 높일 수 있을 것임 
+[2] Weng, Yixuan, et al. "Large language models are better reasoners with self-veriﬁcation." Findings of the Association for Computational Linguistics: EMNLP 2023. 2023. 
+14. 정답이 맞았네! 검산해보자… 
+맞나? 
+17 Self-veriﬁcation 04 LLM 고급 프롬프팅 기법 (2) 
+Self-veriﬁcation 개요 
+•정방향 추론 으로 도달한 LLM 답변을 역방향 검증 하여 최종 답을 결정하는 방법 
+[2] Weng, Yixuan, et al. "Large language models are better reasoners with self-veriﬁcation." Findings of the Association for Computational Linguistics: EMNLP 2023. 2023. 
+입력 예시 
+출력 예시 중간 추론 과정 LLM 
+출력 
+ex) 정답은 18이다 중간 추론 과정질문 조건 
+조건화된 출력 X로 대체된 조건 
+ex) 재키는 사과가 X개 
+있다.
+입력 
+ 
+질문 
+재키는 아담보다 사과를 몇 개 더 가지고 
+있는가? 조건1 
+재키는 사과를 10개 가지고 있다. 조건화된 출력 
+ex)재키는 아담보다 
+사과를 18개 더 가지고 
+있다.
+역방향 검증 
+ 
+기존 조건의 값과 X가 
+동일하면 출력은 정답 조건2 
+아담은 사과를 8개 가지고 있다. 
+X의 값은? 
+18 Self-veriﬁcation 04 LLM 고급 프롬프팅 기법 (2) 
+[2] Weng, Yixuan, et al. "Large language models are better reasoners with self-veriﬁcation." Findings of the Association for Computational Linguistics: EMNLP 2023. 2023. Self-veriﬁcation 과정 
+•1단계: 정방향 추론 (Forward Reasoning) 
+•CoT 프롬프팅 및 샘플링 디코딩을 통해 후보 답을 생성 
+•프롬프트 구성 : 예시( [입력, CoT , 출력] 쌍) + 입력 
+•입력 : 조건(사실)과 질문으로 구성 
+정방향 추론 
+Q: 과수원에 나무가 15그루 있다. 오늘 과수원 
+일꾼들이 나무를 심을 것이다. 작업이 끝난 후에는 
+나무가 21그루가 된다. 오늘 일꾼들이 심은 나무는 
+몇 그루인가? 
+A: 처음에는 나무가 15그루 있었다. 이후 나무를 
+더 심은 후에는 21그루가 되었다. 따라서 심은 
+나무의 수는 21 − 15 = 6이다. 정답은 6이다. 
+… (CoT 프롬프트) 
+Q: 재키는  사과를  10 개 가지고  있다. 아담은  
+사과를  8 개 가지고  있다. 재키는  아담보다  
+사과를  몇 개 더 가지고  있는가 ?
+A1: 재키는  사과를  10 개 가지고  있고 
+아담은  8 개를 가지고  있으므로 , 합하면  
+재키는  아담보다  10 + 8 = 18 개 더 많은 
+사과를  가지고  있다. 따라서  정답은  
+18 이다.
+A2: 재키는  사과를  10 개 가지고  
+있으므로 , 재키는  아담보다  10 − 8 = 
+2 개 더 많은 사과를  가지고  있다. 
+따라서  정답은  2 이다.샘플링  
+디코딩 
+19 Self-veriﬁcation 04 LLM 고급 프롬프팅 기법 (2) 
+[2] Weng, Yixuan, et al. "Large language models are better reasoners with self-veriﬁcation." Findings of the Association for Computational Linguistics: EMNLP 2023. 2023. 
+1.  
+질문과 답변을 완전한 서술문 형태로 바꾸시오. 
+[Q] 정답은 [A]이다. 
+재키는 아담보다 사과를 18개 더 가지고 있다. 재키는 아담보다 사과를 2개 더 가지고 있다. 
+A1: 재키는  사과를  10 개 가지고  있고 
+아담은  8 개를 가지고  있으므로 , 합하면  
+재키는  아담보다  10 + 8 = 18 개 더 많은 
+사과를  가지고  있다. 따라서  정답은  
+18 이다.A2: 재키는  사과를  10 개 가지고  
+있으므로 , 재키는  아담보다  10 − 8 = 
+2 개 더 많은 사과를  가지고  있다. 
+따라서  정답은  2 이다.
+20 Self-veriﬁcation 04 LLM 고급 프롬프팅 기법 (2) 
+[2] Weng, Yixuan, et al. "Large language models are better reasoners with self-veriﬁcation." Findings of the Association for Computational Linguistics: EMNLP 2023. 2023. Self-veriﬁcation 과정 
+•2단계: 역방향 검증 (Backward Veriﬁcation) 
+•2-2단계: 조건 마스킹 (Condition Masking) 
+•두 가지 방식으로 새로운 질문 구성 
+•조건 마스킹 검증(CMV) 
+•정규식을 사용해 숫자 등 특정 조건을 필터링해 마스킹 
+•조건을 X 변수로 대체 + “X의 값은? ” 추가해 방정식 형태로 변환 
+•산술 추론 과제에서 사용 
+•참/거짓 항목 검증(TFV) 
+•모든 조건이 서로 충족되는지를 묻는 참/거짓 항목 검증 
+•모든 조건 뒤에 “ 이 조건이 맞는가?(참/거짓) ”를 추가해 평가 
+•일반 QA 과제에서 사용 정규식 처리 
+ “재키는 사과가 X개 있다. ” 
+“재키는 사과가 10개 있다. ” 이 조건이 맞는가?(참/거짓) X의 값은? 재키는 사과가 10개 있다. 
+재키는 사과가 10개 있다. 
+일반 문제: 참-거짓 항목 검증 산술 문제: 조건 마스크 검증 정규식 처리 
+21 Self-veriﬁcation 04 LLM 고급 프롬프팅 기법 (2) 
+[2] Weng, Yixuan, et al. "Large language models are better reasoners with self-veriﬁcation." Findings of the Association for Computational Linguistics: EMNLP 2023. 2023. Self-veriﬁcation 과정 
+•2단계: 역방향 검증 (Backward Veriﬁcation) 
+•2-3단계: 검증 점수 계산 (Veriﬁcation Score Calculation) 
+•후보 답변 중 검증 점수가 가장 높은 답을 선택 
+•조건 마스킹 검증(CMV) 
+•최종 결과와 마스킹된 조건의 일치 여부 
+•참/거짓 항목 검증(TFV) 
+•True 응답 수를 점수로 사용 
+•샘플링 디코딩을 P번 반복해 검증 점수를 보다 정확히 계산 
+Q1: “재키는 사과가 X개 있다 . 아담은 8개 
+있다. 재키는 아담보다 18개 더 많다. ” X는 
+얼마인가? 
+Q2: “재키는 사과가 X개 있다 . 아담은 8개 
+있다. 재키는 아담보다 2개 더 많다. ”
+X는 얼마인가? A2: 8+2=10 → X= 10 ✔
+A1: 아담이 8개이고 18개 더 많으므로 
+8+18=26 → X= 26 ❌
+조건 마스킹 검증(CMV) 
+22 Self-reﬁne 04 LLM 고급 프롬프팅 기법 (2) 
+Intuition 
+•답변을 스스로 피드백하고 수정하면 더 적절합 답변을 낼 수 있지 않을까? 
+•사람도 초안을 쓴 뒤, 피드백을 보고 다시 고치면서 표현을 다듬고 오류를 수정해 더 나은 결과물을 만듦 
+•모델이 자신의 초기 출력을 평가하고, 그에 대한 피드백을 반영해 스스로 답변을 수정·개선하도록 유도하면 출력 품질을 
+향상시킬 수 있을 것임 
+[3] Madaan, Aman, et al. "Self-reﬁne: Iterative reﬁnement with self-feedback." Advances in Neural Information Processing Systems 36 (2023): 46534-46594. 
+어떻게 고칠까? 좀 이상한데… 글이 별로인데… 
+23 Self-reﬁne 04 LLM 고급 프롬프팅 기법 (2) 
+Self-reﬁne 개요 
+•초기 출력에 대한 피드백을 활용하여 모델이 스스로 출력을 개선하는 방법 
+•하나의 LLM을 생성기(generator), 피드백 제공자(feedback provider), 수정기(reﬁner)로 동시에 사용 
+[3] Madaan, Aman, et al. "Self-reﬁne: Iterative reﬁnement with self-feedback." Advances in Neural Information Processing Systems 36 (2023): 46534-46594. 
+모델 M이 자신의 출력에 대해 피드백을 생성 생성된 피드백을 바탕으로 모델 M이 이전 출력을 개선 
+24 Self-reﬁne 04 LLM 고급 프롬프팅 기법 (2) 
+Self-reﬁne 과정 
+•1단계 : 초기 생성 (Initial generation) 
+•(입력, 출력) 예시를 통해 특정 패턴으로 출력 유도 
+•프롬프트 구성 : (입력, 출력) 예시 + 입력(질문) 
+[3] Madaan, Aman, et al. "Self-reﬁne: Iterative reﬁnement with self-feedback." Advances in Neural Information Processing Systems 36 (2023): 46534-46594. 응답: 탁구는 사람들과 
+어울리고, 활동적으로 
+지내기에 정말 좋은 
+방법이죠. 사용자:  저는 요즘 조깅을 시작해볼까 생각 
+중이에요. 
+응답:  조깅은 체력을 기르면서 스트레스도 해소할 
+수 있는 좋은 운동이에요. 혹시 건강 관리가 
+목적이신가요, 아니면 취미로 가볍게 해보고 
+싶으신가요? 
+사용자(실제 사용자 입력): 저는 탁구를 치는 데 
+관심이 있어요. LLM (입력, 출력) 예시 
+25 Self-reﬁne 04 LLM 고급 프롬프팅 기법 (2) 
+Self-reﬁne 과정 
+•2단계 : 피드백 생성 (FEEDBACK) 
+•(입력, 출력, 피드백) 예시를 통해 특정 패턴으로 피드백 유도 
+•피드백 조건 : 출력 개선에 직접 도움이 되는 구체적인 행동 제안 / 수정해야 할 출력 내의 명확한 부분을 지적 포함 
+•프롬프트 구성 : (입력, 출력, 피드백) 예시  + 입력(질문) + 출력 
+[3] Madaan, Aman, et al. "Self-reﬁne: Iterative reﬁnement with self-feedback." Advances in Neural Information Processing Systems 36 (2023): 46534-46594. 흥미도: 탁구나 탁구를 
+하는 방법에 대한 정보가 
+제공되지 않음. 
+사용자 이해:  사용자의 
+필요와 현재 상태를 
+충분히 이해하지 못함. 사용자:  저는 요즘 조깅을 시작해볼까 생각 중이에요. 
+응답:  조깅은 체력을 기르면서 스트레스도 해소할 수 
+있는 좋은 운동이에요. 
+유용성:  조깅의 장점을 간단히 언급했지만, 초보자가 
+시작할 때 도움이 되는 구체적인 정보가 부족함. 
+사용자 이해: 사용자가 ʻ요즘 시작해볼까 생각 중’
+이라는 망설임이나 초보자 상태에 대한 공감 표현이 
+부족함. 
+사용자(실제 사용자 입력): 저는 탁구를 치는 데 관심이 
+있어요. 
+응답(실제 모델 답변): 탁구는 사람들과 어울리고, 
+활동적으로 지내기에 정말 좋은 방법이죠. LLM (입력, 출력) 예시 
+26 Self-reﬁne 04 LLM 고급 프롬프팅 기법 (2) 
+Self-reﬁne 과정 
+•3단계 : 개선 단계 (REFINE) 
+•(입력, 출력, 피드백, 개선 출력) 예시를 통해 특정 패턴으로 개선 유도 
+•프롬프트 구성 : (입력, 출력, 피드백, 개선 출력) 예시 + 입력(질문) + 출력 + 피드백 
+[3] Madaan, Aman, et al. "Self-reﬁne: Iterative reﬁnement with self-feedback." Advances in Neural Information Processing Systems 36 (2023): 46534-46594. 응답(수정됨): 관심을 
+가져서 정말 좋네요. 
+탁구는 빠른 반사 신경과 
+좋은 손‒눈 협응 능력을 
+요구하는 재미있는 
+스포츠예요. 사용자:  저는 요즘 조깅을 시작해볼까 생각 중이에요. 
+응답:  조깅은 체력을 기르면서 스트레스도 해소할 수 있는 좋은 
+운동이에요. 
+유용성:  조깅의 장점을 간단히 언급했지만, 초보자가 시작할 때 
+도움이 되는 구체적인 정보가 부족함. 
+사용자 이해: 사용자가 ʻ요즘 시작해볼까 생각 중’이라는 
+망설임이나 초보자 상태에 대한 공감 표현이 부족함. 
+응답(수정됨):  관심을 가져서 정말 좋네요… 
+사용자(실제 사용자 입력): 저는 탁구를 치는 데 관심이 있어요. 
+응답(실제 모델 답변): 탁구는 사람들과 어울리고, 활동적으로 
+지내기에 정말 좋은 방법이죠. 
+흥미도(실제 피드백): 탁구나 탁구를 하는 방법에 대한 정보가 
+제공되지 않음. 
+사용자 이해(실제 피드백):  사용자의 필요와 현재 상태를 
+충분히 이해하지 못함. LLM (입력, 출력) 예시 
+27 Self-reﬁne 04 LLM 고급 프롬프팅 기법 (2) 
+Self-reﬁne 과정 
+•4단계: SELF-REFINE 반복 (Iterating SELF-REFINE) 
+•종료 조건이 만족될 때까지 FEEDBACK과 REFINE 단계를 번갈아 수행 
+•종료 조건 
+•지정된 반복 횟수에 도달하거나 
+•피드백에서 종료 신호(예: 스칼라 stop 점수)를 추출해 판단 
+•이전 피드백과 출력을 프롬프트에 계속 누적하여 추가 
+•마지막으로 최종 개선 결과를 SELF-REFINE의 출력으로 사용 
+[3] Madaan, Aman, et al. "Self-reﬁne: Iterative reﬁnement with self-feedback." Advances in Neural Information Processing Systems 36 (2023): 46534-46594. 
+모델 M이 자신의 출력에 대해 피드백을 생성 생성된 피드백을 바탕으로 모델 M이 이전 출력을 개선 
+28 Tree-of-Thoughts (ToT) 04 LLM 고급 프롬프팅 기법 (2) 
+Intuition 
+•하나의 추론 경로만 따라가면 항상 최선의 답에 도달할 수 있을까? 
+•사람도 어려운 문제를 풀 때, 한 가지 생각만 밀고 가기보다 여러 가능성을 동시에 고려하고, 유망하지 않은 선택지는 
+되돌아가며 배제함 
+•모델이 하나의 연쇄적 사고(CoT)에만 의존하지 않고, 여러 개의 사고(thought) 경로를 확장·평가·선택하도록 유도하면 더 
+나은 추론 경로를 찾아 최종 답변에 도달할 수 있을 것임 
+[4] Yao, Shunyu, et al. "Tree of thoughts: Deliberate problem solving with large language models." Advances in neural information processing systems 36 (2023): 11809-11822. 
+14. 정답이 맞았네! 이 문제를 A 
+방법으로 
+풀어봐야겠다 
+A 방법으로 푸니까 너무 
+오래 걸리는데… B 방식으로 풀어봐야지 
+29 Tree-of-Thoughts (ToT) 04 LLM 고급 프롬프팅 기법 (2) 
+Tree-of-Thoughts (ToT) 개요 
+•자기 평가를 포함해 Chain of Thought(CoT) 접근을 일반화한 방법 
+•사고(thought)로 구성된 추론 경로로 트리를 만들고, 그 트리에서 탐색 및 자기평가를 통해 유망한 추론 경로를 선택하는 방법 
+•사고(thought) : 추론 과정을 구성하는 일관된 텍스트 단위 
+•CoT 한계를 개선한 방법 
+•CoT 한계1: 국소적으로, thought 과정 내에서 서로 다른 이어짐을 탐색하지 않음 
+•CoT 한계2: 전역적으로, 다양한 선택지를 평가하기 위한 어떤 형태의 계획, 선견, 백트래킹도 통합하지 않음 
+[4] Yao, Shunyu, et al. "Tree of thoughts: Deliberate problem solving with large language models." Advances in neural information processing systems 36 (2023): 11809-11822. 
+
+30 Tree-of-Thoughts (ToT) 04 LLM 고급 프롬프팅 기법 (2) 
+Tree-of-Thoughts (ToT) 구성 
+•사고 분해(Thought decomposition) 
+•문제의 성질을 활용해 사고(thought)를 설계 
+•사고(thought) 설계 예시 
+•방정식 한 줄(24 게임) : 네 개의 숫자에 사칙연산을 적용해 24를 만드는 수학 추론 게임 
+•예시 
+•입력 : [4,4,10,13] 
+•사고 1) 13 − 10 = 3 (남은 숫자: [4,4,3]) 
+•사고 2) 4 + 4 = 8 (남은 숫자: [8,3]) 
+•사고 3) 3x8 =24 
+[4] Yao, Shunyu, et al. "Tree of thoughts: Deliberate problem solving with large language models." Advances in neural information processing systems 36 (2023): 11809-11822. 
+31 Tree-of-Thoughts (ToT) 04 LLM 고급 프롬프팅 기법 (2) 
+Tree-of-Thoughts (ToT) 구성 
+•사고 생성기(Thought generator) 
+•트리 상태(s)가 주어졌을 때, 다음 사고 단계에 대한 k개의 후보 생성 
+•트리 상태(s) 
+•입력과 지금까지의 사고(thought) 시퀀스가 포함된 부분 해답 
+•노드로 표현 
+•후보 생성하는 2가지 방법 
+•CoT 프롬프트로 독립 샘플링 
+•사고(thought) 공간이 풍부할 때(예: 각 thought가 문단일 때) 사용 
+•샘플로 인한 다양성(diversity) 확보 
+•제안(propose) 프롬프트로 순차적 생성 
+•사고(thought) 공간이 더 제약될 때 (예: 각 thought가 단어 하나 또는 한 줄일 때) 사용 
+•동일한 문맥에서 서로 다른 사고를 제안하면 중복을 피할 수 있기 때문 
+[4] Yao, Shunyu, et al. "Tree of thoughts: Deliberate problem solving with large language models." Advances in neural information processing systems 36 (2023): 11809-11822. 입력: 3 8 8 3 
+가능한  다음 단계:
+3 + 8 = 11 ( 남은 숫자: 11 8 3) 
+8 - 3 = 5 ( 남은 숫자: 5 8 3) 
+8 ÷ 8 = 1 ( 남은 숫자: 1 3 3) 
+8 × 3 = 24 ( 남은 숫자: 24 8) 
+입력: 4 9 10 13 
+가능한  다음 단계:제안 프롬프트(예시) 
+사고(thought) 
+4 + 9 = 13 ( 남은 숫자 : 10 13 13) 
+10 - 4 = 6 ( 남은 숫자 : 6 9 13) 사고 생성 결과(예시) (입력, 출력) 예시 
+32 Tree-of-Thoughts (ToT) 04 LLM 고급 프롬프팅 기법 (2) 
+Tree-of-Thoughts (ToT) 구성 
+•상태 평가기(State evaluator) 
+•모델이 상태들에 대해 의도적으로 추론하도록 하여 평가 수행 
+•상태를 평가하는 두 가지 방법 
+•각 상태를 독립적으로 값(Value) 평가 
+•상태 s에 대해 추론(시뮬레이션 등 활용) → 스칼라 값 v(예: 1‒10) 생성하거나 
+•상태 s에 대해 추론 → 분류(예: sure/likely/impossible) 생성 → 휴리스틱 값으로 변환 
+•상태들 간 투표(Vote) 
+•서로 다른 상태들을 의도적으로 비교한 뒤 투표로 선택 
+[4] Yao, Shunyu, et al. "Tree of thoughts: Deliberate problem solving with large language models." Advances in neural information processing systems 36 (2023): 11809-11822. 주어진  숫자들로  24 를 만들 수 있는지  평가 해라
+(sure/likely/impossible) 
+10 14: 10 + 14 = 24. sure 
+10 13 13 
+값 평가 프롬프트(예시) (13 - 10) * 13 = 3*13 = 39 
+10 + 13 + 13 = 36 
+이 큰 숫자들로  24 를 얻을 수 있는 방법은  
+없다.
+impossible 
+값 평가 결과(예시) (입력, 출력) 예시 
+실제 입력 
+33 Tree-of-Thoughts (ToT) 04 LLM 고급 프롬프팅 기법 (2) 
+Tree-of-Thoughts (ToT) 구성 
+•탐색 알고리즘(Search algorithm) 
+•트리 구조에 따라 다른 탐색 알고리즘을 삽입하여 사용 가능 
+•너비 우선 탐색(BFS) 
+•단계마다 몇 가지의 가장 유망한 상태 집합 유지하며 탐색 
+•깊이 우선 탐색(DFS) 
+•가장 유망한 상태를 먼저 탐색 
+•아래 조건이 될 때까지 진행 
+•최종 출력에 도달할 때까지 
+•또는 상태 평가기가 현재 상태로부터 문제를 풀 수 없다고 판단할 때까지 
+•현재 상태의 부모 상태로 백트래킹하여 탐색 계속 진행 
+[4] Yao, Shunyu, et al. "Tree of thoughts: Deliberate problem solving with large language models." Advances in neural information processing systems 36 (2023): 11809-11822. 
+
+34 Summary 04 LLM 고급 프롬프팅 기법 (2) 
+LLM 프롬프팅 기법 (2) 
+•검증 관련 LLM 프롬프팅 기법 
+•Self-consistency : Temperature 샘플링으로 추론 과정 포함한 여러 답변을 생성하고, 다수결을 통해 가장 일관된 답변을 
+선택하는 방법 
+•Self-veriﬁcation : 정방향 추론으로 도달한 LLM 답변을 역방향 검증하여 최종 답을 결정하는 방법 
+•Self-reﬁne : 초기 출력에 대한 피드백을 활용하여 모델이 스스로 출력을 개선하는 방법 
+•Tree-of-Thoughts (ToT) : 사고(thought)로 구성된 추론 경로로 트리를 만들고, 그 트리에서 탐색 및 자기평가를 통해 
+유망한 추론 경로를 선택하는 방법 
+
+www.upstage.ai © 2025 Upstage Co., Ltd. 
+

@@ -1,0 +1,325 @@
+SPEAKER
+서영학© 2025 Upstage Co., Ltd.
+2저작권안내
+(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은
+운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.
+콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. 
+유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. 
+유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. 
+● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위
+● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위
+● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위
+● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위
+● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위
+● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위
+● 제공된 데이터의 일부 혹은전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위
+3오늘의목표: git 으로작업단위관리하기Git 
+목차
+git 설치와세팅
+git 을사용하는이유
+git init / add / commit
+git commit 잘쓰는방법
+source tree를통한시각화
+4수업전설치및세팅Git 
+준비사항
+-Git 다운로드(일단default 값으로next)
+-SourceTree 설치(계정skip)
+-Github 계정생성
+-Github API 키발급및등록
+-예제코드: 
+https://github.com/inspire12/fake-llm-agent
+
+5Git 초기세팅(옵션)Git 
+# 1. 사용자정보
+git config --global user.name "서영학"
+git config --global user.email "your-email@example.com"
+# 2. 기본브랜치이름main으로
+git config --global init.defaultBranch main
+# 3. github token 키체인저장
+git config --global credential.helper osxkeychain
+# git config --global credential.helper manager-core
+# 4. 색깔켜기(diff/log 보기편하게)
+git config --global color.ui auto
+# 5. 안전한줄바꿈설정(Mac/Linux 기준)
+git config --global core.autocrlf input     # mac/Linux
+git config --global core.autocrlf true      # Windows# 6. 에디터설정(VSCode 쓰면)
+git config --global core.editor "code --wait"
+# 7. pull 시rebase 대신merge (헷갈리면이게더무난)
+git config --global pull.rebase false
+# 8. log / diff 보기편하게pager 설정(뒤에추천도구delta 쓰면더좋음)
+git config --global core.pager "less -+F"
+코드링크
+설정값저장위치
+~/.gitconfig 파일에설정값적힘(global 설정)
+.git/config (프로젝트별설정)
+603 -01
+왜다들Git Git 거릴까?
+(로컬) 버전관리를위한Git
+버전관리 → 프로젝트관리
+7파일이름_최종_v3_최종최종.ppt  Git 
+버전관리가 되지않으면..
+-작업한파일을잃어버리기쉽다
+-어떤파일이 최신인지 헷갈림
+-내용이언제 어떻게바뀌었는지추적불가
+-다른사람이수정하면 충돌발생& 해결불가
+-이전버전으로되돌릴수없음
+-협업자가파일을덮어쓰면복구불가
+-파일이많아질수록관리어려움
+
+8프로그래밍에선?Git 
+파일이많아질수록 관리지옥
+회사에선
+-협업하는사람도많고
+-작업하는파일도많아
+-관리지옥
+
+9Git 이란?Git 
+Git은"버전관리 도구" = 프로젝트 전체성장기록, 타임머신
+-Git은내가작성한파일이 어떻게변해왔는지 시간순서대로모두기록해준다.
+-특정시점으로 되돌아갈수있다
+-"이부분 누가고쳤지?" 도알수있다
+Git 은버전관리 도구(VCS: Version Control System)
+
+10Git 이란?Git 
+Git은"협업을위한표준도구"
+-개발자여러명이동시에작업해도 충돌을인지하고 안전하게합칠수있다
+-어떤코드를언제작성했는지모두기록 되다
+-다른사람의작업과내작업을 안전하게합칠수있다 .
+-내코드가검토를(리뷰) 통해제품에나가는과정(배포와CI/CD)
+1103 -02
+12무슨프로젝트를진행할까?Git 
+llm agent 기능만들기 (흉내내기)
+요구사항
+-사용자메시지입력처리
+-기본응답생성
+-Tool 실행결과반환
+-오류처리
+-로그출력
+13무슨프로젝트를진행할까?Git 
+일단기본프로젝트 진행
+https://github.com/inspire12/fake-llm-agent/tree/start
+내프로젝트
+각파일만들고코드복사후세팅
+
+14(실습) git 일단따라치기Git 
+프로젝트 git 초기세팅/ 첫커밋하기
+git init
+git status 
+git add main.py agent.py tools.py config.py 
+git status 
+git commit -m "init: v1 기본LLM 에이전트"
+15git initGit 
+git 저장소 초기화(세팅)
+파이썬파일세팅후git 저장소생성
+git init = 이폴더를Git이관리하도록만드는첫단계
+git init 실행하면폴더안에.git이라는숨겨진디렉토리생긴다
+.git 에Git이 메타데이터(변경사항)을저장
+(코드추적-변경사항, 커밋-작업사항, 브랜치, 로그, 되돌리기정보등)
+16git add Git 
+Git 에변경을 커밋에 포함시키겠다고 체크하는단계
+Git이변경사항을 추적할파일을지정하도록하는명령어
+작업한변경을"커밋후보영역"에올림
+커밋에포함할변경만선택적으로올림
+17git 버전관리를위한코드추적Git 
+코드변경추적
+작업을하면
+어떤코드의 변경사항을추적해야하는지 Git 에알려주는과정이필요하다
+Git이코드를추적한다= 줄단위로"어떤줄이추가·삭제·수정되었는지"를기록
+Git 은메타데이터(변경사항)을저장하는버전관리시스템
+18git statusGit 
+git 어떤파일을파일을추적하고 있는지 확인
+Untracked → Git 모르는파일
+Modiﬁed → 수정됨
+Staged → add 완료
+Clean → 변경없음
+
+19.git 에특정파일이나폴더가들어가지않아야한다면?Git 
+.gitignore
+공유되면안되는파일은
+ex) 
+-API_KEY (비밀번호) 등
+-ide (에디터) 사용하는파일.idea/* 
+-개인개발환경설정파일 .venv/*
+2003 -03
+git 사용법
+Commit 작성법
+Commit 관리법
+21변경이력= CommitGit 
+git commit (커밋)
+하나의commit 단위는기능이아니라목적
+-하나의커밋은하나의의도를담는다
+-제목은50자이내
+-본문은왜수정했는지설명사용법
+git add {파일명}
+git commit
+혹은
+git commit -m "커밋명"
+troubleshooting-
+만약vi 에디터경험이없으시면
+아래입력후vscode로수정
+git config --global core.editor "code --wait"
+22Commit 메시지작성방식Git 
+git commit 작성형식
+<type>(<optional scope>) : <subject>
+<body -optional>
+type: 변경의목적을나타내는키워드
+scope (선택): 모듈/도메인/레이어(예: user, auth, api, core, docs 등)
+subject: 한줄요약(명령형, 끝에마침표X)
+body: 왜이변경을했는지, 중요한맥락/주의사항(필요할때만)
+23(실습) 요구사항"날씨기능추가"Git 
+일단따라치기
+기능개발위해브랜치생성후기능추가및커밋
+def get_weather (location ):
+if location == "서울":
+return "맑음"
+return "모름"git switch -c feature/weather-tool
+# 기능추가(코드로직추가)
+# tools.py                              # agent.py
+from tools import get_weather
+class LlmAgent :
+def handle(self, user, message ):
+if "날씨" in message :
+weather = get_weather( "서울")
+return f"{user}님, 서울날씨는 {weather }입니다."
+return f"{user}님, '{message }' 잘받았습니다."git add agent.py tools.py
+git commit -m "feat: 날씨기능추가"
+
+24변경이력은어떻게기록하면좋을까?Git 
+git commit 작성원칙과전략
+1. 하나의커밋 은하나의목적 만가져야한다(작고의미있게)
+2.Subject(첫줄)는명령형+ 간결하게
+3. 왜변경했는지기록하기(커밋메시지의본질)
+Git commit 메시지의핵심은왜다.
+코드는어떻게를보여주지만, 왜그렇게했는지는메시지가알려줌.
+4. 한번에너무많은변경을커밋하지않기
+파일20개이상바뀜. 500줄이상바뀜, 리팩토링+ 기능추가가섞여있음
+→ 이런커밋은실제로리뷰불가능한커밋
+25좋은commit 과나쁜commitGit 
+나쁜Commit 예시
+메시지예시
+"update"
+"fix"
+"수정"
+"테스트" / "ㅋㅋ" / "임시"
+-어떤파일이, 왜, 어떻게바뀌었는지알수없다
+-기능수정, 오타수정, 리팩토링이한커밋에섞여있다
+-롤백할때어디까지되돌려야할지판단이어렵다좋은Commit 예시
+메시지예시:
+"feat: add user login api"
+"fix: handle null user in profile page"
+"refactor: extract email validator from user service"
+"chore: rename variable for clarity in auth controller"
+-커밋메시지만읽어도의도가파악된다
+-기능/버그/리팩토링이분리되어있어롤백이쉽다
+-한커밋이한가지목적만가진다
+나쁜Commit은"그순간은편하지만, 나중에모두에게빚이된다"
+좋은Commit은"조금귀찮지만, 나와팀의시간을아껴준다"
+26하나의커밋은하나의목적만가져야하지만..Git 
+현실적인 작업을 하며커밋을신경쓰기 어렵다
+솔직히말하면, 좋은Commit 메시지작성은저도여전히어렵습니다
+-기능개발중이라도수시로리팩토링이자연스럽게섞인다
+-오타수정이나다른사람이짠코드의버그들이나잘못된컨벤센이보인다
+-작업흐름이끊기는게싫어서커밋을미룬다
+-처음시작할때전체설계를완전히이해하지못한상태에서작업할때가많다
+-급한기능대응이나수정요청이중간에끼어든다
+-팀의커밋문화에따라나도영향을받는다
+-팀이커밋을지저분하게하면나도지저분해짐
+27좋은커밋을쓰기위한실천팁Git 
+현실적인 작업과정
+리팩토링하거나오타고칠때 그순간바로커밋하지말고, 최소한기능개발이끝나기전에분리
+기능개발중바꾼것들 섞였다고걱정하지말기-나중에분리하면됨
+-git add -p 를활용해나중에라도분리하기
+"하나의commit 단위는기능이아니라목적"이라고기억하기
+28commit 전에넣을것들만지정하기Git 
+git add -p 를통해commit 에넣을것만지정하기
+git add -p
+# y → 오타수정헝크만stage
+# n → 디버깅코드hunk 건너뛰기
+# s → 기능코드hunk를절반으로쪼개기
+# e → 주석라인만골라서stage
+hunk = Git이"연속된변경라인을묶어서만든최소변경단위"트러블슈팅)
+git add –p (패치모드) 는git 이추적중인파일의
+변경사항에서만가능하다
+git add {file} 이후진행
+29(실습) commit 전에넣을것들만지정하기Git 
+실습순서
+상황) 날씨응답문구변경중서버문제생겨debugging 용logging 코드추가필요해서추가
+하나의파일에두개성향의수정이혼재된경우를가정
+1. 같은파일수정후git add -p 로따로선택
+2. 추가한코드따로커밋
+-변경내역을고르는과정에서좋은코드에대한고민이생긴다
+-커밋이구분되어있으면나중에작업을되돌리기쉽다
+
+30(실습) commit 전에넣을것들만지정하기Git 
+git add -p 를통해commit 에넣을것만지정하기
+agent.py
+-디버깅로깅작업
+-날씨문구수정작업
+두작업이혼재따로커밋을해보자
+# 작업코드나눠서add 
+git add -p agent.py
+# print 부분은n
+# prefix 부분은y
+git commit -m "feat: LLM 응답prefix 추가"
+git add agent.py
+git commit -m "feat: 디버깅코드추가"
+from tools import get_weather
+class LlmAgent :
+def handle(self, user, message ):
+print("디버깅 중..." )
+if "날씨" in message :
+weather = get_weather( "서울")
+return f"[LLM] {user}님, 서울 날씨는 {weather }입니다."
+return f"[LLM] {user}님, '{message }' 잘받았습니다."
+3103 -04
+Source tree 
+변경사항을한눈에확인하며진행하기(직관성있게!)
+32Git 이어려운이유Git
+명령어도 중요하지만
+상황과상황에맞는작업흐름이더중요✔상황이다양하고명령어연결과정이복잡
+✔변경흐름이눈에안보임
+✔추상적인개념이많다(meta data)
+✔Git 개발자에게판단을요구
+작업단위(커밋단위) 설계가필요
+협업시규칙과충돌관리필요
+✔되돌리는명령어가복잡
+33Source treeGit 
+"Sourcetree: Git을 더쉽게, 더안전하게"
+Atlassian에서만든무료Git GUI 도구
+시각적인diff 체크로변경내용을한눈에파악가능
+hunk 단위, 라인단위로변경을클릭한번으로stage 가능
+실수위험이줄어들고, commit 단위관리가쉬워짐
+브랜치, merge, conflict도시각적으로표현되어부담이줄어듬
+
+34Source treeGit 
+https://www.sourcetreeapp.com
+download & 설치
+프로젝트세팅
+
+35Source treeGit 
+git add git status
+git commit
+36Source treeGit 
+git log
+git diff
+git show
+37참고사항Git 
+vs code 익스텐션
+-https://inpa.tistory.com/entry/VSCode- 💽-GIT-익스텐션-추천
+git 명령어치트시트
+-https://git-scm.com/cheat-sheet
+-https://education.github.com/git-cheat-sheet-education.pdf
+git 로드맵
+-https://roadmap.sh/r/git--github-0ibs8
+-https://maily.so/gitminam/posts/8do78n3prgq
+38총정리Git 
+git 은commit 을통한작업관리가 기본이자 핵심이다. 
+-작업단위와 이력관리
+-현실적인 작성법
+git add -p / commit
+-각명령어를 용도에 맞게사용하고
+source tree
+-git 도구를 통해더직관적으로 편하게git 을쓰자
+-git 명령어를 알아야source tree도잘쓸수있다.
+www.upstage.ai © 2025 Upstage Co., Ltd.
+

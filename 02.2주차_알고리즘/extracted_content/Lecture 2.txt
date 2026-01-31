@@ -1,0 +1,432 @@
+Lecture 2:
+Arrays & Linked Lists
+김수경
+이화여자대학교 인공지능융합전공 소속© 2025 Upstage Co., Ltd.
+1
+2저작권안내
+(주)업스테이지가 제공하는 모든교육콘텐츠의 지식재산권은
+운영주체인 (주)업스테이지 또는해당저작물의 적법한관리자에게 귀속되어 있습니다 .
+콘텐츠일부또는전부를복사 , 복제 , 판매 , 재판매공개 , 공유등을할수없습니다 . 
+유출될경우지식재산권 침해에대한책임을부담할수있습니다 . 
+유출에해당하여 금지되는 행위의예시는다음과같습니다 . 
+● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위
+● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위
+● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위
+● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위
+● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위
+● 다른 정보와 결합하여 Upstage Education 의콘텐츠임을 알아볼 수있는 저작물을 작성 , 공개하는 행위
+● 제공된 데이터의 일부 혹은 전부를 Upstage Education 프로젝트 /실습 수행 이외의 목적으로 사용하는 행위
+3Arrays01
+4Arrays02 Arrays & Linked Lists
+● An array is an object comprising a numbered sequence of memory boxes
+○ More fundamental data structure that Python lists are built on.
+○ This is why we can easily access the i-th element of list A by using A[i].
+● An array comprises
+○ Fixed integer length (N) –should be set when initializing it
+○ A sequence of Nmemory boxes (numbered 0 through N-1)
+[1] http://1moment.t istory.com[1] 
+Array
+(Fixed length)List
+(Dynamic length)
+Resizing
+Shifting
+Copying
+Internal Implementation: Memory
+● Internally, all variables and constants we use in our program should be stored somewhere in memory .
+○ For a single variable of a primitive type (int, float, …), we know its size (how many bits are needed).
+3 10a = 3 b = 10 b += 7
+17c = 1234567890L
+123456789002 Arrays & Linked Lists
+5
+Index 0 1 2 3 4 5 6 7 8 9
+Value 0 0 0 0 0 0 0 0 -0 0Array Resizing
+● Two problems of an array due to its fixed length
+○ Memory wastage : if it contains only n<< Nvalid elements
+○ Memory shortage : if it wants to contain more than Nelements
+● Array resizing: create another larger array and copy all the elements
+○ L.append(3) when the current array is full.
+Index 0 1 2 3 4 5 6 7 8 9
+Value -7 15 2 6 -1 5 4 10 -4 21
+L
+Index 0 1 2 3 4 5 6 7 8 9
+Value -7 15 2 6 -1 5 4 10 -4 2110
+010
+3
+Create 
+a new long array O(1)Create(copy) 
+a new long array O(N)Add 
+a new element O(1)02 Arrays & Linked Lists
+6
+Internal Implementation: Memory
+● Now, let ’s think about the time complexity!
+○ Theoretical time complexity for a.append(6) ?
+○ Actual time complexity fora.append(6) , if there ’s no enough space after it?
+3 1017
+12345678901 2 3 4 5a.append(6)
+This is not ideal, since we do not have to know how memory space is 
+being used at every moment!O(1)
+O(N)02 Arrays & Linked Lists
+7
+Array Resizing
+● Array resizing is expensive: new memory boxes and copy operation
+○ Increasing size by one every time is not efficient (too many resizing)
+○ Increasing size too much at once is not efficient either (memory wastage)
+● To resize fewer, Python list size grows as 0, 4, 8, 16, 25, 35, 46, 58, …
+○ Mild over -allocation proportional to the current size
+● Anyway, is there any better way of organizing a collection of data to support append and pop easily?02 Arrays & Linked Lists
+8
+9Linked Lists02
+Linked Lists
+● Main idea:
+○ Allow each element in the list to be scattered in the memory .
+○ Instead, each element points to the next one .
+3 1017
+12345678901 2 3 4 5l.append (5)
+1 2 7 3 4 5 4 55
+7 2 13579246810l.append (7) l.append (2)02 Arrays & Linked Lists
+10
+Linked Lists
+● Class Node
+○ Because we always need to store the item and the pointer to the next node, let ’s make this as a class!
+class Node():
+def __init__ (self, x):
+self.item = x
+self.next = None
+a = Node(5)
+b = Node(6)
+a.next = b5a
+6b
+print(a.item)
+print(a.next.item)5
+6itemnext02 Arrays & Linked Lists
+11
+Review: Python Object Reference
+p = Node(5)
+p = Node(6)p.item q.item
+5
+6
+q = p 6 6
+q = Node(9) 6 9
+p = None Error! 9
+q = p Error! Error!
+02 Arrays & Linked Lists
+12
+Singly Linked List
+● Let’s design the singly linked list data structure. What functionalities do we need?
+○ Creating an empty list
+○ Adding / inserting a new item
+○ Retrieving an item
+○ Deleting / removing an existing item
+5a
+6
+itemnext3 7at position i02 Arrays & Linked Lists
+13
+Singly Linked List
+● Class LinkedList
+○ We keep only the reference to the first node .
+○ At creation, first node is None , having no element in the list.
+class Node():
+def __init__ (self, x):
+self.item = x
+self.next = Noneclass LinkedList ():
+def __init__ (self):
+self.first = None
+def insert(self, x, i):
+# insert x at [i]
+def get(self, i):
+# get item at [i]
+def delete(self, i):
+# delete item at [i]5first
+6
+itemnext02 Arrays & Linked Lists
+14
+Inserting an Item at position i
+● Step 1: Creating a new node with the given item.
+5first
+6
+itemnext3 7
+4● Step 2: Traverse to the ( i-1)-th position.
+● Step 3: Set the new node ’s next as the original i-th node.
+● Step 4: Update the ( i-1)-th node ’s next as the new node.Example:
+insert “4”at position 2.
+curr curr02 Arrays & Linked Lists
+15
+Inserting an Item at position i
+● Step 1 : Creating a new node with the given item.
+● Step 2 : Traverse to the ( i-1)-th position.
+● Step 3 : Set the new node ’s next as the original i-th node.
+● Step 4 : Update the ( i-1)-th node ’s next as the new node.def insert(self, x, i):
+# insert x at [i]
+new_node = Node(x)
+pos = 0
+curr = self.first
+while pos < i -1:
+curr = curr.next
+pos += 1
+new_node.next = curr.next
+curr.next = new_nodeclass Node():
+def __init__ (self, x):
+self.item = x
+self.next = None
+5first
+6
+itemnext3 7
+4curr curr
+new_node
+Step 1Step 2
+Step 3 Step 402 Arrays & Linked Lists
+16
+Does it work at the end?
+● Step 1: Creating a new node with the given item.
+● Step 2: Traverse to the ( i-1)-th position.
+● Step 3: Set the new node ’s next as the original i-th node.
+● Step 4: Update the ( i-1)-th node’s next as the new node.Example:
+insert “4”at position 4.02 Arrays & Linked Lists
+175first
+6
+itemnext3 7
+4curr curr curr curr
+
+Does this work at the beginning?
+● Step 1: Creating a new node with the given item.
+5first
+6
+itemnext3 7
+4● Step 2: Traverse to the ( i-1)-th position.
+● We need special treatment when we insert at position 0!Example:
+insert “4”at position 0.
+curr curr curr curri -1 = -1 
+02 Arrays & Linked Lists
+18
+Inserting an Item at position i
+● If inserting at the first position:
+○ Step 1: Creating a new node with the given item.
+○ Step 2 : Set the new node ’s next as the original first node .
+○ Step 3 : Update the first node reference to the new node.
+● else:
+○ Step 1: Creating a new node with the given item.
+○ Step 2: Traverse to the ( i-1)-th position.
+○ Step 3: Set the new node ’s next as the original i-th node.
+○ Step 4: Update the ( i-1)-th node ’s next as the new node.def insert(self, x, i):
+# insert x at [i]
+if i == 0:
+new_node = Node(x)
+new_node.next = self.first
+self.first = new_node
+else:
+new_node = Node(x)
+pos = 0
+curr = self.first
+while pos < i -1:
+curr = curr.next
+pos += 1
+new_node.next = curr.next
+curr.next = new_nodeCheck : does this work when we insert the very first item 
+(that is, does it work when self.first = None )?02 Arrays & Linked Lists
+19
+Inserting an Item at position i
+def insert(self, x, i):
+# insert x at [i]
+if i == 0:
+new_node = Node(x)
+new_node.next = self.first
+self.first = new_node
+else:
+new_node = Node(x)
+pos = 0
+curr = self.first
+while pos < i -1:
+curr = curr.next
+pos += 1
+new_node.next = curr.next
+curr.next = new_nodeCheck : what happens with our code if i> last position?
+It will crash here, 
+when it tries to access None.next
+7curr
+…None
+We should prevent this, instead of letting the users to be 
+responsible!02 Arrays & Linked Lists
+20
+Size Variable
+● First try:
+○ Let’s add a check at the beginning, if iis within the 
+valid range.
+○ Valid range?def insert(self, x, i):
+# insert x at [i]
+if i == 0:
+new_node = Node(x)
+new_node.next = 
+self.first
+self.first = new_node
+else:
+new_node = Node(x)
+pos = 0
+curr = self.first
+while pos < i -1:
+curr = curr.next
+pos += 1
+new_node.next = curr.next
+curr.next = new_nodeFrom 0 to current length (item count)if i > size: return
+● But, how do we know the size?
+○ A naive way: traverse from the first until we meet 
+None .
+○ This is not efficient, since we need to traverse N
+items whenever we insert a new item, regardless of 
+the target position. 
+○ Any better way?elif i <= size:02 Arrays & Linked Lists
+21
+Size Variable
+● Solution : Let ’s keep the size variable in the class, and 
+maintain it whenever we insert or delete an element.
+● Time complexity?
+class LinkedList ():
+def __init__ (self):
+self.first = None
+self.size = 0
+def insert(self, x, i):
+# insert x at [i]
+def get(self, i):
+# get item at [i]
+def delete(self, i):
+# delete item at [i]def insert(self, x, i):
+# insert x at [i]
+if i == 0:
+new_node = Node(x)
+new_node.next = self.first
+self.first = new_node
+self.size += 1
+elif i <= self.size:
+new_node = Node(x)
+pos = 0
+curr = self.first
+while pos < i -1:
+curr = curr.next
+pos += 1
+new_node.next = curr.next
+curr.next = new_node
+self.size += 1O(1)02 Arrays & Linked Lists
+22
+Retrieving an Item at position i –Homework
+● Basic logic
+○ Step 1: Traverse to the i-th position.
+○ Step 2: Return the item in the node.
+● Any special cases to consider?
+○ Check if your implementation works when
+■i = 0
+■i > self.size
+■self.size = 0
+■ …def get(self, i):
+# get item at [i]
+# TODO(students): implement!
+return ?02 Arrays & Linked Lists
+23
+Deleting an Item at position i
+● Step 1: Traverse to the ( i-1)-th position.
+5first
+6
+itemnext3 7● Step 2: Set the ( i-1)-th node ’s next as the target ’s next.Example:
+delete item at position 2.
+curr currThis node is no longer accessible. 
+“3”is no longer in your list!02 Arrays & Linked Lists
+24
+Deleting an Item at position i
+● Step 1 : Traverse to the ( i-1)-th position.
+● Step 2 : Set the ( i-1)-th node ’s next as the target ’s next.def delete(self, i):
+# delete item at [i]
+pos = 0
+curr = self.first
+while pos < i -1:
+curr = curr.next
+pos += 1
+curr.next = curr.next.next
+self.size -= 1class Node():
+def __init__ (self, x):
+self.item = x
+self.next = None
+5first
+6
+itemnext3 7curr curr
+Any edge case here?
+Step 2Step 102 Arrays & Linked Lists
+25
+Does this work at the end?
+5first
+6
+itemnext3 7curr● Step 1: Traverse to the ( i-1)-th position.
+● Step 2: Set the ( i-1)-th node ’s next as the target ’s next.Example:
+delete item at position 3.
+02 Arrays & Linked Lists
+26
+Does this work at the beginning?
+5first
+itemnextcurr● Step 1: Traverse to the ( i-1)-th position.
+● Step 2: Set the ( i-1)-th node ’s next as the target ’s next.Example:
+delete item at position 0.
+i -1 = -1 
+Again, we need special treatment when we delete the first one!
+def delete(self, i):
+# delete item at [i]
+pos = 0
+curr = self.first
+while pos < i -1:
+curr = curr.next
+pos += 1
+curr.next = curr.next.next
+self.size -= 1This condition is 
+never satisfied.if i == 0:
+self.first = self.first.next
+else:
+...02 Arrays & Linked Lists
+27
+Time Complexity
+● Time complexity of Linked List?
+Task Worst case Average case Best case
+Insertion
+Retrieval
+DeletionO(N)
+O(N)
+O(N)O(N)
+O(N)
+O(N)O(1)
+O(1)
+O(1)
+Happen when?02 Arrays & Linked Lists
+28
+Doubly Linked List
+● Sometimes it is useful to have ability to access previous items.
+● No asymptotic benefit on complexity.02 Arrays & Linked Lists
+[1] https://maryash.github.io/235/p rojects/p roject_3/project _3.html[1] 
+29
+Comparison
+● Array
+○ Consecutive memory space is assigned.
+○ Fixed length
+○ Random access is supported in O(1) .
+○ Suffers from item shifting .
+● Linked list
+○ Scattered in the memory space.
+○ Additional space is needed for storing the next reference.
+○ No random access allowed. (Linear traversal is required, taking O( N).)
+○ No shifting is needed even with size change.02 Arrays & Linked Lists
+30
+31Applications of Linked Lists03
+Application Questions
+● Print the middle of a given linked list. (Assume list size is not maintained.)
+5 7 2 8 2 4 9● Brute -force solution
+○ Traverse the entire list to count the number of elements.
+○ Traverse half of them again.
+○ → O( N)02 Arrays & Linked Lists
+32
+Application Questions
+● Reverse a given linked list.
+5 7 2 8 2 4 9
+9 4 2 8 2 7 502 Arrays & Linked Lists
+33
+Application Questions
+● Detect if there is a cycle in the given linked list.
+5 7 2 8
+2
+4902 Arrays & Linked Lists
+34
+www.upstage.ai © 2025 Upstage Co., Ltd.
+35

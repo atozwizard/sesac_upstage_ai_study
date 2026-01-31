@@ -1,0 +1,251 @@
+Lecture 7:
+Priority Queue & Heap
+김수경
+이화여자대학교 인공지능융합전공 소속© 2025 Upstage Co., Ltd.
+1
+2저작권안내
+(주)업스테이지가 제공하는 모든교육콘텐츠의 지식재산권은
+운영주체인 (주)업스테이지 또는해당저작물의 적법한관리자에게 귀속되어 있습니다 .
+콘텐츠일부또는전부를복사 , 복제 , 판매 , 재판매공개 , 공유등을할수없습니다 . 
+유출될경우지식재산권 침해에대한책임을부담할수있습니다 . 
+유출에해당하여 금지되는 행위의예시는다음과같습니다 . 
+● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위
+● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위
+● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위
+● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위
+● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위
+● 다른 정보와 결합하여 Upstage Education 의콘텐츠임을 알아볼 수있는 저작물을 작성 , 공개하는 행위
+● 제공된 데이터의 일부 혹은 전부를 Upstage Education 프로젝트 /실습 수행 이외의 목적으로 사용하는 행위
+Queue: Recap
+● Queue: 
+First In First Out (FIFO)
+○ Adding a new element ( enqueue )
+○ Retrieving the oldest item ( peek )
+○ Deleting an item ( dequeue )3enqueue1522
+dequeue
+119
+07 Priority Queue & Heap
+Priority Queue
+● Each element consists of {key (priority), value (element)}
+● Enqueue: Any order
+● Dequeue: Delete by priority
+● Example: Airplane boarding group
+07 Priority Queue & Heap
+[1]https://www.usatoday.com/story/todayinthesky/2013/09/30/airlines -promise -a-return -to-civility -for-a-fee/2894645/[1] 
+Priority Queue
+● Ordered Queue (for faster deletion)
+● Enqueue: O(n)
+● Dequeue: O(1)
+Key
+Value07 Priority Queue & Heap
+[1]https://simplerize.com/data -structures/priority -queue[1] 
+Priority Queue
+● Unordered Queue (for faster insertion)
+● Enqueue: O(1)
+● Dequeue: O(n)
+● Can we implement enqueue and dequeue in O(log(n)) ?
+Key
+Value07 Priority Queue & Heap
+[1]https://simplerize.com/data -structures/priority -queue[1] 
+7Heap01
+Binary Heap
+Min Heap Max Heap
+•Heap -Order: key(v)≥key(parent (v))
+•Complete Binary Tree
+07 Priority Queue & Heap
+[1]https://junior -datalist.tistory.com/347[1] 
+Max -heap: Insertion 
+● Insertion of a key (priority) k to the heap
+● The insertion algorithm consists of 2 steps
+○ Store k at the new last node
+○ Restore the heap -order property  (heapify_up)07 Priority Queue & Heap
+Max -heap: Insertion 
+07 Priority Queue & Heap
+[1]\https://www.codingeek.com/data -structure/binary -heap -introduction -explanation -and-implementation/[1] 
+Max -Heap: Deletion 
+● Removal of the root key ( highest priority = maximum number ) from the heap
+● The removal algorithm consists of 2 steps
+○ Replace the root key with the key  of the last node.
+○ Restore the heap -order property  ( Heapify -down )07 Priority Queue & Heap
+Max -Heap: Deletion 
+07 Priority Queue & Heap
+[1]https://afteracademy.com/blog/heap -building -and-heap -sort/[1] 
+Max Heap: Heap sort
+● Build a Max -Heap :
+○ Convert the array into a max -heap, ensuring the largest element is at the root.
+○ Complexity: O(n) .
+● Extract Maximum :
+○ Swap the root (largest element) with the last element.
+○ Reduce heap size by 1 and restore the max -heap property (heapify -down).
+○ Repeat until all elements are sorted.
+○ Complexity: O(nlogn).07 Priority Queue & Heap
+Max Heap: Heap sort
+07 Priority Queue & Heap
+[1]https://www.geeksforgeeks.org/c/c -program -for-heap -sort/[1] 
+Max Heap: Heap sort
+07 Priority Queue & Heap
+[1]https://www.geeksforgeeks.org/c/c -program -for-heap -sort/[1] 
+Max Heap: Heap sort
+07 Priority Queue & Heap
+[1]https://www.geeksforgeeks.org/c/c -program -for-heap -sort/[1] 
+Max Heap: Heap sort
+07 Priority Queue & Heap
+[1]https://www.geeksforgeeks.org/c/c -program -for-heap -sort/[1] 
+Max Heap: Heap sort
+07 Priority Queue & Heap
+[1]https://www.geeksforgeeks.org/c/c -program -for-heap -sort/[1] 
+Max Heap: Heap sort
+07 Priority Queue & Heap
+[1]https://www.geeksforgeeks.org/c/c -program -for-heap -sort/[1] 
+Heap and Priority Queue
+• We can use a heap to implement a priority queue
+• We store a (key, element) item at each internal node
+• We keep track of the position of the last node
+• For simplicity, we show only the keys in the picture
+07 Priority Queue & Heap
+[1]https://nikolay.kirov.be/2025/CITB308/slides/ch07/ch07_2.html[1] 
+Insertion 
+● Insertion of a key (priority) k to the heap
+● The insertion algorithm consists of 2 steps
+○ Store k at the new last node
+○ Restore the heap -order property 
+(heapify_up : next slide)
+07 Priority Queue & Heap
+[1]https://nikolay.kirov.be/2025/CITB308/slides/ch07/ch07_2.html[1] 
+Heapify -up
+• After the insertion of a new key k, the heap -order property may be violated
+• Algorithm heapify -uprestores the heap -order property by swapping kalong an upward path from the insertion 
+node
+• Heapify -up terminates when the key kreaches the root or a node whose parent has a key smaller than or equal 
+to k
+• Since a heap has height O(log n), heapify -up runs in O(log n)time
+07 Priority Queue & Heap
+[1]https://nikolay.kirov.be/2025/CITB308/slides/ch07/ch07_2.html[1] 
+Insertion example 
+● Left child :
+[parent index] * 2 + 1
+● Right child :
+[parent index] * 2 + 2
+● Parent :
+[child index -1] // 2
+07 Priority Queue & Heap
+[1]https://www.slideshare.net/slideshow/lec -8ds-algoheapspdf/251538564[1] 
+Insertion example 
+● Left child :
+[parent index] * 2 + 1
+● Right child :
+[parent index] * 2 + 2
+● Parent :
+[child index -1] // 2
+07 Priority Queue & Heap
+[1]https://www.slideshare.net/slideshow/lec -8ds-algoheapspdf/251538564[1] 
+Insertion example 
+● Left child :
+[parent index] * 2 + 1
+● Right child :
+[parent index] * 2 + 2
+● Parent :
+[child index -1] // 2
+07 Priority Queue & Heap
+[1]https://www.slideshare.net/slideshow/lec -8ds-algoheapspdf/251538564[1] 
+Insertion example 
+● Left child :
+[parent index] * 2 + 1
+● Right child :
+[parent index] * 2 + 2
+● Parent :
+[child index -1] // 2
+07 Priority Queue & Heap
+[1]https://www.slideshare.net/slideshow/lec -8ds-algoheapspdf/251538564[1] 
+Insertion example 
+● Left child :
+[parent index] * 2 + 1
+● Right child :
+[parent index] * 2 + 2
+● Parent :
+[child index -1] // 2
+07 Priority Queue & Heap
+[1]https://www.slideshare.net/slideshow/lec -8ds-algoheapspdf/251538564[1] 
+Insertion example 
+● Left child :
+[parent index] * 2 + 1
+● Right child :
+[parent index] * 2 + 2
+● Parent :
+[child index -1] // 2
+07 Priority Queue & Heap
+[1]https://www.slideshare.net/slideshow/lec -8ds-algoheapspdf/251538564[1] 
+Insertion example 
+● Left child :
+[parent index] * 2 + 1
+● Right child :
+[parent index] * 2 + 2
+● Parent :
+[child index -1] // 2
+07 Priority Queue & Heap
+[1]https://www.slideshare.net/slideshow/lec -8ds-algoheapspdf/251538564[1] 
+Deletion 
+● Removal of the root key (highest priority) from the heap
+● The removal algorithm consists of 2 steps
+○ Replace the root key with the key 
+of the last node.
+○ Restore the heap -order property 
+(Heapify -down: next)
+07 Priority Queue & Heap
+[1] 
+[1]https://nikolay.kirov.be/2025/CITB308/slides/ch07/ch07_2.html
+Heapify -down
+• After replacing the root key with the key k of the last node, the heap -order property may be violated
+• Algorithm heapify -down restores the heap property by swapping key k with the child with the smallest key 
+along a downward path from the root
+• Heapify -down terminates when key k reaches a leaf or a node whose children have keys greater than or equal 
+to k 
+• Since a heap has height O(log n), heapify -down  runs in O(log n) time
+[1]https://nikolay.kirov.be/2025/CITB308/slides/ch07/ch07_2.html07 Priority Queue & Heap
+[1] 
+Deletion Example
+● left child :
+[parent index] * 2 + 1
+● Right child :
+[parent index] * 2 + 2
+● parent :
+[child index -1] // 2• Deletion in Max(or Min) Heap always
+happens at the root to remove Maximum (or Minimum) value
+• Deleting it (or removing it) from root cause a hole which needs to be 
+filled. 07 Priority Queue & Heap
+Deletion Example
+● Left child :
+[parent index] * 2 + 1
+● Right child :
+[parent index] * 2 + 2
+● Parent :
+[child index -1] // 2
+3107 Priority Queue & Heap
+Deletion Example
+● Left child :
+[parent index] * 2 + 1
+● Right child :
+[parent index] * 2 + 2
+● Parent :
+[child index -1] // 2
+3107 Priority Queue & Heap
+Deletion Example
+● Left child :
+[parent index] * 2 + 1
+● Right child :
+[parent index] * 2 + 2
+● Parent :
+[child index -1] // 2
+07 Priority Queue & Heap
+Implementation (array)
+07 Priority Queue & Heap
+[1]https://velog.io/@wlgns2223/leetcode -215-Kth-Largest -Element -in-an-Array[1] 
+Implementation (array)
+07 Priority Queue & Heap
+Heap -sort (Min heap)
+O(nlog n) Sorting! Insert Remove
+MinPQ-Sort 
+Total
+Heap Sort O(logn) O(logn) O(n logn)07 Priority Queue & Heap
+www.upstage.ai © 2025 Upstage Co., Ltd.
+

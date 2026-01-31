@@ -1,0 +1,199 @@
+SPEAKER
+서영학© 2025 Upstage Co., Ltd.
+2저작권안내
+(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은
+운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.
+콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. 
+유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. 
+유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. 
+● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위
+● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위
+● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위
+● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위
+● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위
+● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위
+● 제공된 데이터의 일부 혹은전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위위
+3목표: 개발도구세팅개발하기쉬운컴퓨터환경만들기
+목차
+Pycharm (IDE) 사용법
+Pycharm 디버깅과세팅방법
+다양한개발도구소개
+401 -01
+목표
+-파이썬서버기본환경을세팅할수있다
+-도구의카테고리를이해하고각도구를사용한다사용도구
+•통합개발환경(Pycharm community / ultimate)
+•터미널(iterm / warp / zsh )
+•API 요청도구(Postman)
+•docker (docker desktop)
+•mysql 도구(data grip)
+5개발환경의중요성개발하기쉬운컴퓨터환경만들기
+개발환경은 왜중요할까? (기술적)
+-어디가문제가생겼는지어떻게확인하고로직을따라갈수있을까?
+-필요할때바로적용하기위해, 문제를빠르게확인하게위해
+-좋은도구는코드파악이나해석을도와주고문제점을파악하기쉽다
+6개발환경의중요성개발하기쉬운컴퓨터환경만들기
+개발환경은 왜중요할까? (환경적)
+장인은도구를탓하지않는다? 장인은도구를만들어쓴다
+개발을하게되면컴퓨터앞에서12시간이상앉아서고민하는시간
+보는환경이편하지않고, 예쁘지않으면그시간이고역이다
+모든자료구조, 서비스사용목적= 사용을쉽게하려고
+개발환경구축= 컴퓨터리소스를쉽게사용하기위해서도구의종류(카테고리)
+칼이필요하다 → 상황에맞는다양한칼존재
+하나의칼을잘쓰게되면나머지배우기쉬워진다
+7도구의종류개발하기쉬운컴퓨터환경만들기
+개발환경의 종류
+OS
+-windows, mac, android, linux, browser
+IDE
+-pycharm , visual studio
+Shell
+-Bash, zsh, Powershell
+터미널
+-warp, iterm
+AI 
+-IDE + Claude Code언어
+-python (3.12) , java, c, c++, rust, go lang, js 등등
+Python 실행환경
+-uv, pip
+API 호출(curl)
+-Postman , insomnia
+docker 
+-docker desktop
+mysql 도구
+-data grip
+801 -02
+목표
+-파이썬서버기본환경을세팅할수있다
+-shell 개념을이해한다
+-가상환경venv를이해한다사용도구
+•통합개발환경(Pycharm community / ultimate)
+9IDE: Pycharm (파이참) 알아보기개발하기쉬운컴퓨터환경만들기
+Pycharm 이란? 
+jetbrains 에서만든통합개발환경(editor)
+(Integration Development Environment)
+https://www.jetbrains.com/pycharm/
+실습은pycharm community 로진행
+학생이라면pro 버전1년단위구독으로무료사용이가능합니다. (학교이메일필수)
+https://www.jetbrains.com/ko-kr/academy/student-pack/다른ide가있지만pycharm 쓰는이유
+-자동완성과코드보조기능
+-디버깅이쉽다
+-프로젝트생성시자동으로가상환경생성
+(ide 는취향과선택의영역: vs code 를쓰셔도무방합니다)
+
+10예) pycharm 내부적으로문제점을잡아준다개발하기쉬운컴퓨터환경만들기: 실습
+
+11IDE: Pycharm (파이참) 실행해보기개발하기쉬운컴퓨터환경만들기: 실습
+Pycharm 작업폴더
+추천: ~/Documents/workspace/upstage-project/ 폴더안에서작업
+File → new Project 
+
+12IDE: Pycharm (파이참) 실행해보기개발하기쉬운컴퓨터환경만들기: 실습
+Pycharm 으로간단한 Python 스크립트 실행해 보기
+피보나치수열을출력하는프로그램을만들어보세요
+
+13IDE: Pycharm (파이참) 실행해보기개발하기쉬운컴퓨터환경만들기: 실습
+피보나치수열을출력하는프로그램
+
+14IDE: Pycharm (파이참) 실행해보기개발하기쉬운컴퓨터환경만들기: 실습
+ide 가인식하는python 실행환경확인(인터프리터) –project 생성때만든가상환경.venv
+
+15IDE: Pycharm 디버깅해보기개발하기쉬운컴퓨터환경만들기: 실습
+Break Point
+
+16IDE: Pycharm 디버깅해보기개발하기쉬운컴퓨터환경만들기: 실습
+F8 : 스텝오버
+17IDE: Pycharm 디버깅해보기개발하기쉬운컴퓨터환경만들기: 실습
+F8 : 스텝오버 * 5
+
+18IDE: Pycharm 디버깅해보기개발하기쉬운컴퓨터환경만들기: 실습
+F8 : 스텝오버
+
+19IDE: Pycharm 주요단축키정리개발하기쉬운컴퓨터환경만들기: 실습
+이름 단축키 
+선언또는사용위치로이동  ctrl+ B 
+선언또는사용위치로이동  ctrl+ alt + B  
+전체검색  shift + shift  
+뒤로(탐색)  ctrl+ alt + ←  
+이름변경  ctrl+ F6 
+코드완성  ctrl + spacebar  
+구현으로이동  ctrl+클릭 
+변수선언자동  ctrl + shift + v  
+오른쪽분할에서열기  shift + enter (패키지에서파일클릭후)  이름 단축키 
+최근파일목록  ctrl+ E 
+맥은다른 시스템 명령어 때문에 겹쳐서 안될수도  (ctrl space)
+-시스템환경설정 → 키보드 → 단축키 → 서비스 탭
+단축키팝업설정
+20pycharm 의자동완성기능개발하기쉬운컴퓨터환경만들기: 실습
+ctrl + space
+
+21IDE: Pycharm 기타세팅개발하기쉬운컴퓨터환경만들기: 실습
+탭위치(취향)
+-저는탭을따로안쓰고project view 를연동해서씁니다. 
+-내가연곳을자동으로선택하도록하는설정
+
+2201 -03
+사용도구
+•터미널(iterm / warp / zsh )
+•API 요청도구(Postman)
+•docker (docker desktop)
+•mysql 도구(data grip)
+•git 
+23Shell: Bash / 터미널실행하기개발하기쉬운컴퓨터환경만들기: 실습
+Mac vs Windows
+mac 은기본세팅
+wsl 리눅스설정이필요
+CUI (Command UI)
+환경에익숙해지기
+
+24터미널도구: Warp 알아보기개발하기쉬운컴퓨터환경만들기
+Warp 이란? 
+최근인기있는터미널도구
+https://www.warp.dev
+
+25(심화/취향) 터미널창이쁘게꾸미기개발하기쉬운컴퓨터환경만들기
+https://inspire12.tistory.com/344못생긴windows Powershell 예쁘고쓸만하게만들기
+iterm + ohmyzsh
+https://salmonpack.tistory.com/52
+
+26(심화) pycharm 에서terminal 실행하기개발하기쉬운컴퓨터환경만들기: 실습
+아래terminal 에서 작업하는 경우
+
+27Docker 관리도구: Docker desktop 개발하기쉬운컴퓨터환경만들기
+Docker 와인프라
+docker / docker-compose
+Docker Desktop 을통한설치
+
+28DB 관리도구: Datagrip개발하기쉬운컴퓨터환경만들기
+Datagrip 이란?
+DB 에접속해서데이터를확인하는도구
+동일UI로다양한DB 접근가능
+https://www.jetbrains.com/ko-kr/datagrip/
+
+29Git 설치개발하기쉬운컴퓨터환경만들기
+https://git-scm.com/install/windows
+mac : brew install git 
+linux : sudo apt install git 
+30Git 설치개발하기쉬운컴퓨터환경만들기
+
+31Git 설치개발하기쉬운컴퓨터환경만들기
+프로젝트 폴더 내에서 우클릭 -추가 옵션 클릭
+32API 테스트도구: Postman 알아보기개발하기쉬운컴퓨터환경만들기
+데이터요청확인
+HTTP 요청의 모든구성요소를 정확히 설정하고
+테스트할 수있는환경을제공한다.
+"실제로사용자나 다른서비스가 우리서버에요청하는 방식그대로" 요청을 재현
+코드로만 확인하면
+•요청 코드가 잘못된건지
+•네트워크에 문제가 있는건지
+•API 가 잘못된건지
+알기 어렵다포스트맨 다운로드
+[https://www.postman.com/downloads/
+33HTTP API 만들기개발하기쉬운컴퓨터환경만들기
+
+34diagram 그리기: excaildraw개발하기쉬운컴퓨터환경만들기
+전체흐름과 순서파악, 아키텍처 설계그리기
+https://excalidraw.com/
+
+www.upstage.ai © 2025 Upstage Co., Ltd.
+

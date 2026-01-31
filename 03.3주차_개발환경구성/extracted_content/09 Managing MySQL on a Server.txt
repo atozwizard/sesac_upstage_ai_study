@@ -1,0 +1,279 @@
+SPEAKER
+서영학© 2025 Upstage Co., Ltd.
+2저작권안내
+(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은
+운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.
+콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. 
+유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. 
+유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. 
+● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위
+● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위
+● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위
+● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위
+● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위
+● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위
+● 제공된 데이터의 일부 혹은전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위위
+3목표: Python으로DB 데이터를다루고서버로확장Python 서버와DB
+목차
+Python에서MySQL 다루기
+커넥션풀
+안전한저장을위한트랜잭션
+409 -01
+python 
+MySQL 
+Connection
+5왜프로그램으로DB를다뤄야할까?Python 서버와DB 
+사람이직접DB를사용하면?
+사람이직접DB에들어가서
+INSERT 하고SELECT 하는방식은
+수동, 반복, 느림, 오류이라는문제
+6왜프로그램으로DB를다뤄야할까?Python 서버와DB 
+프로그래밍의장점= 반복, 데이터처리
+데이터자동처리–대화저장, 로그기록, 통계계산을 코드로 자동화
+대량데이터 처리가능–수천~수만 건을빠르게 처리
+동시에여러요청처리–서비스환경에서 필수
+반복되는 로직자동화–매번SQL을수동으로 칠필요없음
+서비스내부로직과 연결가능–예: AI Agent의대화내역저장
+
+7Python -DB 연결과정Python 서버와DB 
+Python DB 연결과정과 용어
+DB 드라이버(pymysql 등)
+python 과mysql 연결통역기역할
+connection
+Python ↔ MySQL 서버사이통로
+생성비용높음
+cursor
+SQL을보내고결과를받는도구(작업자)
+8Python -DB 연결과정Python 서버와DB 
+Python DB 연결과정과 용어
+execute
+문자열sql 실행
+파라미터바인딩사용(%s)
+fetchone / fetchall
+select 결과조회
+commit
+데이터조작시(insert/update/delete) 반영
+rollback
+오류시되돌리기
+close
+커넥션/커서종료, 자원반환
+
+9(실습) Python -DB 연결과정Python 서버와DB 
+실습순서
+Python이 MySQL과 대화하려면 드라이버가 필요
+1.uv add pymysql로 설치
+○uv add cryptography 도설치
+○ .env 파일생성후db_user / db_password 입력
+2.pymysql.connect(...)로 MySQL 서버에 연결(Connection)
+3.conn.cursor()로 커서(Cursor) 생성
+4.cursor.execute("SQL...")로 쿼리실행
+5.fetchone(), fetchall()로결과가져오기
+6.Cursor 반납
+7.마지막에 conn.close()로연결 종료
+10DB 연결테스트Python 서버와DB 
+import pymysql
+def connection ():
+conn = pymysql.connect(
+host="localhost" ,
+port=3306,
+user="tester",
+password ="tester",
+database ="llmagent" ,
+charset="utf8mb4" ,
+)
+try:
+with conn.cursor() as cursor:
+cursor.execute( "SELECT 1" )
+row = cursor.fetchone()
+print(row)
+finally:
+conn.close()
+if __name__ == '__main__' :
+connection()git switch feature/crud/cr
+git pull
+uv sync
+혹시 프로젝트 실행 시
+RuntimeError: 'cryptography' package is required for 
+sha256_password or caching_sha2_password auth 
+methods ..
+에러 발생시
+uv add cryptography    실행해주세요
+.env 파일 생성
+
+1109 -02
+python 
+MySQL 
+Connection
+12실습을하기전팁Python 서버와DB 
+브랜치별 실습코드분리
+Sourcetree 에서전체작업을확인가능
+fix/uvadd .. 
+의존성초반추가..
+
+13유저등록: Create = InsertPython 서버와DB 
+실습과정def create_user (name: str, email: str):
+conn = pymysql.connect(
+host="localhost" ,
+port=3306,
+user="root",
+password ="password" ,
+database ="llmagent" ,
+charset="utf8mb4" ,
+cursorclass =pymysql.cursors.DictCursor,
+)
+try:
+with conn.cursor() as cursor:
+sql = """
+INSERT INTO users (name, email)
+VALUES (%s, %s) \
+"""
+cursor.execute( sql, (name, email))
+conn.commit()
+finally:
+conn.close()결과
+git switch feature/crud/cr
+git pull
+uv sync
+14유저등록: Read = SelectPython 서버와DB 
+실습과정 결과def get_user_by_email (email: str):
+conn = pymysql.connect(
+host="localhost" ,
+port=3306,
+user="root",
+password ="password" ,
+database ="llmagent" ,
+charset="utf8mb4" ,
+cursorclass =pymysql.cursors.DictCursor,
+)
+try:
+with conn.cursor() as cursor:
+sql = """
+SELECT id, name, email, created_at
+FROM users
+WHERE email = %s \
+"""
+cursor.execute( sql, (email,))
+return cursor.fetchone()
+finally:
+conn.close()
+select 는
+commit 필요없다
+15잠깐! conn 부분이이렇게매번반복되잖아? Python 서버와DB 
+요청마다 conn을새로만드는 방식은 매우비효율적
+1.TCP 연결
+1.MySQL 인증과정(user/password)
+1.세션초기화
+1.버퍼준비
+매연결마다 반복
+16connection poolPython 서버와DB 
+connection 을미리만들고재사용하면 효율적이지 않을까?
+프로그램 시작시conn 5 ~ 10개정도미리만들어둠
+요청이 들어오면 풀에서 하나꺼내주고
+작업완료되면 다시풀로돌려보냄(반납)
+•conn 생성비용절감
+•DB 서버부하감소
+•병렬요청가능(멀티스레드/멀티 워커)
+•안정적인 서비스 운영가능
+17(실습) connection pool 개발Python 서버와DB 
+실습순서
+1. connection pool 클래스 생성
+-순차적connection 배분을 위해queue 를생성
+-connection pool 생성단계에서 정해진개수만큼connection 을만들고 저장
+2. connection pool 생성시db 연결정보 전달
+3. 연결요청시커넥션을 순차적으로 전달
+-만약연결이 끊겼으면 재연결
+5. connection으로db 작업수행후반환
+18(실습) connection pool 개발Python 서버와DB 
+실습과정
+import pymysql
+from queue import Queue
+class PymysqlConnectionPool :
+def __init__(self, maxsize =5, **db_params ):
+self._pool = Queue( maxsize )
+self._db_params = db_params
+for _ in range(maxsize ):
+self._pool.put( self._create_conn())
+def _create_conn (self):
+return pymysql.connect(
+charset="utf8mb4" ,
+cursorclass =pymysql.cursors.DictCursor,
+**self._db_params,
+)def get_conn (self):
+# 큐에서커넥션하나가져옴(없으면대기)
+conn = self._pool.get()
+# 혹시끊겨있으면재연결
+try:
+conn.ping(reconnect =True)
+except Exception :
+conn = self._create_conn()
+return conn
+def release_connection (self, conn):
+# 풀에커넥션되돌려놓기
+self._pool.put( conn)
+def close_all (self):
+# 프로그램종료시풀안의모든커넥션정리
+while not self._pool.empty():
+conn = self._pool.get()
+conn.close()git switch feature/crud/connectionpool
+git pull
+uv sync
+100 번을했을때
+커넥션이유지가되나?
+
+19(실습) connection pool 개발후반영Python 서버와DB 
+실습과정
+ 실제데이터오는지확인
+없다면저장했는지확인
+20(실습) 유저등록: UpdatePython 서버와DB 
+실습과정
+결과
+git switch feature/crud/ud
+git pull
+uv sync
+main.py
+1
+ 슬라이드 20
+1  이 부분 텍스트가 강의 녹화시 강의자님께 가릴 것 같습니다 !
+Gio Paik, 2025-12-10
+21(실습) 유저등록: DeletePython 서버와DB 
+실습과정
+ main.py
+결과
+
+22(실습) 유저대화도마찬가지CRUDPython 서버와DB 
+실습과정 :대화저장/ 최근대화목록조회git switch feature/crud/conversation
+git pull
+uv sync
+
+2309 -03
+데이터정합성을위한트랜잭션
+원자성
+24요구사항: 유저질문과에이전트응답을동시에저장해주세요Python 서버와DB 
+두가지쿼리가 동시에 일어나는 경우
+ex) 유저질문, 에이전트 응답이 쌍인데, 한쪽이저장이 안될경우ai 품질이상발견
+한쪽이저장안되면차라리둘다저장안되게 해주세요
+한쪽이 실패했을때둘다실패
+25트랜잭션이란? Python 서버와DB 
+https://rebro.kr/162DB의작업단위
+여러작업을 하나의 단위로 묶는기능
+Atomicity(원자성) —모두성공하거나(None) 모두실패
+Consistency(일관성) —데이터무결성유지
+Isolation(격리성) —다른트랜잭션 간간섭제거
+Durability(지속성) —commit 후영구반영됨
+26(실습) 두요청저장Python 서버와DB 
+실습과정
+둘다성공한경우
+둘다저장됐는지 확인git switch feature/crud/transaction
+git pull
+uv sync
+27두요청저장실패Python 서버와DB 
+실습과정
+한쪽만성공한 경우
+둘다실패되는지 확인
+
+28총정리Python 서버와DB 
+Python 에서DB 연결과정
+Connection Pool 의필요성
+Transaction과 원자성Python 에서SQL 실행
+www.upstage.ai © 2025 Upstage Co., Ltd.
+

@@ -1,0 +1,388 @@
+SPEAKER
+서영학© 2025 Upstage Co., Ltd.
+2저작권안내
+(주)업스테이지가 제공하는 모든교육콘텐츠의지식재산권은
+운영주체인 (주)업스테이지 또는해당저작물의 적법한 관리자에게 귀속되어 있습니다.
+콘텐츠 일부 또는 전부를 복사, 복제, 판매, 재판매 공개, 공유 등을 할수없습니다. 
+유출될 경우 지식재산권 침해에 대한 책임을 부담할 수있습니다. 
+유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다. 
+● 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위
+● 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위
+● 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위
+● 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위
+● 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위
+● 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수있는 저작물을 작성, 공개하는 행위
+● 제공된 데이터의 일부 혹은전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위위
+3목표: Docker는편리하다Docker
+목차
+Docker 필요성
+Docker 구성요소
+Docker 사용법및실습
+docker-compose 로mysql 켜기프로젝트 : https://github.com/inspire12/upstage-infra-project.git
+4언어레벨에서문제 → 인프라수준에서문제Docker 
+대부분문제는언어밖에서 발생한다
+OS가서로다르다
+Windows / macOS / Linux 환경차이로 동일코드가다르게동작함.
+시스템 패키지가 다르다
+libssl, libxml 등OS 레벨라이브러리 버전이 달라충돌발생.
+외부서비스환경이다르다
+MySQL, Redis가로컬에는 없거나, 버전/설정이 서버와 다름.
+서버와 로컬의 OS 차이
+서버(Ubuntu)와로컬(macOS)의 동작방식차이때문에문제재현이 어려움.
+venv는“언어의존성”만 맞춰줄뿐,
+실제문제는OS·시스템라이브러리·외부 서비스처럼 인프라레벨에서 발생한다.
+507 -01
+607 -01
+Docker 란?
+
+7(심화) 입문자가Docker 까지굳이알아야하나Docker 
+왜내컴퓨터에선 안되는거야
+입문자는환경문제로가장많이고생한다.
+-설치과정도오래걸리고나중에처리도어려움
+DB, 캐시, 메시지큐같은인프라를안전하게체험할수있다.
+-초보자의성장속도를크게올려주는도구다.
+팀프로젝트를하면환경차이가문제를만든다.
+-Docker는개발환경을통일해개발을더쉽게만든다.
+
+8Docker 이야기할것과이야기하지않을것Docker 
+이야기할 것
+다른사람의 세팅을가져다쓴다
+(외부의존성, 인프라구성요소)
+Docker 설치
+Docker 이미지/ 컨테이너
+-Docker 실행흐름
+접속을위한Docker 네트워크
+-host.internal.network
+docker-compose 인프라구성
+-mysql 실행해보기이야기하지 않을것
+Dockerfile 작성
+-내앱을컨테이너화
+Docker 내부구조
+-Docker overlay 구조
+-namespace, cgroup 
+-런타임구조
+실제운영배포전략
+-kubernetes, ci/cd
+컨테이너네트워크심화
+9Docker 이미지와컨테이너Docker 
+설계도= 이미지, 실행환경 = 컨테이너, 실행= 애플리케이션
+-이미지: 실행가능한앱의정적인 설계도(변하지않음)
+-컨테이너: 이미지를메모리에띄운 실행인스턴스 (변할수있음)
+이미지= 레시피, 컨테이너= 그걸로만든요리
+10(심화) DockerfileDocker 
+docker 이미지 생성을 위한명세서
+애플리케이션 실행에 필요한 환경 구성 절차를
+코드로 적어 놓은 설정 파일
+개발자마다 환경이 달라도 항상 동일한 실행 환경을 만들 수 있음
+서버와 로컬이 달라서 생기는 “동작 안 함 ” 문제를 근본적으로 해결
+계층(Layer) 기반빌드→ 캐싱, 빠른재사용
+Docker 실행흐름
+•Dockerfile → docker build → docker 이미지생성
+•docker 이미지→ docker run → 컨테이너생성및실행
+11(실습) Docker desktop 설치Docker 
+Docker 설치
+https://docs.docker.com/desktop/setup/install/windows-install
+
+12(실습) Docker desktop 설치Docker 
+
+13(실습) Docker desktop 설치Docker 
+docker --version
+docker 명령어시Cannot connect 가뜬다면docker desktop 실행이안된상태
+docker 자체적으로리소스를가져가는게많아서평소에는꺼놓고필요할때사용하는걸권장(로그인시켜지는옵션해제)
+1407 -02
+15Docker 아키텍처Docker 
+Docker 구성요소와 명령어이어생각
+Docker 이미지
+실행가능한앱의"설계도" 또는"템플릿"
+Docker 컨테이너
+이미지가실제로실행된"격리된박스"
+Dockerfile
+설계도를만드는설명서
+Docker Hub
+이미지를올리고내려받는GitHub 같은저장소
+Docker 데몬
+Docker 컨테이너를관리하는"운영체제속관리자"
+Docker CLI
+Docker를제어하는"터미널명령어"
+16Docker 명령어패턴Docker 
+docker <대상> <행동> [옵션]
+✔대상(Resource)
+image
+container
+volume
+network
+system
+(추가: plugin, context 등)✔행동(Action)
+ls (목록조회)
+rm (삭제)
+prune (사용되지않는리소스정리)
+inspect (정보조회)
+logs (로그조회)
+create / run / stop …✔docker 초창기구조화되기전패턴
+docker ps
+docker rm
+docker rmi
+docker images
+docker run
+예전명령어도정상동작
+옵션확인
+docker <대상> <행동> --help
+17Docker 기본명령어정리Docker 
+컨테이너 상태체크/ 컨테이너 생성/ 실행
+✔Container 상태체크
+docker container ls 
+docker ps 
+docker ps -a
+✔Container 생성/ 실행/ 삭제
+docker run / docker start
+docker stop / docker rm 
+✔docker 로그, 분석
+docker log / docker inspect
+✔docker hub (github 같은외부저장소)
+docker pull / docker push✔Container 실행
+docker run 
+-d(백그라운드) 
+--rm(컨테이너종료시컨테이너도삭제) 
+--name (컨테이너이름지정)
+✔Container 내부들어가보기
+docker exec –it {pod 이름} bash
+https://hub.docker.com
+
+18nginx 란? (엔진엑스)Docker 
+가벼운웹서버
+웹서버, 역방향프록시, 로드밸런서, 캐시서버, HTTP 캐싱등
+다양한기능을수행하는고성능오픈소스소프트웨어
+비동기이벤트기반구조를사용하여적은자원으로
+높은동시성(다수의연결동시처리)을제공하며, 특히대규모트래픽을처리하는데강점
+실습에선
+누군가브라우저로요청하면
+HTML 와같은정적파일을그대로돌려주는역할
+19(실습)Docker 기본명령어Docker 
+웹서버nginx 이미지를 받아서사용해보자
+1. nginx docker 이미지를받는다
+2. nginx docker 이미지를컨테이너로띄워본다
+3. nginx 접속확인
+4. 컨테이너상태를확인
+5. 컨테이너정보를확인
+6. 컨테이너로그확인
+6-1 컨테이너로그지속적으로확인
+7. 컨테이너내부들어가보기
+8. 컨테이너종료및삭제
+20(실습) 이미지받고실행해보기Docker 
+실습과정
+1. nginx docker 이미지를받는다
+docker image pull nginx
+2. nginx docker 이미지를컨테이너로띄워본다// 만약8080 포트가있다면8081 등으로수정
+docker container run -d   --name my-nginx   -p 8080:80nginx
+3. nginx 를브라우저로접속확인해본다
+localhost:8080
+만약8080 port 로프로그램이켜있다면
+-p 앞값을다른포트로ex) 18080:80
+
+21(실습) 실행중인컨테이너확인하기Docker 
+실습과정
+4. 실행중인컨테이너확인하기
+docker container ls
+5. (심화) 컨테이너상세정보확인하기
+docker container inspect my-nginx
+6. 컨테이너로그확인
+6-1. 컨테이너로그확인지속적으로확인(-f 옵션) 하면서브라우저접속해보기
+→ 로그가들어오는것확인하기
+
+22(실습) 실행중인컨테이너확인하기Docker 
+실습과정
+7. 컨테이너내부들어가보기
+docker exec -it my-nginx bash
+8. 컨테이너중지및삭제
+docker container stop my-nginx
+docker container rm my-nginx
+8-1 이미지확인및삭제
+docker image ls
+docker image rm nginx
+9. 삭제됐는지확인
+docker container ls // docker ps 
+docker image ls // docker images
+
+23Docker 다른리소스Docker 
+✔Docker Network
+격리된컨테이너끼리혹은시스템과통신하기위한리소스
+컨테이너는기본적으로서로분리된공간에서돌아가기때문에(자동연결되지않음)
+이를연결할네트워크가필요
+•포트매핑 -p 8080:80 
+•컨테이너안에서호스트를가리키는주소 host.docker.internal 
+✔Docker Volume
+데이터는컨테이너밖에저장하기위한리소스
+기본적으로수명이짧은실행환경이라서, 지우면데이터도같이사라진다. 
+만약데이터가중요하다면데이터는컨테이너바깥에따로저장
+2407 -03
+Docker 복잡하고반복적인설정/명령어관리
+25docker run 의단점Docker 
+올릴docker 컨테이너가 너무많아+ 명령어옵션이너무많아
+실제개발환경에서는보통컨테이너가1개가아니라여러개가필요
+•웹서버(nginx 또는node 서버)
+•데이터베이스(MySQL)
+•캐시서버(Redis)
+•메시지큐(Kafka)
+•백엔드API 서버
+컨테이너하나당매번docker run 명령으로직접쳐야하는것들
+•이미지 이름
+•포트 매핑
+•환경변수
+•볼륨
+•네트워크 설정
+26docker-compose 란?  Docker 
+https://dev.to/waji97/docker-compose-management-1d84"docker-compose.yml " 파일로 컨테이너 설정을관리한다
+여러개의docker run 설정을하나의파일(docker-compose.yml)로
+관리해서한번에실행·정리할수있게해주는도구
+•팀전체환경을하나의파일에서관리할수있어서공유가편함
+•up / down 
+
+#version: '3.8'         # docker-compose 의 버전 정의
+services :    # 서비스(컨테이너) 정의
+서비스이름 :        # 서비스 이름 (임의로 지정 가능 )
+image: 이미지명
+container_name : 컨테이너이름 (선택사항)
+ports:
+-"호스트포트:컨테이너포트"
+volumes :
+-"호스트경로:컨테이너내부경로"
+environment :
+환경변수명 : 값
+networks :
+-네트워크명
+networks :    # 사용할 네트워크 정의
+네트워크명 :
+driver: bridge (기본값)
+volumes :      # 사용할 볼륨 정의
+볼륨명:
+driver: local (기본값)
+27docker-compose.yml 파일Docker 
+https://dev.to/waji97/docker-compose-management-1d84services: 컨테이너 정의들
+images: 무슨이미지를컨테이너로띄울지
+container_name: 이름을직접지정
+ports: docker network 와로컬네트워크의포트연결
+8080:80
+앞이내컴퓨터포트뒤가docker 컨테이너내포트
+3306:3306
+port는같지만두네트워크는다른곳
+#version: '3.8'         # docker-compose 의 버전 정의
+services :    # 서비스(컨테이너) 정의
+서비스이름 :        # 서비스 이름 (임의로 지정 가능 )
+image: 이미지명
+container_name : 컨테이너이름 (선택사항)
+ports:
+-"호스트포트:컨테이너포트"
+volumes :
+-"호스트경로:컨테이너내부경로"
+environment :
+환경변수명 : 값
+networks :
+-네트워크명
+networks :    # 사용할 네트워크 정의
+네트워크명 :
+driver: bridge (기본값)
+volumes :      # 사용할 볼륨 정의
+볼륨명:
+driver: local (기본값)
+28docker-compose.yml 파일Docker 
+https://dev.to/waji97/docker-compose-management-1d84services: 컨테이너 정의들
+volumes: 호스트와컨테이너간디렉토리공유
+environment: 컨테이너환경변수설정(DB 초기설정등)
+restart: 재시작정책(no, always, unless-stopped 등)
+depends_on: 의존관계명시(기동순서기준, 의존성보장X)
+29(실습) docker-compose 로mysql 실행해보기Docker 
+실습순서
+1. infra/mysql/docker-compose.yml 파일
+2. docker-compose 실행
+3. docker-compose 안에정의된서비스컨테이너확인
+4. 실행된서비스접속
+5. 실행된서비스로그확인
+30(실습) docker-compose 로mysql 실행해보기Docker 
+docker-compose.yml 예시파일
+
+31(실습) docker-compose 로mysql 실행해보기Docker 
+실습과정
+1.infra/mysql/docker-compose.yml 파일
+2. docker-compose 실행
+docker-compose -d  up  
+3. 실행된서비스컨테이너확인
+docker-compose ps
+4. 브라우저로접속
+localhost:8080
+4. 실행된서비스접속
+docker-compose exec mysql bash
+5. 실행된서비스로그확인 // mysql 자체log 가안찍히는버전
+docker-compose  logs
+
+3207 -04
+docker network 
+host.docker.internal
+mysql 접속
+33mysql 접속클라이언트Docker 
+adminer
+docker-compose 파일내에adminer 포함
+웹기반간단한mysql 관리툴
+접속정보도
+docker-compose.yml 에적혀있음
+
+34Trouble shooting) 이미MySQL 이깔려있다면?Docker
+port 가겹쳐서오류가날수있다. 
+services:
+mysql:
+image: mysql:8.0
+ports:
+-"3306:3306"
+environment :
+-MYSQL_ROOT_PASSWORD=password
+-MYSQL_DATABASE=llmagent
+-MYSQL_USER=tester
+-MYSQL_PASSWORD=tester
+adminer :
+image: adminer
+restart: always
+ports:
+-"8081:8080"ports: 
+앞부분을
+塪塪塧塭 → 塪塪塧塮 로
+변경
+35mysql 접속클라이언트Docker 
+datagrip 으로접속하기
+https://www.jetbrains.com/ko-kr/datagrip/
+
+36docker compose 에두개이상서비스를띄운상황Docker 
+Docker Network
+패키지= 격리
+docker 내부에있으면다소통될까?
+도커컨테이너내부
+로컬컴퓨터의네트워크
+Port 포워딩
+도커컨테이너내부로컬컴퓨터네트워크연결
+host.docker.internal
+도커내부에서로컬네트워크를가리키는예약어
+
+37docker 쓰면인프라추가/ 삭제가깔끔하다Docker
+docker 쓰는장점= 편하다
+-인프라설정이어떻게작동하는지 테스트하기 좋다
+만약수동설치였다면? 
+-mysql 은컴퓨터 켜졌을 때자동으로 켜져서(백그라운드) 노트북의 리소스를 점유하고 있었을 수도
+-설정이나 파일잘못건드렸다가 맨날메모리참조오류떠서고통받고있을수도
+-삭제를해도설정파일이나 환경변수가 남아있어서 다음에 또설치했을 때문제가생길수도..
+38docker 이미지/리소스삭제Docker
+docker rm / rmi / prune 
+docker ps -a
+docker {컨테이너 id} rm 
+docker images
+docker {docker image 명} rmi 
+# prune: 사용되지 않는(unused) 이미지자동정리
+docker image prune  
+docker image prune --filter "dangling=true"
+docker system prune -a -f
+39총정리Docker 
+Docker 로인프라 설치를 대체
+docker 아키텍처이해
+docker 명령어
+Docker-compose 로docker를더쉽게
+docker-compose up /  down 
+docker-compose 를통한인프라(외부의존성) 세팅
+www.upstage.ai © 2025 Upstage Co., Ltd.
+

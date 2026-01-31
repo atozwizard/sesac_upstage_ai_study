@@ -1,0 +1,306 @@
+# Day 3. 트리와 그래프로 탐색하기 – 데일리 미션
+
+이 노트북은 **이진 트리의 최대 깊이(Maximum Depth)** 를 구하는 문제를 통해
+재귀 DFS와 BFS(레벨 순회)를 모두 연습하는 데일리 미션용입니다.
+
+문제는 LeetCode **#104 – Maximum Depth of Binary Tree** 를 기반으로 합니다.
+
+## 🎯 학습 목표
+- 이진 트리의 **높이(최대 깊이) 정의**를 명확히 이해한다.
+- 재귀 DFS로 "현재 노드 기준 서브트리의 높이"를 계산하는 패턴을 익힌다.
+- `collections.deque` 를 이용한 **BFS 레벨 순회**로 깊이를 구해 본다.
+- DFS와 BFS의 차이를 **호출 스택 vs 큐**, 재귀 vs 반복 관점에서 비교한다.
+
+---
+## 문제: Maximum Depth of Binary Tree
+
+> 이진 트리의 루트 노드 `root` 가 주어졌을 때, 이 트리의 **최대 깊이(maximum depth)** 를 반환하세요.
+
+- 최대 깊이란, **루트에서 가장 깊은 리프까지 가는 경로에 포함된 노드의 개수**입니다.
+- 빈 트리(`root is None`) 라면 깊이는 `0` 입니다.
+
+### 예시
+1. `root = [3,9,20,null,null,15,7]` → 출력: `3`
+2. `root = [1,null,2]` → 출력: `2`
+
+### 제한 조건
+- 트리의 노드 개수: `0 <= number of nodes <= 10^4`
+- 각 노드 값: `-100 <= Node.val <= 100`
+
+---
+이제 아래 **Step 1 → Step 4** 순서로 미션을 진행해 주세요.
+
+## 🛠️ Prerequisites
+본 미션은 파이썬 표준 라이브러리를 활용하며, 효율적인 알고리즘 구현을 위해 아래 모듈들을 사용합니다.
+* **`from typing import List, Optional`**: 데이터 구조의 타입을 명확히 정의하기 위해 사용합니다.
+* **`from collections import deque`**: BFS 탐색 시 효율적인 큐(Queue) 연산을 위해 사용합니다.
+* 별도의 외부 패키지 설치는 필요하지 않습니다.
+
+## Step 1. 문제 이해 및 TreeNode 구조 복습
+
+LeetCode에서 사용하는 `TreeNode` 클래스는 다음과 같이 정의되어 있습니다.
+
+```python
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+```
+
+아래 셀에 **내가 이해한 '트리의 최대 깊이' 정의**와
+`root is None` 인 경우 어떤 값을 반환해야 하는지 정리해 보세요.
+
+### ✏️ 내가 이해한 문제 (학생 작성)
+
+- 트리의 최대 깊이란 무엇인가?
+  - 더 이상 이어지는 엣지가 없는 트리중 가장 height가 큰 것
+  - 가장 깊은 리프까지 가는데 포함된 노드의 갯수
+- 루트가 없는 빈 트리(`root is None`) 의 깊이는 왜 0이어야 할까?
+  - 트리는 루트 아래 이어지는 노드가 있어야 하는데, 시작하는 루트조차 없으니까 height == 0 이다
+
+
+
+
+---
+## Step 2. 재귀 DFS로 최대 깊이 구현하기
+
+DFS(깊이 우선 탐색)를 이용하면, **현재 노드 기준으로 왼쪽/오른쪽 서브트리의 높이**를 각각 구한 뒤
+그 중 큰 값에 1을 더해서 현재 노드의 높이를 구할 수 있습니다.
+
+### 아이디어
+- 기저 사례(base case): 노드가 `None` 이면 높이는 0
+- 재귀 관계: `1 + max(왼쪽 서브트리 높이, 오른쪽 서브트리 높이)`
+
+아래 템플릿의 `maxDepth_dfs` 를 재귀 DFS 방식으로 구현해 보세요.
+
+from typing import Optional
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: 'TreeNode | None' = None, right: 'TreeNode | None' = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class SolutionDFS:
+    def maxDepth_dfs(self, root: Optional[TreeNode]) -> int:
+        """재귀 DFS를 사용하여 이진 트리의 최대 깊이를 계산합니다.
+
+        아이디어:
+            TODO: 위에서 정리한 DFS 아이디어를 간단히 한 줄로 적어보세요.
+                    루트부터 바닥까지 내려가며 1+max(왼쪽 깊이, 오른쪽 깊이) 반복
+                
+        시간복잡도:
+            TODO: 이 알고리즘의 시간복잡도와 그 이유를 적어보세요. (힌트: 모든 노드를 정확히 한 번씩 방문)
+                    O(N) 트리 내 모든 노드를 한 번씩 방문하므로
+        """
+        # TODO: 기저 사례와 재귀 관계를 이용해 함수를 완성해 보세요.
+        
+        if root is None:
+            return 0
+        #노드가 없으면 깊이는 0, 재귀가 멈추는 지점
+        
+        left_depth = self.maxDepth_dfs(root.left) #왼쪽 몇층?
+        right_depth = self.maxDepth_dfs(root.right) #오른쪽 몇층?
+        
+        return max(left_depth,right_depth) + 1
+        # 왼쪽과 오른쪽중 더 깊은 쪽을 선택하고 현재 노드의 높이인 1을 더함
+        """왼쪽이 2층이고 오른쪽이 3층이라면, 더 높은쪽인 3층을 고르고, 현재노드도 한 층을 차지하니까
+        +1을 해서 최종적으로 4층이라고 보고하는 것"""
+        raise NotImplementedError
+
+
+"""개념은 사알짝 알겠는데, 표현하는걸 모르겠어, 
+아래 테스트코드의 인풋부터 저게 왜 트리이지?? 하고 있는데"""
+
+### ✅ DFS 버전 테스트 코드
+아래에는 리스트 표현을 이용해 간단한 트리를 만들어주는 헬퍼 함수가 있습니다.
+DFS 버전을 구현한 뒤 셀을 실행해 정상 동작하는지 확인해 보세요.
+
+리스트 표현은 LeetCode 스타일의 **level-order** 표기법을 간단히 흉내낸 것입니다.
+(`None` 은 자식이 없음을 의미합니다.)
+
+from collections import deque
+
+def build_tree_from_list(values: list[int | None]) -> TreeNode | None:
+    """간단한 level-order 리스트 표현으로부터 이진 트리를 생성하는 헬퍼 함수입니다.
+    예: [3, 9, 20, None, None, 15, 7]
+    """
+    if not values:
+        return None
+    it = iter(values)
+    root_val = next(it)
+    if root_val is None:
+        return None
+    root = TreeNode(root_val)
+    queue: deque[TreeNode] = deque([root])
+
+    for val_left, val_right in zip(it, it):
+        node = queue.popleft()
+        if val_left is not None:
+            node.left = TreeNode(val_left)
+            queue.append(node.left)
+        if val_right is not None:
+            node.right = TreeNode(val_right)
+            queue.append(node.right)
+    return root
+
+
+# 간단한 테스트
+examples = [
+    ([3, 9, 20, None, None, 15, 7], 3),
+    ([1, None, 2], 2),
+    ([], 0),
+]
+
+solver = SolutionDFS()
+for arr, expected in examples:
+    root = build_tree_from_list(arr)
+    result = solver.maxDepth_dfs(root)
+    print(f"input={arr}, expected={expected}, result={result}")
+
+
+---
+## Step 3. BFS(레벨 순회)로 최대 깊이 구현하기
+
+이번에는 **큐(queue)** 를 사용해 트리를 레벨 단위로 순회하면서 깊이를 구해 보겠습니다.
+
+### 아이디어 (한 가지 방식 예시)
+- 큐에 `(노드, 현재 깊이)` 를 함께 넣고, 하나씩 꺼내면서 최대 깊이를 갱신한다.
+  또는
+- "현재 큐 길이만큼 반복 → 한 레벨 처리 → `depth += 1`" 패턴을 사용한다.
+
+어느 쪽이든 상관 없지만, 코드 안에 **어떤 방식으로 깊이를 증가시켰는지** 주석으로 설명해 보세요.
+
+from collections import deque
+
+class SolutionBFS:
+    def maxDepth_bfs(self, root: Optional[TreeNode]) -> int:
+        """BFS(레벨 순회)를 사용하여 이진 트리의 최대 깊이를 계산합니다.
+
+        아이디어:
+            TODO: 큐를 어떻게 사용해 레벨 단위로 깊이를 세는지 요약해 보세요.
+                FIFO, 방문하는 노드에 인덱스를 부텨 주면서, 그 인덱스 순서로 찾아가서 붙어 있는
+                노드들에 방문, 반복. 지금 몇 번째 층을 다 훑었는지를 세는.
+                큐를 사용해 같은 층에 있는 노드들을 한꺼번에 처리. 연결된 노드를 넣어 한 층이 처리가 끝날때마다
+                깊이를 1씩 증가
+        시간복잡도:
+            TODO: 이 알고리즘의 시간복잡도와 그 이유를 적어보세요.
+                모든 노드를 한 번 씩 큐에 넣고 빼야하니까, O(N) 노드 갯수에 비례
+                
+        """
+        # TODO: BFS 레벨 순회 방식으로 구현해 보세요.
+        if not root:
+            return 0 #루트가 비었으면 0
+        
+        queue = deque([root]) #초기화 : 루트노드를 큐에 삽입
+        depth = 0 #시작, 깊이 카운터
+        
+        while queue:  #큐가 빌 때까지 반복(트리의 모든 레벨을 순회)
+            level_size = len(queue) #현재 레벨의 노드 갯수 측정
+            
+            for _ in range(level_size): #현재 레벨에 있는 노드들만 모두 꺼내
+                curr_node = queue.popleft() #큐의 맨 앞 노드 추출
+                if curr_node.left:  #추출된 노드의 자식노드들을 차례로 큐에 삽입
+                    queue.append(curr_node.left) #왼쪽거 왼쪽에
+                if curr_node.right:
+                    queue.append(curr_node.right) #오른쪽거 오른쪽에
+                    
+            depth += 1 #한층 훑어서 깊이 증가
+            """한 레벨의 모든 노드들을 다 뽑아내고 나면, 큐에는 오직
+                        다음레벨의 노드들만 남는. 이때 뎁스 1 증가"""
+        
+        return depth
+        raise NotImplementedError
+
+
+### ✅ DFS / BFS 결과 비교 테스트
+DFS와 BFS가 **항상 동일한 결과**를 내는지 확인해 보세요.
+테스트 케이스를 1~2개 더 추가해도 좋습니다.
+
+solver_dfs = SolutionDFS()
+solver_bfs = SolutionBFS()
+
+examples = [
+    ([3, 9, 20, None, None, 15, 7], 3),
+    ([1, None, 2], 2),
+    ([], 0),
+    ([1, 2, 3, 4, 5, None, None], 3),  # 추가 예시
+]
+
+for arr, expected in examples:
+    root = build_tree_from_list(arr)
+    d = solver_dfs.maxDepth_dfs(root)
+    b = solver_bfs.maxDepth_bfs(root)
+    print(f"input={arr}\n  expected={expected}, dfs={d}, bfs={b}\n")
+    
+    
+    
+# 추가할 테스트 케이스
+extra_examples = [
+    ([1, 2, None, 3, None, 4, None], 4),      # 케이스 1: 왼쪽 편향 트리
+    ([1, 2, 3, 4, 5, 6, 7], 3),               # 케이스 2: 꽉 찬 이진 트리
+]
+
+for arr, expected in extra_examples:
+    root = build_tree_from_list(arr)
+    d = solver_dfs.maxDepth_dfs(root)
+    b = solver_bfs.maxDepth_bfs(root)
+    print(f"input={arr}\n  expected={expected}, dfs={d}, bfs={b}\n")
+
+
+---
+## Step 4. DFS vs BFS 차이점 정리
+
+아래에 두 방식의 차이를 정리해 봅시다.
+
+### 비교 관점
+- 사용하는 자료구조 (호출 스택 vs 큐)  재귀호출(시스템 스택) vs FIFO자료구조 queue
+- 재귀 vs 반복  경로별 끝까지 갔다가 복귀 vs 레벨 별로 한층씩 훑기
+- 구현 난이도 / 직관성   dfs가 bfs보다 코드가 간결하고 직관적
+- 시간복잡도 / 공간복잡도   시간복잡도는 같다./ dfs는 트리가 옆으로 넓어도 깊지 않으면 메모리를
+                          적게 쓰고, bfs는 트리가 아무리 깊어도 넓지 않으면 메모리를 적게 쓴다
+
+### ✏️ 정리 (학생 작성)
+
+- DFS 방식의 장점 / 단점:
+  - 코드가 간결하다. 위에서처럼 몇 줄 정도/ 
+    직관적. 내 높이는 자식높이+1이라는 논리가 트리구조와 잘 맞는다
+    트리가 너무 깊어지면 (수만개 노드가 한줄이면) 강제종료
+- BFS 방식의 장점 / 단점:
+  -루트에서 가장 가까운 층부터 차례대로 내려가므로 가장가까운노드 를 찾을때 유리
+   트리가 옆으로 넓을 경우, 마지막 레벨 근처에서 한꺼번에 많은 노드가 큐에 담겨 
+   메모리 사용량 증가
+   구현이 복잡함, 큐, 루프구성 등 작성할 코드가 dfs보다 많다
+- 두 방법 모두의 시간복잡도는 왜 O(N) 인가?
+  - 두 방법 모두 노드의 갯수만큼만 딱 한 번 순회하므로
+- 내가 실무/코딩 테스트에서 이 문제를 만난다면 어떤 방식을 선택할지?
+  - 경우에 따라 달리 해야겠네. 어떤 트리인지 모르면 간결한 dfs를 선택.
+
+
+---
+## ✅ 제출 전 체크리스트
+- [ ] `root is None` 인 경우에도 에러 없이 동작한다.
+- [ ] DFS 재귀 버전에서 기저 사례와 재귀 관계가 명확하다.
+- [ ] BFS 버전에서 큐를 사용해 레벨 단위로 순회하며 깊이를 올바르게 계산한다.
+- [ ] 최소 3개 이상의 테스트 케이스에서 DFS/BFS 결과가 일치한다.
+- [ ] 노트북 안에 코드와 결과, 간단한 설명이 함께 정리되어 있다.
+
+수고했어요! 😊 이제 2D grid를 그래프로 보는 심화 미션으로 넘어가 봅시다.
+
+###**콘텐츠 라이선스**
+<font color='red'><b>**(주)업스테이지가 제공하는 모든 교육 콘텐츠의 지식재산권은
+운영 주체인 (주)업스테이지 또는 해당 저작물의 적법한 관리자에게 귀속되어 있습니다.**</b></font>
+
+콘텐츠 일부 또는 전부를 **복사, 복제, 판매, 재판매 공개, 공유** 등을 할 수 없습니다. 유출될 경우 지식재산권 침해에 대한 책임을 부담할 수 있습니다.
+
+유출에 해당하여 금지되는 행위의 예시는 다음과 같습니다.
+* 콘텐츠를 재가공하여 온/오프라인으로 공개하는 행위
+* 콘텐츠의 일부 또는 전부를 이용하여 인쇄물을 만드는 행위
+* 콘텐츠의 전부 또는 일부를 녹취 또는 녹화하거나 녹취록을 작성하는 행위
+* 콘텐츠의 전부 또는 일부를 스크린 캡쳐하거나 카메라로 촬영하는 행위
+* 지인을 포함한 제3자에게 콘텐츠의 일부 또는 전부를 공유하는 행위
+* 다른 정보와 결합하여 Upstage Education의 콘텐츠임을 알아볼 수 있는 저작물을 작성, 공개하는 행위
+* 제공된 데이터의 일부 혹은 전부를 Upstage Education 프로젝트/실습 수행 이외의 목적으로 사용하는 행위
